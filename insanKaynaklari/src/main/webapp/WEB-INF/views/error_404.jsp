@@ -7,9 +7,8 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	404 Hata sayfası 
 </h1>
 
-<p> ${name}</p>
 </body>
 </html>

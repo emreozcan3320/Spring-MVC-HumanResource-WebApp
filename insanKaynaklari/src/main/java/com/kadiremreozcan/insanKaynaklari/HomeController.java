@@ -17,7 +17,9 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model) {
+	public String home(Model model, HttpServletRequest req) {
+		
+		System.out.println(req.getRemoteAddr());
 		
 		String name = "emre";
 		model.addAttribute("name", name );
@@ -25,16 +27,10 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/deneme", method = RequestMethod.GET)
-	public String deneme(Model model, HttpServletRequest req) {
+	@RequestMapping(value = "/error_404", method = RequestMethod.GET)
+	public String error_404(Model model) {
 		
-		System.out.println(req.getRemoteAddr());
-		
-		String name = "DENEME";
-		model.addAttribute("name", name );
-		
-		
-		return "deneme";
+		return "error_404";
 	}
 	
 }
