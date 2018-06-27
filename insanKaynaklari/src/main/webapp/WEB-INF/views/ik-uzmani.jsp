@@ -7,8 +7,12 @@
 </head>
 <body>
 <h1>
-	Aday Deneme
+	İlanlar
 </h1>
 
+<a href="#">LOGO</a>
+<a href="/aday">Aday</a>
+<a href="/ik-uzmani">İK Uzmanı</a>
+<a href="/ilanlar">İlanlar</a>
 </body>
 </html>

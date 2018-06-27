@@ -7,12 +7,12 @@
 </head>
 <body>
 <h1>
-	AnaSayfa  
+	İK Uzmanı  
 </h1>
 
 <a href="#">LOGO</a>
-<a href="/insanKaynaklari/aday">Aday</a>
-<a href="/insanKaynaklari/ik-uzmani">İK Uzmanı</a>
-<a href="/insanKaynaklari/ilanlar">İlanlar</a>
+<a href="/aday">Aday</a>
+<a href="/ik-uzmani">İK Uzmanı</a>
+<a href="/ilanlar">İlanlar</a>
 </body>
 </html>

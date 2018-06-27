@@ -32,14 +32,27 @@ public class HomeController {
 		return "home";
 	}
 	
-	@Autowired
-	SessionFactory sessionFactory;
+	//@Autowired
+	//private SessionFactory sessionFactory;
 	
-	@RequestMapping(value = "/adayDeneme", method = RequestMethod.GET)
-	public String adayDeneme(Model model) throws HibernateException, PropertyVetoException {
+	@RequestMapping(value = "/aday", method = RequestMethod.GET)
+	public String aday(Model model) throws HibernateException, PropertyVetoException {
 				
-		return "adayDeneme";
+		return "aday";
 	}
+	
+	@RequestMapping(value = "/ik-uzmani", method = RequestMethod.GET)
+	public String ikUzmani(Model model) throws HibernateException, PropertyVetoException {
+				
+		return "ik-uzmani";
+	}
+	
+	@RequestMapping(value = "/ilanlar", method = RequestMethod.GET)
+	public String ilanlar(Model model) throws HibernateException, PropertyVetoException {
+				
+		return "ilanlar";
+	}
+	
 	
 	@RequestMapping(value = "/error_404", method = RequestMethod.GET)
 	public String error_404(Model model) {
