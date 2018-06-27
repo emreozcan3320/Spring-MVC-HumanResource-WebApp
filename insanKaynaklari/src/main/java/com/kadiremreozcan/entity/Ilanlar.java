@@ -11,8 +11,8 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ilanlar")
-public class ilanlar {
+@Table(name="Ilanlar")
+public class Ilanlar {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

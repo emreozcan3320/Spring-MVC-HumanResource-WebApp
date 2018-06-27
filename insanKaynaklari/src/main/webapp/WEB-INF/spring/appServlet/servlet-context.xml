@@ -37,9 +37,14 @@
 		<beans:property name="hibernateProperties">
 			<beans:props>
 				<beans:prop key="hibernate.dialect">${hibernate.dialect}</beans:prop>
-				<beans:prop key="hibernate.hbm2ddl">${hibernate.hbm2ddl}</beans:prop>
+				<beans:prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl}</beans:prop>
 				<beans:prop key="hibernate.show_sql">${hibernate.show_sql}</beans:prop>
-				<beans:prop key="hibernate.format_sql">${hibernate.format_sql}</beans:prop>
+				<beans:prop key="hibernate.format_sql">${hibernate.format_sql}</beans:prop>				
+				<!--
+				<beans:prop key="hibernate.connection.CharSet">utf8</beans:prop>
+				<beans:prop key="hibernate.connection.characterEncoding">utf8</beans:prop>
+				<beans:prop key="hibernate.connection.useUnicode">true</beans:prop>
+				-->
 			</beans:props>
 		</beans:property>
 		<beans:property name="packagesToScan" value="com.kadiremreozcan.entity"/>
