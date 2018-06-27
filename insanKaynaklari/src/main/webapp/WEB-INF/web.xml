@@ -31,12 +31,13 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-
-
+	<!-- Hata Sayfasına Yönlendirme -->
+	<!--  
 	<error-page>
 		<error-code>404</error-code>
 		<location>/error_404</location>
 	</error-page>
+	-->
 
 	<!-- Filterlar -->
 	<!--  

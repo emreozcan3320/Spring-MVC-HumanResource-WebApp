@@ -1,8 +1,13 @@
 package com.kadiremreozcan.insanKaynaklari;
 
 
+import java.beans.PropertyVetoException;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.hibernate.HibernateException;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +30,15 @@ public class HomeController {
 		model.addAttribute("name", name );
 		
 		return "home";
+	}
+	
+	@Autowired
+	SessionFactory sessionFactory;
+	
+	@RequestMapping(value = "/adayDeneme", method = RequestMethod.GET)
+	public String adayDeneme(Model model) throws HibernateException, PropertyVetoException {
+				
+		return "adayDeneme";
 	}
 	
 	@RequestMapping(value = "/error_404", method = RequestMethod.GET)
