@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Ilanlar")
-public class Ilanlar {
+public class Jobs {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

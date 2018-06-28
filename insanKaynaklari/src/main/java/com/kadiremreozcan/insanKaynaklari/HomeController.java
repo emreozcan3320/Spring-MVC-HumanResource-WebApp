@@ -12,8 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kadiremreozcan.entity.Ilanlar;
-import com.kadiremreozcan.service.IlanlarService;
+import com.kadiremreozcan.entity.Jobs;
+import com.kadiremreozcan.service.JobsService;
 
 /**
  * Handles requests for the application home page.
@@ -22,7 +22,7 @@ import com.kadiremreozcan.service.IlanlarService;
 public class HomeController {
 	
 	@Autowired
-	private IlanlarService ilanlarService;
+	private JobsService jobsService;
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -54,24 +54,24 @@ public class HomeController {
 	@RequestMapping(value = "/ilanlar", method = RequestMethod.GET)
 	public String ilanlar(Model model) throws HibernateException, PropertyVetoException {
 		
-		/*
-		Ilanlar ilanlar = new Ilanlar();
-		ilanlar.setTitle("ilan");
-		ilanlar.setStatus(true);
-		ilanlar.setPersonal_qualities("kitap okuma,fotoðrafçýlýk");
-		ilanlar.setJob_definition("junior java developer");
-		ilanlar.setIk_uzmani_id(null);
-		ilanlar.setExpiration_date(null);
-		ilanlar.setExpertise("java,python,hibarnate");
-		ilanlar.setCreate_date(null);
-		ilanlar.setActivation_date(null);
-		ilanlar.setId(1l);
 		
-		ilanlarService.createIlan(ilanlar);
-		*/
-		for(Ilanlar ilan : ilanlarService.getAll())
+		Jobs jobs = new Jobs();
+		jobs.setTitle("ilan3");
+		jobs.setStatus(true);
+		jobs.setPersonal_qualities("kitap okuma,fotoðrafçýlýk");
+		jobs.setJob_definition("junior java developer");
+		jobs.setIk_uzmani_id(null);
+		jobs.setExpiration_date(null);
+		jobs.setExpertise("java,python,hibarnate");
+		jobs.setCreate_date(null);
+		jobs.setActivation_date(null);
+		jobs.setId(1l);
+		
+		jobsService.createIlan(jobs);
+		
+		/*for(Ilanlar ilan : ilanlarService.getAll())
 			System.out.println(ilan.getTitle());
-		
+		*/
 		
 		return "ilanlar";
 	}

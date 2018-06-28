@@ -8,23 +8,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kadiremreozcan.dao.IlanlarDAO;
-import com.kadiremreozcan.entity.Ilanlar;
+import com.kadiremreozcan.dao.JobsDAO;
+import com.kadiremreozcan.entity.Jobs;
 
 @Service
 @Transactional
-public class IlanlarService {
+public class JobsService {
 
 	@Autowired
-	private IlanlarDAO ilanDAO;
+	private JobsDAO ilanDAO;
 
-	public Long createIlan(Ilanlar ilan) {
+	public Long createIlan(Jobs ilan) {
 
 		return ilanDAO.insert(ilan);
 	}
 
 	// READ
-	public ArrayList<Ilanlar> getAll() {
+	public ArrayList<Jobs> getAll() {
 
 		return ilanDAO.getAll();
 	}
