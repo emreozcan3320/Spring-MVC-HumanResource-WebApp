@@ -54,7 +54,7 @@ public class HomeController {
 	@RequestMapping(value = "/ilanlar", method = RequestMethod.GET)
 	public String ilanlar(Model model) throws HibernateException, PropertyVetoException {
 		
-		
+		/*
 		Jobs jobs = new Jobs();
 		jobs.setTitle("ilan3");
 		jobs.setStatus(true);
@@ -68,6 +68,7 @@ public class HomeController {
 		jobs.setId(1l);
 		
 		jobsService.createIlan(jobs);
+		*/
 		
 		/*for(Ilanlar ilan : ilanlarService.getAll())
 			System.out.println(ilan.getTitle());
