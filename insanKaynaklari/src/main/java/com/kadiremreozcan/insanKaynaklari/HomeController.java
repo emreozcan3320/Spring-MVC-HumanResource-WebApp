@@ -69,6 +69,10 @@ public class HomeController {
 		
 		ilanlarService.createIlan(ilanlar);
 		*/
+		for(Ilanlar ilan : ilanlarService.getAll())
+			System.out.println(ilan.getTitle());
+		
+		
 		return "ilanlar";
 	}
 	

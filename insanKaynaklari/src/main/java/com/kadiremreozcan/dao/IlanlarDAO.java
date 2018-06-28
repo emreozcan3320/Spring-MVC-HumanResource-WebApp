@@ -41,7 +41,7 @@ public class IlanlarDAO {
 	
 	//READ 
 	public ArrayList<Ilanlar> getAll(){
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM ilanlar");
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Ilanlar");
 		
 		return (ArrayList<Ilanlar>) query.getResultList();
 	}
