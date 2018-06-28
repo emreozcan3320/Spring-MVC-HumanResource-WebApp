@@ -65,92 +65,20 @@
 			<div class="logo-menu">
 				<nav class="navbar navbar-default" role="navigation"
 					data-spy="affix" data-offset-top="50">
-					<div class="container">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle"
-								data-toggle="collapse" data-target="#navbar">
-								<span class="sr-only">Toggle navigation</span> <span
-									class="icon-bar"></span> <span class="icon-bar"></span> <span
-									class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand logo" href="${contextPath}/"><img
-								src="resources/theme1/img/logo.png" alt=""></a>
-						</div>
-
-						<div class="collapse navbar-collapse" id="navbar">
-							<!-- Start Navigation List -->
-							<ul class="nav navbar-nav">
-								<li><a class="active" href="${contextPath}/"> Anasayfa</a></li>
-								
-								<li><a href="${contextPath}/ilanlar"> İş İlanları</a></li>
-								
-								<li><a href="about.html"> İş Ara</a></li>
-								
-								<li><a href="about.html"> İş Kategorileri</a></li>
-							</ul>
-							<ul class="nav navbar-nav navbar-right float-right">
-								<li class="left"><a href="${contextPath}/isveren/login"><i
-										class="ti-pencil-alt"></i>İnsan Kaynakları</a></li>
-								<li class="right"><a href="${contextPath}/aday/login"><i
-										class="ti-lock"></i>Aday</a></li>
-							</ul>
-						</div>
-					</div>
+					<!-- Menu Begining -->
+					<jsp:include page="../includes/menuGeneral.jsp"></jsp:include>
+					<!-- Menu End -->
+					
 					<!-- Mobile Menu Start -->
-					<ul class="wpb-mobile-menu">
-						<li><a class="active" href="index.html">Home</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="job-page.html">Job Page</a></li>
-						<li><a href="job-details.html">Job Details</a></li>
-						<li><a href="resume.html">Resume Page</a></li>
-						<li><a href="privacy-policy.html">Privacy Policy</a></li>
-						<li><a href="faq.html">FAQ</a></li>
-						<li><a href="pricing.html">Pricing Tables</a></li>
-						<li><a href="contact.html">Contact</a></li>
-						<li class="btn-m"><a href="post-job.html"><i
-								class="ti-pencil-alt"></i>İş Veren Girişi</a></li>
-						<li class="btn-m"><a href="my-account.html"><i
-								class="ti-lock"></i> Aday Girişi</a></li>
-					</ul>
+					<jsp:include page="../includes/mobilMenuGeneral.jsp"></jsp:include>
 					<!-- Mobile Menu End -->
 				</nav>
 
 				<!-- Off Canvas Navigation -->
 				<div class="navmenu navmenu-default navmenu-fixed-left offcanvas">
 					<!--- Off Canvas Side Menu -->
-					<div class="close" data-toggle="offcanvas" data-target=".navmenu">
-						<i class="ti-close"></i>
-					</div>
-					<h3 class="title-menu">All Pages</h3>
-					<ul class="nav navmenu-nav">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="index-02.html">Home Page 2</a></li>
-						<li><a href="index-03.html">Home Page 3</a></li>
-						<li><a href="index-04.html">Home Page 4</a></li>
-						<li><a href="about.html">About us</a></li>
-						<li><a href="job-page.html">Job Page</a></li>
-						<li><a href="job-details.html">Job Details</a></li>
-						<li><a href="resume.html">Resume Page</a></li>
-						<li><a href="privacy-policy.html">Privacy Policy</a></li>
-						<li><a href="pricing.html">Pricing Tables</a></li>
-						<li><a href="browse-jobs.html">Browse Jobs</a></li>
-						<li><a href="browse-categories.html">Browse Categories</a></li>
-						<li><a href="add-resume.html">Add Resume</a></li>
-						<li><a href="manage-resumes.html">Manage Resumes</a></li>
-						<li><a href="job-alerts.html">Job Alerts</a></li>
-						<li><a href="post-job.html">Add Job</a></li>
-						<li><a href="manage-jobs.html">Manage Jobs</a></li>
-						<li><a href="manage-applications.html">Manage
-								Applications</a></li>
-						<li><a href="browse-resumes.html">Browse Resumes</a></li>
-						<li><a href="contact.html">Contact</a></li>
-						<li><a href="faq.html">Faq</a></li>
-						<li><a href="my-account.html">Login</a></li>
-					</ul>
-					<!--- End Menu -->
-				</div>
-				<!--- End Off Canvas Side Menu -->
+					<jsp:include page="../includes/offCanvasSideMenu.jsp"></jsp:include>
+					<!--- End Off Canvas Side Menu -->
 				<div class="tbtn wow pulse" id="menu" data-wow-iteration="infinite"
 					data-wow-duration="500ms" data-toggle="offcanvas"
 					data-target=".navmenu">
@@ -846,94 +774,7 @@
 	<!-- Infobox Section End -->
 
 	<!-- Footer Section Start -->
-	<footer>
-		<!-- Footer Area Start -->
-		<section class="footer-Content">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="widget">
-							<h3 class="block-title">
-								<img src="resources/theme1/img/logo.png" class="img-responsive"
-									alt="Footer Logo">
-							</h3>
-							<div class="textwidget">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Quisque lobortis tincidunt est, et euismod purus suscipit quis.
-									Etiam euismod ornare elementum. Sed ex est, consectetur eget
-									facilisis sed.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="widget">
-							<h3 class="block-title">Quick Links</h3>
-							<ul class="menu">
-								<li><a href="#">About Us</a></li>
-								<li><a href="#">Support</a></li>
-								<li><a href="#">License</a></li>
-								<li><a href="#">Terms & Conditions</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="widget">
-							<h3 class="block-title">Trending Jobs</h3>
-							<ul class="menu">
-								<li><a href="#">Android Developer</a></li>
-								<li><a href="#">Senior Accountant</a></li>
-								<li><a href="#">Frontend Developer</a></li>
-								<li><a href="#">Junior Tester</a></li>
-								<li><a href="#">Project Manager</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="widget">
-							<h3 class="block-title">Follow Us</h3>
-							<div class="bottom-social-icons social-icon">
-								<a class="twitter" href="https://twitter.com/GrayGrids"><i
-									class="ti-twitter-alt"></i></a> <a class="facebook"
-									href="https://web.facebook.com/GrayGrids"><i
-									class="ti-facebook"></i></a> <a class="youtube"
-									href="https://youtube.com"><i class="ti-youtube"></i></a> <a
-									class="dribble" href="https://dribbble.com/GrayGrids"><i
-									class="ti-dribbble"></i></a> <a class="linkedin"
-									href="https://www.linkedin.com/GrayGrids"><i
-									class="ti-linkedin"></i></a>
-							</div>
-							<p>Join our mailing list to stay up to date and get notices
-								about our new releases!</p>
-							<form class="subscribe-box">
-								<input type="text" placeholder="Your email"> <input
-									type="submit" class="btn-system" value="Send">
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Footer area End -->
-
-		<!-- Copyright Start  -->
-		<div id="copyright">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="site-info text-center">
-							<p>
-								All Rights reserved &copy; 2017 - Designed & Developed by <a
-									rel="nofollow" href="http://graygrids.com">GrayGrids</a>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Copyright End -->
-
-	</footer>
+	<jsp:include page="../includes/footer.jsp"></jsp:include>
 	<!-- Footer Section End -->
 
 	<!-- Go To Top Link -->

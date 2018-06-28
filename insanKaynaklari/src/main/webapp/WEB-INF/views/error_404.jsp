@@ -7,9 +7,11 @@
 	<title>Home</title>
 </head>
 <body>
+<jsp:include page="../includes/header.jsp"></jsp:include>
 <h1>
 	404 
 </h1>
+<jsp:include page="../includes/footer.jsp"></jsp:include>
 
 <a href="#">LOGO</a>
 <a href="${contextPath}/aday">Aday</a>
