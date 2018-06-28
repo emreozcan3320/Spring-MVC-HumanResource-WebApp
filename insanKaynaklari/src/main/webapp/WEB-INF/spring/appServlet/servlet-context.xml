@@ -14,7 +14,12 @@
 	<context:annotation-config></context:annotation-config>
 	<annotation-driven />
 	
-	<resources mapping="/**" location="/resources/" />
+	
+	<resources location="/resources/" mapping="resources/**"  /> 
+	<resources location="/resources/" mapping="/isveren/resources/**" />
+	<resources location="/resources/" mapping="/aday/resources/**" />
+	
+	<!-- <resources mapping="/resources/**" location="/resources/" />  -->
 	<context:property-placeholder location="classpath:application.properties"/>
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->

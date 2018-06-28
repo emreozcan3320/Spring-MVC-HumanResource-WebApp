@@ -25,31 +25,38 @@ public class HomeController {
 	private JobsService jobsService;
 	
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model, HttpServletRequest req) {
+	@RequestMapping(value = "/anasayfa", method = RequestMethod.GET)
+	public String anasayfa(Model model, HttpServletRequest req) {
 		
 		System.out.println(req.getRemoteAddr());
 		
 		String name = "emre";
 		model.addAttribute("name", name );
 		
-		return "home";
+		return "Anasayfa";
+	}
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index(Model model, HttpServletRequest req) {
+		
+		return "redirect:anasayfa";
 	}
 	
 	//@Autowired
 	//private SessionFactory sessionFactory;
 	
-	@RequestMapping(value = "/aday", method = RequestMethod.GET)
+	@RequestMapping(value = "/aday/login", method = RequestMethod.GET)
 	public String aday(Model model) throws HibernateException, PropertyVetoException {
 				
 		return "aday";
 	}
 	
-	@RequestMapping(value = "/ik-uzmani", method = RequestMethod.GET)
-	public String ikUzmani(Model model) throws HibernateException, PropertyVetoException {
+	@RequestMapping(value = "/isveren/login", method = RequestMethod.GET)
+	public String isveren(Model model) throws HibernateException, PropertyVetoException {
 				
-		return "ik-uzmani";
+		return "isveren";
 	}
+	
+	
 	
 	@RequestMapping(value = "/ilanlar", method = RequestMethod.GET)
 	public String ilanlar(Model model) throws HibernateException, PropertyVetoException {

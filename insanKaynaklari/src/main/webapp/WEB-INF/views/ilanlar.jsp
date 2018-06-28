@@ -13,7 +13,7 @@
 
 <a href="#">LOGO</a>
 <a href="${contextPath}/aday">Aday</a>
-<a href="${contextPath}/ik-uzmani">İK Uzmanı</a>
+<a href="${contextPath}/isveren">İK Uzmanı</a>
 <a href="${contextPath}/ilanlar">İlanlar</a>
 </body>
 </html>
