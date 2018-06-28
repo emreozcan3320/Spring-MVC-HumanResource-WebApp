@@ -33,7 +33,7 @@ public class HomeController {
 		String name = "emre";
 		model.addAttribute("name", name );
 		
-		return "Anasayfa";
+		return "anasayfa";
 	}
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model, HttpServletRequest req) {
@@ -83,7 +83,6 @@ public class HomeController {
 		
 		return "ilanlar";
 	}
-	
 	
 	@RequestMapping(value = "/error_404", method = RequestMethod.GET)
 	public String error_404(Model model) {

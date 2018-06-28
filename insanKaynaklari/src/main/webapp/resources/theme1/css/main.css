@@ -821,6 +821,42 @@ nav#menu span.fa.fa-bars:hover {
   padding: 10px;
   margin-bottom: 30px;
 }
+
+/****  ilanlar icin search baslangici  ****/
+.search-container-ilanlar {
+  padding: 5vh 0;
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  /*height: 30vh;*/
+  background-color: #202020
+}
+.search-container-ilanlar .form-control {
+  padding: 0 40px;
+  border: 1px solid transparent;
+}
+.search-container-ilanlar .form-group {
+  margin-bottom: 0px!important;
+}
+.search-container-ilanlar h2 {
+  font-size: 30px;
+  color: #ff4f57;
+  font-weight: 400;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+}
+.search-container-ilanlar h1 {
+  font-weight: 900;
+  font-size: 50px;
+  letter-spacing: 1px;
+  line-height: 30px;
+}
+.search-container-ilanlar .content {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  margin-bottom: 30px;
+}
+/****  ilanlar icin search bitiþi  ****/
 .popular-jobs a {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
