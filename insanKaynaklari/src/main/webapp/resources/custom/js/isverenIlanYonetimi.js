@@ -1,7 +1,10 @@
 $(document).ready(function() {
 	
-	
+	getJobs();
+	setInterval(function(){ getJobs();},3000);
+});
 
+function getJobs (){
 	$.ajax({
 		type : "POST",
 		url : "ilan",
@@ -23,4 +26,4 @@ $(document).ready(function() {
 		}
 
 	});
-});
+}
