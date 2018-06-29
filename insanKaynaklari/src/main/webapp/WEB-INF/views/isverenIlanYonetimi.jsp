@@ -8,9 +8,11 @@
 </head>
 <body>
 <h1>
-	İsvrenin İlanları
+	İlan Yönetimi Sayfası
 </h1>
 
+
+<a href="${contextPath}/isveren/ilanEkle">Yeni İlan</a>
 <a href="${contextPath}/">Anasayfa</a>
 <a href="${contextPath}/isveren/adayInfo">Aday Bilgileri</a>
 <a href="${contextPath}/isveren/index">Panel</a>

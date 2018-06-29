@@ -119,8 +119,18 @@ public class Jobs {
 	public void setExpertise(String expertise) {
 		this.expertise = expertise;
 	}
+
+	@Override
+	public String toString() {
+		return "Jobs [id=" + id + ", ik_uzmani_id=" + ik_uzmani_id + ", status=" + status + ", create_date="
+				+ create_date + ", activation_date=" + activation_date + ", expiration_date=" + expiration_date
+				+ ", title=" + title + ", job_definition=" + job_definition + ", personal_qualities="
+				+ personal_qualities + ", expertise=" + expertise + "]";
+	}
+	
+	
 	 
-	 
+	
 	
 
 }

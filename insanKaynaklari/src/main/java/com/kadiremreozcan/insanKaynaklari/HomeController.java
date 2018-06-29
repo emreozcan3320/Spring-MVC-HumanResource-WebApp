@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kadiremreozcan.entity.Jobs;
 import com.kadiremreozcan.service.JobsService;
@@ -80,13 +81,20 @@ public class HomeController {
 	@RequestMapping(value = "/isveren/ilan", method = RequestMethod.GET)
 	public String isverenIlan(Model model) throws HibernateException, PropertyVetoException {
 				
-		return "isverenIlan";
+		return "isverenIlanYonetimi";
 	}
 	
-	@RequestMapping(value = "/isveren/ilan", method = RequestMethod.POST)
+	@RequestMapping(value = "/isveren/ilanEkle", method = RequestMethod.GET)
+	public String isverenIlanEkle(Model model) throws HibernateException, PropertyVetoException {
+				
+		return "ilanEkle";
+	}
+	@RequestMapping(value = "/isveren/ilanEkle", method = RequestMethod.POST)
+	@ResponseBody
 	public  ResponseEntity<String> isverenIlanEkle(@RequestBody Jobs job, HttpServletRequest request){
 		
-		jobsService.createIlan(job, request);
+		System.out.println(job.toString());
+		//jobsService.createIlan(job, request);
 		
 		return new ResponseEntity<>("OK",HttpStatus.CREATED);
 	}
