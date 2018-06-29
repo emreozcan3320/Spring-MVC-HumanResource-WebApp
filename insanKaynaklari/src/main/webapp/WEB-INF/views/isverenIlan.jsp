@@ -8,11 +8,12 @@
 </head>
 <body>
 <h1>
-	İsvren Paneli
+	İsvrenin İlanları
 </h1>
 
 <a href="${contextPath}/">Anasayfa</a>
-<a href="${contextPath}/isveren/ilan">ilanlarım</a>
+<a href="${contextPath}/isveren/adayInfo">Aday Bilgileri</a>
+<a href="${contextPath}/isveren/index">Panel</a>
 <a href="${contextPath}/isveren/login">Çıkıs</a>
 </body>
 </html>

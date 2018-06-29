@@ -62,7 +62,7 @@
 					
 					<div class="container-login100-form-btn p-t-25">
 						<button class="login100-form-btn">
-							<a href="${contextPath}/aday">Login</a> 
+							<a href="${contextPath}/aday/index">Login</a> 
 						</button>
 					</div>
 

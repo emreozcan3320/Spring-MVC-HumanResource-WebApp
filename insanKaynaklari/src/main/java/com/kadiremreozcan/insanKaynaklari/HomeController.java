@@ -50,16 +50,40 @@ public class HomeController {
 		return "adayLogin";
 	}
 	
-	@RequestMapping(value = "/aday", method = RequestMethod.GET)
+	@RequestMapping(value = "/aday/index", method = RequestMethod.GET)
 	public String aday(Model model) throws HibernateException, PropertyVetoException {
 				
 		return "aday";
 	}
 	
+	@RequestMapping(value = "/aday/basvurular", method = RequestMethod.GET)
+	public String adayBasvurular(Model model) throws HibernateException, PropertyVetoException {
+				
+		return "basvurular";
+	}
+	
 	@RequestMapping(value = "/isveren/login", method = RequestMethod.GET)
-	public String isveren(Model model) throws HibernateException, PropertyVetoException {
+	public String isverenLogin(Model model) throws HibernateException, PropertyVetoException {
 				
 		return "isverenLogin";
+	}
+	
+	@RequestMapping(value = "/isveren/index", method = RequestMethod.GET)
+	public String isveren(Model model) throws HibernateException, PropertyVetoException {
+				
+		return "isveren";
+	}
+	
+	@RequestMapping(value = "/isveren/ilan", method = RequestMethod.GET)
+	public String isverenIlan(Model model) throws HibernateException, PropertyVetoException {
+				
+		return "isverenIlan";
+	}
+	
+	@RequestMapping(value = "/isveren/adayInfo", method = RequestMethod.GET)
+	public String adayInfo(Model model) throws HibernateException, PropertyVetoException {
+				
+		return "adayInfo";
 	}
 	
 	

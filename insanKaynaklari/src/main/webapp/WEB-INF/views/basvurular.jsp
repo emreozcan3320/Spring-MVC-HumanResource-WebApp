@@ -33,7 +33,7 @@
 				<nav class="navbar navbar-default" role="navigation"
 					data-spy="affix" data-offset-top="50">
 					<!-- Menu Begining -->
-					<jsp:include page="../includes/menuAday.jsp"></jsp:include>
+					<jsp:include page="../includes/menuGeneral.jsp"></jsp:include>
 					<!-- Menu End -->
 					<!-- Mobile Menu Start -->
 					<jsp:include page="../includes/mobilMenuGeneral.jsp"></jsp:include>
@@ -71,7 +71,7 @@
 		<div class="container">
 			<!-- Start Animations Text -->
 			<h1>
-				Bu aday sayfasıdır
+				Bu aday basvurular sayfasıdır
 			</h1>
 			<br>
 			<!-- End Animations Text -->
