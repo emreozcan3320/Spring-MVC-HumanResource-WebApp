@@ -1,113 +1,116 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-<!DOCTYPE html>
-<html lang="en">
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<html>
 <head>
-	<title>Login V11</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="resources/adayLogin/images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="resources/adayLogin/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="resources/adayLogin/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="resources/adayLogin/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="resources/adayLogin/vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="resources/adayLogin/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="resources/adayLogin/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="resources/adayLogin/css/util.css">
-	<link rel="stylesheet" type="text/css" href="resources/adayLogin/css/main.css">
-<!--===============================================================================================-->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="author" content="Jobboard">
+
+<title>JobBoard - Bootstrap HTML5 Job Portal Template</title>
+
+<!-- Theme1 Links starts -->
+<jsp:include page="../includes/theme1Links.jsp"></jsp:include>
+<!-- Theme1 Links Ends -->
+
+<!-- Color CSS Styles  -->
+<link rel="stylesheet" type="text/css"
+	href="resources/theme1/css/colors/red.css" media="screen" />
+
+
+
 </head>
+
 <body>
-	
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-				<form class="login100-form validate-form">
-					<span class="login100-form-title p-b-55">
-						GIRIŞ
-					</span>
+	<!-- Header Section Start -->
+	<div class="header">
+		<!-- Start intro section -->
+		<section id="intro" class="section-intro">
+			<div class="logo-menu">
+				<nav class="navbar navbar-default" role="navigation"
+					data-spy="affix" data-offset-top="50">
+					<!-- Menu Begining -->
+					<jsp:include page="../includes/menuGeneral.jsp"></jsp:include>
+					<!-- Menu End -->
+					<!-- Mobile Menu Start -->
+					<jsp:include page="../includes/mobilMenuGeneral.jsp"></jsp:include>
+					<!-- Mobile Menu End -->
+				</nav>
 
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<span class="lnr lnr-envelope"></span>
-						</span>
-					</div>
+				<!-- Off Canvas Navigation -->
+				<div class="navmenu navmenu-default navmenu-fixed-left offcanvas">
+					<!--- Off Canvas Side Menu -->
+					<jsp:include page="../includes/offCanvasSideMenu.jsp"></jsp:include>
+					<!--- End Off Canvas Side Menu -->
+				</div>
+				<!--- End Off Canvas Side Menu -->
+				<div class="tbtn wow pulse" id="menu" data-wow-iteration="infinite"
+					data-wow-duration="500ms" data-toggle="offcanvas"
+					data-target=".navmenu">
+					<p>
+						<i class="ti-files"></i> All Pages
+					</p>
+				</div>
+			</div>
+			<!-- Header Section End -->
 
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<span class="lnr lnr-lock"></span>
-						</span>
-					</div>
+			<!-- Search Container Start -->
+			<jsp:include page="../includes/ilanSearch.jsp"></jsp:include>
+			<!-- Search Container End  -->
+		</section>
+		<!-- end intro section -->
+	</div>
+	<!-- Header Section End   -->
 
-					<div class="contact100-form-checkbox m-l-4">
-						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-						<label class="label-checkbox100" for="ckb1">
-							Remember me
-						</label>
-					</div>
-					
-					<div class="container-login100-form-btn p-t-25">
-						<button class="login100-form-btn">
-							Login
-						</button>
-					</div>
 
-					<div class="text-center w-full p-t-42 p-b-22">
-						<span class="txt1">
-							Or login with
-						</span>
-					</div>
 
-					<a href="#" class="btn-face m-b-10">
-						<i class="fa fa-facebook-official"></i>
-						Facebook
-					</a>
+	<section class="section text-center">
+		<div class="container">
+			<!-- Start Animations Text -->
+			<h1>
+				Bu aday sayfasıdır
+			</h1>
+			<br>
+			<!-- End Animations Text -->
 
-					<a href="#" class="btn-google m-b-10">
-						<img src="resources/adayLogin/images/icons/icon-google.png" alt="GOOGLE">
-						Google
-					</a>
+			<!-- Start Buttons -->
+			<a rel="nofollow" target="_blank"
+				href="https://rebrand.ly/gg-jobboard-purchase"
+				class="btn btn-common btn-large"><i class="fa fa-cart"></i>
+				Purchase Now</a>
+		</div>
+	</section>
 
-					<div class="text-center w-full p-t-115">
-						<span class="txt1">
-							<!-- Not a member? -->
-						</span>
 
-						<a class="txt1 bo1 hov1" href="${contextPath}/">
-							Anasayfa						
-						</a>
-					</div>
-				</form>
+	<!-- Footer Section Start -->
+	<jsp:include page="../includes/footer.jsp"></jsp:include>
+	<!-- Footer Section End -->
+
+	<!-- Go To Top Link -->
+	<a href="#" class="back-to-top"> <i class="ti-arrow-up"></i>
+	</a>
+
+	<div id="loading">
+		<div id="loading-center">
+			<div id="loading-center-absolute">
+				<div class="object" id="object_one"></div>
+				<div class="object" id="object_two"></div>
+				<div class="object" id="object_three"></div>
+				<div class="object" id="object_four"></div>
+				<div class="object" id="object_five"></div>
+				<div class="object" id="object_six"></div>
+				<div class="object" id="object_seven"></div>
+				<div class="object" id="object_eight"></div>
 			</div>
 		</div>
 	</div>
-	
-	
 
-	
-<!--===============================================================================================-->	
-	<script src="resources/adayLogin/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="resources/adayLogin/vendor/bootstrap/js/popper.js"></script>
-	<script src="resources/adayLogin/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="resources/adayLogin/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="resources/adayLogin/js/main.js"></script>
+	<!-- Theme1 Scripts Starts -->
+	<jsp:include page="../includes/theme1Scripts.jsp"></jsp:include>
+	<!-- Theme1 Scripts Ends -->
 
 </body>
 </html>

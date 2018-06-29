@@ -29,7 +29,7 @@
 							<li><a href="#">About Us</a></li>
 							<li><a href="#">Support</a></li>
 							<li><a href="#">License</a></li>
-							<li><a href="#">Terms & Conditions</a></li>
+							<li><a href="#">Terms and Conditions</a></li>
 							<li><a href="#">Contact</a></li>
 						</ul>
 					</div>
@@ -80,7 +80,7 @@
 				<div class="col-md-12">
 					<div class="site-info text-center">
 						<p>
-							All Rights reserved &copy; 2017 - Designed & Developed by <a
+							All Rights reserved &copy; 2017 - Designed and Developed by <a
 								rel="nofollow" href="http://graygrids.com">GrayGrids</a>
 						</p>
 					</div>

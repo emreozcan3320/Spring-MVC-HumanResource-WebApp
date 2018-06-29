@@ -12,8 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kadiremreozcan.entity.Jobs;
-import com.kadiremreozcan.service.JobsService;
+//import com.kadiremreozcan.entity.Jobs;
+//import com.kadiremreozcan.service.JobsService;
 
 /**
  * Handles requests for the application home page.
@@ -21,8 +21,8 @@ import com.kadiremreozcan.service.JobsService;
 @Controller
 public class HomeController {
 	
-	@Autowired
-	private JobsService jobsService;
+	//@Autowired
+	//private JobsService jobsService;
 	
 	
 	@RequestMapping(value = "/anasayfa", method = RequestMethod.GET)
@@ -45,6 +45,12 @@ public class HomeController {
 	//private SessionFactory sessionFactory;
 	
 	@RequestMapping(value = "/aday/login", method = RequestMethod.GET)
+	public String adayLogin(Model model) throws HibernateException, PropertyVetoException {
+				
+		return "adayLogin";
+	}
+	
+	@RequestMapping(value = "/aday", method = RequestMethod.GET)
 	public String aday(Model model) throws HibernateException, PropertyVetoException {
 				
 		return "aday";
@@ -53,7 +59,7 @@ public class HomeController {
 	@RequestMapping(value = "/isveren/login", method = RequestMethod.GET)
 	public String isveren(Model model) throws HibernateException, PropertyVetoException {
 				
-		return "isveren";
+		return "isverenLogin";
 	}
 	
 	
