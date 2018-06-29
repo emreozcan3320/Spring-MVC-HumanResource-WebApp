@@ -7,13 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-//import com.kadiremreozcan.entity.Jobs;
-//import com.kadiremreozcan.service.JobsService;
+import com.kadiremreozcan.entity.Jobs;
+import com.kadiremreozcan.service.JobsService;
 
 /**
  * Handles requests for the application home page.
@@ -21,8 +24,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 	
-	//@Autowired
-	//private JobsService jobsService;
+	@Autowired
+	private JobsService jobsService;
 	
 	
 	@RequestMapping(value = "/anasayfa", method = RequestMethod.GET)
@@ -78,6 +81,14 @@ public class HomeController {
 	public String isverenIlan(Model model) throws HibernateException, PropertyVetoException {
 				
 		return "isverenIlan";
+	}
+	
+	@RequestMapping(value = "/isveren/ilan", method = RequestMethod.POST)
+	public  ResponseEntity<String> isverenIlanEkle(@RequestBody Jobs job, HttpServletRequest request){
+		
+		jobsService.createIlan(job, request);
+		
+		return new ResponseEntity<>("OK",HttpStatus.CREATED);
 	}
 	
 	@RequestMapping(value = "/isveren/adayInfo", method = RequestMethod.GET)

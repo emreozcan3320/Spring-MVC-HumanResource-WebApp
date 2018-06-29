@@ -11,7 +11,7 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Ilanlar")
+@Table(name="jobs")
 public class Jobs {
 	
 	@Id

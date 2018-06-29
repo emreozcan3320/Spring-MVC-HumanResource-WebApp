@@ -2,7 +2,7 @@ package com.kadiremreozcan.service;
 
 import java.util.ArrayList;
 
-import javax.persistence.Query;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,15 +18,29 @@ public class JobsService {
 	@Autowired
 	private JobsDAO ilanDAO;
 
-	public Long createIlan(Jobs ilan) {
+	public Long createIlan(Jobs ilan, HttpServletRequest req) {
+		//TODO:uzman id deðiþecek
+		ilan.setIk_uzmani_id(1l);
 
 		return ilanDAO.insert(ilan);
 	}
 
-	// READ
+	// READ bütün yayýnlanan iþleri dönüyor
 	public ArrayList<Jobs> getAll() {
 
 		return ilanDAO.getAll();
 	}
+	
+	// READ bir isverenin yayýnladýðý iþleri dönüyor
+	public ArrayList<Jobs> getAll(Long uzmanId) {
+
+		return ilanDAO.getAll(uzmanId);
+	}
+	
+	//READ bir iþin bilgilerini dönüyor
+	public Jobs getJobsById(Long job_id){
+		
+		return ilanDAO.getFindById(job_id);	
+	}	
 
 }

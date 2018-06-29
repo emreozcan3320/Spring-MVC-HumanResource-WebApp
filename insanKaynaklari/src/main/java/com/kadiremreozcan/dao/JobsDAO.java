@@ -39,11 +39,33 @@ public class JobsDAO {
 		sessionFactory.getCurrentSession().delete(ilan);
 	}
 	
-	//READ 
+	//READS
+	
+	
+	//READ ALL JOBS
+	public Jobs getFindById(Long job_id){
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Jobs  WHERE id=:job_id")
+				.setLong("job_id", job_id);
+			
+		return (Jobs) query.getSingleResult();
+	}	
+	
+	//READ ALL JOBS
 	public ArrayList<Jobs> getAll(){
 		Query query = sessionFactory.getCurrentSession().createQuery("FROM Jobs");
 		
 		return (ArrayList<Jobs>) query.getResultList();
 	}
+	
+	//READ ALL JOBS OF ONE ISVEREN
+	public ArrayList<Jobs> getAll(Long uzman_id){
+		//"FROM Jobs WHERE user_id="+user_id kullanýmýda olur ama güvenlik açýðýna sebebiyet verebilir 
+		//bundan dolayý hibernate in önerdiði yolu kullanýyoruz.
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Jobs WHERE ik_uzmani_id=:uzman_id")
+				.setLong("uzman_id", uzman_id);
+		
+		return (ArrayList<Jobs>) query.getResultList();
+	}
+	
 
 }
