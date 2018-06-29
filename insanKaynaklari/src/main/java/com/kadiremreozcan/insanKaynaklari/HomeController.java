@@ -93,8 +93,8 @@ public class HomeController {
 	@ResponseBody
 	public  ResponseEntity<String> isverenIlanEkle(@RequestBody Jobs job, HttpServletRequest request){
 		
-		System.out.println(job.toString());
-		//jobsService.createIlan(job, request);
+		//System.out.println(job.toString());
+		jobsService.createIlan(job, request);
 		
 		return new ResponseEntity<>("OK",HttpStatus.CREATED);
 	}
