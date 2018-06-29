@@ -2,6 +2,7 @@ package com.kadiremreozcan.insanKaynaklari;
 
 
 import java.beans.PropertyVetoException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -80,15 +81,28 @@ public class HomeController {
 	
 	@RequestMapping(value = "/isveren/ilan", method = RequestMethod.GET)
 	public String isverenIlan(Model model) throws HibernateException, PropertyVetoException {
+		
+		//TODO:Burayý daha sonra login olan kiþiden alýcam
+		model.addAttribute("ik_uzman_id","1");
 				
 		return "isverenIlanYonetimi";
 	}
+	
+	@RequestMapping(value = "/isveren/ilan", method = RequestMethod.POST)
+	@ResponseBody
+	public  ResponseEntity<ArrayList<Jobs>> isverenIlanlari(HttpServletRequest request){
+		
+		
+		return new ResponseEntity<>(jobsService.getAll(1l),HttpStatus.CREATED);
+	}
+	
 	
 	@RequestMapping(value = "/isveren/ilanEkle", method = RequestMethod.GET)
 	public String isverenIlanEkle(Model model) throws HibernateException, PropertyVetoException {
 				
 		return "ilanEkle";
 	}
+	
 	@RequestMapping(value = "/isveren/ilanEkle", method = RequestMethod.POST)
 	@ResponseBody
 	public  ResponseEntity<String> isverenIlanEkle(@RequestBody Jobs job, HttpServletRequest request){

@@ -61,7 +61,7 @@ public class JobsDAO {
 	public ArrayList<Jobs> getAll(Long uzman_id){
 		//"FROM Jobs WHERE user_id="+user_id kullanýmýda olur ama güvenlik açýðýna sebebiyet verebilir 
 		//bundan dolayý hibernate in önerdiði yolu kullanýyoruz.
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM Jobs WHERE ik_uzmani_id=:uzman_id")
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Jobs WHERE ik_uzmani_id=:uzman_id order by id DESC")
 				.setLong("uzman_id", uzman_id);
 		
 		return (ArrayList<Jobs>) query.getResultList();

@@ -1,10 +1,4 @@
-//$(document).load(function () {
-	
-//	$( ".ilanEkleButton" ).click(function() {
-//		  alert( "eklenmedi" );
-//		});
-	//name="submit" type="submit"
-//});
+
 function myFunctionOne(){
 	document.getElementById('smallText').innerHTML = true;
 	document.getElementById('myCheckTwo').checked =false;

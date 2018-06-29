@@ -12,14 +12,15 @@
 	<!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
 	<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script>
-            $(function () {
-                $("#datepicker").datepicker();
-                $("#datepickerTwo").datepicker();
-            });
-        </script>
+	
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    	$(function () {
+        	$("#datepicker").datepicker();
+            $("#datepickerTwo").datepicker();
+        });
+   	</script>
 
 	<!-- Inline CSS based on choices in "Settings" tab -->
 	<style>
