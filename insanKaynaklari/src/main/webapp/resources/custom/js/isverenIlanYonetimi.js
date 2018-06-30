@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	
 	getJobs();
-	setInterval(function(){ getJobs();},3000);
+	setInterval(function(){ getJobs();},5000);
 });
 
 function getJobs (){

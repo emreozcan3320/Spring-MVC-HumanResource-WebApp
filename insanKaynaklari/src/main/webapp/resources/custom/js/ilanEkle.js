@@ -1,17 +1,17 @@
 
 function myFunctionOne(){
-	document.getElementById('smallText').innerHTML = true;
+	document.getElementById('smallText').innerHTML = "Aktif";
 	document.getElementById('myCheckTwo').checked =false;
 }
 
 function myFunctionTwo(){
-	document.getElementById('smallText').innerHTML = false;
-	document.getElementById('myCheckOne').checked = true;
+	document.getElementById('smallText').innerHTML = "Pasif";
+	document.getElementById('myCheckOne').checked = false;
 }
 
 function ilanEkle(){
 	var statuss;
-	if(document.getElementById('smallText').innerHTML = true){
+	if(document.getElementById('smallText').innerHTML = "Aktif"){
 		statuss = true;
 	}else{
 		statuss = false;
@@ -45,4 +45,6 @@ function ilanEkle(){
 			console.log(data);
 		}
 	});
+	//TODO: ajax postundan sonra ilan sayfasına yönlendirme
+	//window.location = "/ilan";
 }
