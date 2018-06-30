@@ -7,7 +7,7 @@
 	<title>Home</title>
 </head>
 <body>
-<jsp:include page="../includes/header.jsp"></jsp:include>
+<jsp:include page="../includes/headerGenel.jsp"></jsp:include>
 <h1>
 	404 
 </h1>

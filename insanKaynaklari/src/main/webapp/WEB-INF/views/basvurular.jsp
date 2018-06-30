@@ -33,10 +33,10 @@
 				<nav class="navbar navbar-default" role="navigation"
 					data-spy="affix" data-offset-top="50">
 					<!-- Menu Begining -->
-					<jsp:include page="../includes/menuGeneral.jsp"></jsp:include>
+					<jsp:include page="../includes/menuler/menuGeneral.jsp"></jsp:include>
 					<!-- Menu End -->
 					<!-- Mobile Menu Start -->
-					<jsp:include page="../includes/mobilMenuGeneral.jsp"></jsp:include>
+					<jsp:include page="../includes/menuler/mobilMenuGeneral.jsp"></jsp:include>
 					<!-- Mobile Menu End -->
 				</nav>
 
