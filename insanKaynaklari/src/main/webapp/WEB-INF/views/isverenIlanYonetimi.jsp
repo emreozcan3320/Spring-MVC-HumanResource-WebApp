@@ -22,9 +22,11 @@
   <link href="resources/adminPanel/css/sb-admin.css" rel="stylesheet">
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body class="fixed-nav sticky-footer bg-dark sidenav-toggled" id="page-top">
   <!-- Navigation-->
   <jsp:include page="../includes/adminPanelNav.jsp"></jsp:include>
+  
+  
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -51,6 +53,8 @@
                   <th>Activasyon Zamanı</th>
                   <th>Deactivasyon Zamanı</th>
                   <th>İlan Durumu</th>
+                  <th>Delte</th>
+                  <th>Edit</th>
                 </tr>
               </thead>
               <tfoot>
@@ -63,6 +67,8 @@
                   <th>Activasyon Zamanı</th>
                   <th>Deactivasyon Zamanı</th>
                   <th>İlan Durumu</th>
+                  <th>Delete</th>
+                  <th>Edit</th>
                 </tr>
               </tfoot>
               <tbody id="list">
@@ -106,7 +112,9 @@
         </div>
       </div>
     </div>
-    <!-- Bootstrap core JavaScript-->
+  </div>
+  
+  <!-- Bootstrap core JavaScript-->
     <script src="resources/adminPanel/vendor/jquery/jquery.min.js"></script>
     <script src="resources/adminPanel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
@@ -119,7 +127,6 @@
     <!-- Custom scripts for this page-->
     <script src="resources/adminPanel/js/sb-admin-datatables.min.js"></script>
     <script src="resources/custom/js/isverenIlanYonetimi.js"></script>
-  </div>
 </body>
 
 </html>
