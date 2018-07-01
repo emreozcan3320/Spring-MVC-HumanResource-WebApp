@@ -1,67 +1,57 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<html>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  
-<title>Home</title>
-
-<!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
-	<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	
-<!-- Bootstrap core CSS-->
+  <title>SB Admin - Start Bootstrap Template</title>
+  <!-- Bootstrap core CSS-->
   <link href="resources/adminPanel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <link href="resources/adminPanel/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Page level plugin CSS-->
+  <link href="resources/adminPanel/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="resources/adminPanel/css/sb-admin.css" rel="stylesheet">
-  
 </head>
-<body>
 
-	<!-- Inline CSS based on choices in "Settings" tab -->
-	<style>
-		.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p,
-		.bootstrap-iso form {
-			font-family: Arial, Helvetica, sans-serif;
-			color: black
-		}
+<body class="fixed-nav sticky-footer bg-dark sidenav-toggled" id="page-top">
 
-		.bootstrap-iso form button, .bootstrap-iso form button:hover {
-			color: #ffffff !important;
-		}
+<style>
+.hrefTable { cursor: pointer; }
 
-		.asteriskField {
-			color: red;
-		}
-	</style>
-	
-	<jsp:include page="../includes/adminPanelNav.jsp"></jsp:include>
-	
-	<div class="content-wrapper">
+</style>
+
+  <!-- Navigation-->
+  <jsp:include page="../includes/adminPanelNav.jsp"></jsp:include>
+  
+  
+  <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="index.html">Dashboard</a>
+          <a href="#">İsveren</a>
         </li>
-        <li class="breadcrumb-item active">Blank Page</li>
+        <li class="breadcrumb-item active">İlan/Bilgi</li>
       </ol>
+      
       <div class="row">
         <div class="col-12">
-        <jsp:include page="../includes/ilanEkleForm.jsp"></jsp:include>
+        <h5>İlan bilgisi</h5>
         </div>
       </div>
-    </div> 
-    <br>
-    <br>
+            
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
@@ -91,28 +81,21 @@
         </div>
       </div>
     </div>
-    </div>
-	
-	<!-- 
-	<script type="text/javascript" src="resources/custom/js/jquery-min.js"></script>
-	<script type="text/javascript" src="resources/custom/js/bootstrap.min.js"></script>
-	 -->
-	 <!-- Bootstrap core JavaScript-->
+  </div>
+  
+  <!-- Bootstrap core JavaScript-->
     <script src="resources/adminPanel/vendor/jquery/jquery.min.js"></script>
     <script src="resources/adminPanel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="resources/adminPanel/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="resources/adminPanel/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="resources/adminPanel/vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="resources/adminPanel/js/sb-admin.min.js"></script>
-    
-	  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-    	$(function () {
-        	$("#datepicker").datepicker();
-            $("#datepickerTwo").datepicker();
-        });
-   	</script>
-	<script type="text/javascript" src="resources/custom/js/ilanEkle.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="resources/adminPanel/js/sb-admin-datatables.min.js"></script>
 </body>
+
 </html>
+

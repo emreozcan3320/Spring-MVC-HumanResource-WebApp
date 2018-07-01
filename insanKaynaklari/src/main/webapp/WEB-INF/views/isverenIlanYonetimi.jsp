@@ -23,6 +23,12 @@
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark sidenav-toggled" id="page-top">
+
+<style>
+.hrefTable { cursor: pointer; }
+
+</style>
+
   <!-- Navigation-->
   <jsp:include page="../includes/adminPanelNav.jsp"></jsp:include>
   
@@ -32,9 +38,9 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
+          <a href="#">İsveren</a>
         </li>
-        <li class="breadcrumb-item active">Tables</li>
+        <li class="breadcrumb-item active">İlan</li>
       </ol>
       <!-- Example DataTables Card-->
       <div class="card mb-3">
