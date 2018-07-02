@@ -102,9 +102,11 @@ function ilanUpdate(){
 		success:function(data){
 			console.log("success -->");
 			//console.log(data);
+			getOneJob();
 		},error:function(data){
 			console.log("error -->");
 			//console.log(data);
+			getOneJob();
 		}
 	});
 	//TODO: ajax postundan sonra ilan sayfasına yönlendirme
