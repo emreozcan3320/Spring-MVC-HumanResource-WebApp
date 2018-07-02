@@ -34,7 +34,8 @@ public class HomeController {
 	@RequestMapping(value = "/anasayfa", method = RequestMethod.GET)
 	public String anasayfa(Model model, HttpServletRequest req) {
 		
-		System.out.println(req.getRemoteAddr());
+		//System.out.println(req.getRemoteAddr());
+		System.out.println("anasayfa");
 		
 		String name = "emre";
 		model.addAttribute("name", name );
@@ -44,6 +45,8 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model, HttpServletRequest req) {
 		
+		System.out.println("anasayfa");
+		
 		return "redirect:anasayfa";
 	}
 	
@@ -52,36 +55,48 @@ public class HomeController {
 	
 	@RequestMapping(value = "/aday/login", method = RequestMethod.GET)
 	public String adayLogin(Model model) throws HibernateException, PropertyVetoException {
-				
+		
+		System.out.println("/aday/login");
+		
 		return "adayLogin";
 	}
 	
 	@RequestMapping(value = "/aday/index", method = RequestMethod.GET)
 	public String aday(Model model) throws HibernateException, PropertyVetoException {
-				
+		
+		System.out.println("/aday/index");
+		
 		return "aday";
 	}
 	
 	@RequestMapping(value = "/aday/basvurular", method = RequestMethod.GET)
 	public String adayBasvurular(Model model) throws HibernateException, PropertyVetoException {
-				
+			
+		System.out.println("/aday/basvurular");
+		
 		return "basvurular";
 	}
 	
 	@RequestMapping(value = "/isveren/login", method = RequestMethod.GET)
 	public String isverenLogin(Model model) throws HibernateException, PropertyVetoException {
-				
+			
+		System.out.println("/isveren/login");
+		
 		return "isverenLogin";
 	}
 	
 	@RequestMapping(value = "/isveren/index", method = RequestMethod.GET)
 	public String isveren(Model model) throws HibernateException, PropertyVetoException {
-				
+		
+		System.out.println("/isveren/index");
+		
 		return "isveren";
 	}
 	
 	@RequestMapping(value = "/isveren/ilan", method = RequestMethod.GET)
 	public String isverenIlan(Model model) throws HibernateException, PropertyVetoException {
+		
+		System.out.println("/isveren/ilan");
 		
 		//TODO:Burayý daha sonra login olan kiþiden alýcam
 		model.addAttribute("ik_uzman_id","1");
@@ -92,7 +107,7 @@ public class HomeController {
 	@RequestMapping(value = "/isveren/ilan/{id}", method = RequestMethod.GET)
 	public String ilanBilgi(@PathVariable("id") Long id, Model model) throws HibernateException, PropertyVetoException {
 		
-		System.out.println("gönderilen ilan id si ::->"+id);
+		System.out.println("/isveren/ilan/"+id);
 		model.addAttribute("ilan_id",id);
 				
 		return "ilanInfo";
@@ -102,6 +117,7 @@ public class HomeController {
 	@ResponseBody
 	public  ResponseEntity<Jobs> isverenBirIlan(@RequestBody String ilan_id, HttpServletRequest request){
 		
+		System.out.println("/isveren/ilanInfo :: post");
 		
 		return new ResponseEntity<>(jobsService.getJobById(Long.parseLong(ilan_id)),HttpStatus.CREATED);
 	}
@@ -110,10 +126,43 @@ public class HomeController {
 	@ResponseBody
 	public  ResponseEntity<ArrayList<Jobs>> isverenIlanlari(HttpServletRequest request){
 		
+		System.out.println("/isveren/ilan :: post");
 		
 		return new ResponseEntity<>(jobsService.getAll(1l),HttpStatus.CREATED);
 	}
 	
+	@RequestMapping(value = "/isveren/ilanEdit/{id}", method = RequestMethod.GET)
+	public String ilanEdit(@PathVariable("id") Long id, Model model) throws HibernateException, PropertyVetoException {
+		
+		System.out.println("/isveren/ilanEdit/"+id);
+		
+		model.addAttribute("ilan_id",id);
+				
+		return "ilanEdit";
+	}
+	
+	@RequestMapping(value = "/isveren/ilanEdit/{id}", method = RequestMethod.POST)
+	@ResponseBody
+	public  ResponseEntity<String> isverenIlanEdit(@RequestBody Jobs job, HttpServletRequest request){
+		
+		System.out.println("/isveren/ilanEdit :: post");
+		System.out.println(job.toString());
+		
+		Jobs oldJob = jobsService.getJobById(job.getId());
+		oldJob.setTitle(job.getTitle());
+		oldJob.setStatus(job.isStatus());
+		oldJob.setExpertise(job.getExpertise());
+		oldJob.setPersonal_qualities(job.getPersonal_qualities());
+		oldJob.setJob_definition(job.getJob_definition());
+		oldJob.setExpiration_date(job.getExpiration_date());
+		oldJob.setActivation_date(job.getActivation_date());
+		
+		
+		//System.out.println(job.toString());
+		jobsService.updateIlan(oldJob, request);
+		
+		return new ResponseEntity<>("OK",HttpStatus.CREATED);
+	}
 	
 	
 	
@@ -127,8 +176,8 @@ public class HomeController {
 	@ResponseBody
 	public  ResponseEntity<String> isverenIlanEkle(@RequestBody Jobs job, HttpServletRequest request){
 		
-		//System.out.println(job.toString());
-		jobsService.createIlan(job, request);
+		System.out.println(job.toString());
+		//jobsService.createIlan(job, request);
 		
 		return new ResponseEntity<>("OK",HttpStatus.CREATED);
 	}

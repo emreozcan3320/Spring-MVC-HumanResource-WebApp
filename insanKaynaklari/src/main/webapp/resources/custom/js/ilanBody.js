@@ -3,6 +3,12 @@ $(document).ready(function() {
 	getOneJob();
 });
 
+function Edit(){
+	var ilan_id = $("#ilan_id").val();
+	window.location.href = '/insanKaynaklari/isveren/ilanEdit/'+ilan_id;
+	//window.location = "/ilanEdit/"+ilan_id;
+}
+
 function tarih (Linuxtarih){
 	
 	var normalTarih = new Date(Linuxtarih) ;

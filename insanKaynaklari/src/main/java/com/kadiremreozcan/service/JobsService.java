@@ -17,7 +17,8 @@ public class JobsService {
 
 	@Autowired
 	private JobsDAO ilanDAO;
-
+	
+	//CREATE
 	public Long createIlan(Jobs ilan, HttpServletRequest req) {
 		//TODO:uzman id deðiþecek
 		ilan.setIk_uzmani_id(1l);
@@ -42,5 +43,14 @@ public class JobsService {
 		
 		return ilanDAO.getFindById(job_id);	
 	}	
+	
+	//UPDATE
+	public Long updateIlan(Jobs ilan, HttpServletRequest req) {
+		
+		ilanDAO.update(ilan);
+		
+		//TODO:Neden 1l yollandý
+		return 1l;
+	}
 
 }

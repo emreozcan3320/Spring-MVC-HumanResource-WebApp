@@ -18,6 +18,7 @@
 	<resources location="/resources/" mapping="resources/**"  /> 
 	<resources location="/resources/" mapping="/isveren/resources/**" />
 	<resources location="/resources/" mapping="/isveren/ilan/resources/**" />
+	<resources location="/resources/" mapping="/isveren/ilanEdit/resources/**" />
 	<resources location="/resources/" mapping="/aday/resources/**" />
 	
 	<!-- <resources mapping="/resources/**" location="/resources/" />  -->

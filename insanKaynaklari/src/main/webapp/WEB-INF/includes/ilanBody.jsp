@@ -83,7 +83,7 @@
             <div class="card-body">
             <button type="button" class="btn btn-warning">Bavuran Bilgisi</button>
             <button type="button" class="btn btn-danger">Delete</button>
-            <button type="button" class="btn btn-success">Edit</button>
+            <button type="button" class="btn btn-success" onclick="Edit()">Edit</button>
             </div>
           </div>
 
