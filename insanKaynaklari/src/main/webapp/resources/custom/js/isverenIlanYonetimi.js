@@ -12,7 +12,30 @@ function gotoNode(string){
 }
 
 function deleteJob (string){
-	alert("delete buttonuna basıldı :: "+ string);
+	
+	var param = {
+			id:string
+	}
+	
+	//console.log(param);
+	var ser_data =JSON.stringify(param);
+	
+	$.ajax({
+		type : "POST",
+        contentType : 'application/json; charset=utf-8',
+        dataType : 'json',
+        data : ser_data,
+		url:"ilanDelete",
+		success:function(data){
+			console.log("success -->");
+			//console.log(data);
+		},error:function(data){
+			console.log("error -->");
+			console.log(data);
+		}
+	});
+	//TODO: ajax postundan sonra ilan sayfasına yönlendirme
+	//window.location = "/ilan";
 }
 
 function tarih (Linuxtarih){

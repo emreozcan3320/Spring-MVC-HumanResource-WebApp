@@ -168,6 +168,26 @@ public class HomeController {
 		return new ResponseEntity<>("OK",HttpStatus.CREATED);
 	}
 	
+	@RequestMapping(value = "/isveren/ilanDelete", method = RequestMethod.POST)
+	@ResponseBody
+	public  ResponseEntity<String> isverenIlanDelete(@RequestBody Jobs job, HttpServletRequest request){
+		
+		System.out.println("/isveren/ilanDelete :: post");
+		//System.out.println(job.toString());
+		
+		Jobs oldJob = jobsService.getJobById(job.getId());
+		
+		//System.out.println("*******************");
+		//System.out.println(job.toString());
+		//System.out.println("job activation date ->"+ job.getActivation_date());
+		//System.out.println("job expiration date ->"+ job.getExpiration_date());
+		//System.out.println("*******************");
+		
+		jobsService.deleteIlan(oldJob, request);
+		
+		return new ResponseEntity<>("OK",HttpStatus.CREATED);
+	}
+	
 	
 	
 	@RequestMapping(value = "/isveren/ilanEkle", method = RequestMethod.GET)
