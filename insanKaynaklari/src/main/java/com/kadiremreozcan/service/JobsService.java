@@ -38,7 +38,7 @@ public class JobsService {
 	}
 	
 	//READ bir iþin bilgilerini dönüyor
-	public Jobs getJobsById(Long job_id){
+	public Jobs getJobById(Long job_id){
 		
 		return ilanDAO.getFindById(job_id);	
 	}	

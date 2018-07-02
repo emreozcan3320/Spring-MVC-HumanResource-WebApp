@@ -93,8 +93,17 @@ public class HomeController {
 	public String ilanBilgi(@PathVariable("id") Long id, Model model) throws HibernateException, PropertyVetoException {
 		
 		System.out.println("gönderilen ilan id si ::->"+id);
+		model.addAttribute("ilan_id",id);
 				
 		return "ilanInfo";
+	}
+	
+	@RequestMapping(value = "/isveren/ilanInfo", method = RequestMethod.POST)
+	@ResponseBody
+	public  ResponseEntity<Jobs> isverenBirIlan(@RequestBody String ilan_id, HttpServletRequest request){
+		
+		
+		return new ResponseEntity<>(jobsService.getJobById(Long.parseLong(ilan_id)),HttpStatus.CREATED);
 	}
 	
 	@RequestMapping(value = "/isveren/ilan", method = RequestMethod.POST)
@@ -104,6 +113,8 @@ public class HomeController {
 		
 		return new ResponseEntity<>(jobsService.getAll(1l),HttpStatus.CREATED);
 	}
+	
+	
 	
 	
 	@RequestMapping(value = "/isveren/ilanEkle", method = RequestMethod.GET)
