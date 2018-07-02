@@ -157,8 +157,12 @@ public class HomeController {
 		oldJob.setExpiration_date(job.getExpiration_date());
 		oldJob.setActivation_date(job.getActivation_date());
 		
+		System.out.println("*******************");
+		System.out.println(job.toString());
+		System.out.println("job activation date ->"+ job.getActivation_date());
+		System.out.println("job expiration date ->"+ job.getExpiration_date());
+		System.out.println("*******************");
 		
-		//System.out.println(job.toString());
 		jobsService.updateIlan(oldJob, request);
 		
 		return new ResponseEntity<>("OK",HttpStatus.CREATED);
@@ -176,8 +180,9 @@ public class HomeController {
 	@ResponseBody
 	public  ResponseEntity<String> isverenIlanEkle(@RequestBody Jobs job, HttpServletRequest request){
 		
-		System.out.println(job.toString());
-		//jobsService.createIlan(job, request);
+		
+		//System.out.println(job.toString());
+		jobsService.createIlan(job, request);
 		
 		return new ResponseEntity<>("OK",HttpStatus.CREATED);
 	}
