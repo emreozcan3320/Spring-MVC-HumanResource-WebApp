@@ -1,116 +1,139 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<html>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="author" content="Jobboard">
-
-<title>JobBoard - Bootstrap HTML5 Job Portal Template</title>
-
-<!-- Theme1 Links starts -->
-<jsp:include page="../includes/theme1Links.jsp"></jsp:include>
-<!-- Theme1 Links Ends -->
-
-<!-- Color CSS Styles  -->
-<link rel="stylesheet" type="text/css"
-	href="resources/theme1/css/colors/red.css" media="screen" />
-
-
-
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>SB Admin - Start Bootstrap Template</title>
+  <!-- Bootstrap core CSS-->
+  <link href="resources/adminPanel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="resources/adminPanel/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Page level plugin CSS-->
+  <link href="resources/adminPanel/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="resources/adminPanel/css/sb-admin.css" rel="stylesheet">
 </head>
 
-<body>
-	<!-- Header Section Start -->
-	<div class="header">
-		<!-- Start intro section -->
-		<section id="intro" class="section-intro">
-			<div class="logo-menu">
-				<nav class="navbar navbar-default" role="navigation"
-					data-spy="affix" data-offset-top="50">
-					<!-- Menu Begining -->
-					<jsp:include page="../includes/menuler/menuGeneral.jsp"></jsp:include>
-					<!-- Menu End -->
-					<!-- Mobile Menu Start -->
-					<jsp:include page="../includes/menuler/mobilMenuGeneral.jsp"></jsp:include>
-					<!-- Mobile Menu End -->
-				</nav>
+<body class="fixed-nav sticky-footer bg-dark sidenav-toggled" id="page-top">
 
-				<!-- Off Canvas Navigation -->
-				<div class="navmenu navmenu-default navmenu-fixed-left offcanvas">
-					<!--- Off Canvas Side Menu -->
-					<jsp:include page="../includes/offCanvasSideMenu.jsp"></jsp:include>
-					<!--- End Off Canvas Side Menu -->
-				</div>
-				<!--- End Off Canvas Side Menu -->
-				<div class="tbtn wow pulse" id="menu" data-wow-iteration="infinite"
-					data-wow-duration="500ms" data-toggle="offcanvas"
-					data-target=".navmenu">
-					<p>
-						<i class="ti-files"></i> All Pages
-					</p>
-				</div>
-			</div>
-			<!-- Header Section End -->
+<style>
+.hrefTable { cursor: pointer; }
 
-			<!-- Search Container Start -->
-			<jsp:include page="../includes/ilanSearch.jsp"></jsp:include>
-			<!-- Search Container End  -->
-		</section>
-		<!-- end intro section -->
-	</div>
-	<!-- Header Section End   -->
+</style>
 
-
-
-	<section class="section text-center">
-		<div class="container">
-			<!-- Start Animations Text -->
-			<h1>
-				Bu aday basvurular sayfasıdır
-			</h1>
-			<br>
-			<!-- End Animations Text -->
-
-			<!-- Start Buttons -->
-			<a rel="nofollow" target="_blank"
-				href="https://rebrand.ly/gg-jobboard-purchase"
-				class="btn btn-common btn-large"><i class="fa fa-cart"></i>
-				Purchase Now</a>
-		</div>
-	</section>
-
-
-	<!-- Footer Section Start -->
-	<jsp:include page="../includes/footer.jsp"></jsp:include>
-	<!-- Footer Section End -->
-
-	<!-- Go To Top Link -->
-	<a href="#" class="back-to-top"> <i class="ti-arrow-up"></i>
-	</a>
-
-	<div id="loading">
-		<div id="loading-center">
-			<div id="loading-center-absolute">
-				<div class="object" id="object_one"></div>
-				<div class="object" id="object_two"></div>
-				<div class="object" id="object_three"></div>
-				<div class="object" id="object_four"></div>
-				<div class="object" id="object_five"></div>
-				<div class="object" id="object_six"></div>
-				<div class="object" id="object_seven"></div>
-				<div class="object" id="object_eight"></div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Theme1 Scripts Starts -->
-	<jsp:include page="../includes/theme1Scripts.jsp"></jsp:include>
-	<!-- Theme1 Scripts Ends -->
-
+  <!-- Navigation-->
+  <jsp:include page="../includes/adminPanelNav.jsp"></jsp:include>
+  
+  
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">İsveren</a>
+        </li>
+        <li class="breadcrumb-item active">İlan</li>
+      </ol>
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Data Table Example</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Başlık</th>
+                  <th>İş Açıklaması</th>
+                  <th>Kişisel Özellikler</th>
+                  <th>Uzmanlık Alanları</th>
+                  <th>Oluşturulma Zamanı</th>
+                  <th>Activasyon Zamanı</th>
+                  <th>Deactivasyon Zamanı</th>
+                  <th>İlan Durumu</th>
+                  <th>Başvuru Durumu</th>
+                  <th>Delte</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Başlık</th>
+                  <th>İş Açıklaması</th>
+                  <th>Kişisel Özellikler</th>
+                  <th>Uzmanlık Alanları</th>
+                  <th>Oluşturulma Zamanı</th>
+                  <th>Activasyon Zamanı</th>
+                  <th>Deactivasyon Zamanı</th>
+                  <th>İlan Durumu</th>
+                  <th>Başvuru Durumu</th>
+                  <th>Delete</th>
+                </tr>
+              </tfoot>
+              <tbody id="list">
+                
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Your Website 2018</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bootstrap core JavaScript-->
+    <script src="resources/adminPanel/vendor/jquery/jquery.min.js"></script>
+    <script src="resources/adminPanel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="resources/adminPanel/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="resources/adminPanel/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="resources/adminPanel/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="resources/adminPanel/js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="resources/adminPanel/js/sb-admin-datatables.min.js"></script>
+    <script src="resources/custom/js/basvurular.js"></script>
 </body>
+
 </html>
+

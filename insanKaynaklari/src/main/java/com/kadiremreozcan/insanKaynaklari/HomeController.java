@@ -69,7 +69,7 @@ public class HomeController {
 		return "aday";
 	}
 	
-	@RequestMapping(value = "/aday/basvurular", method = RequestMethod.GET)
+	@RequestMapping(value = "/aday/basvurularim", method = RequestMethod.GET)
 	public String adayBasvurular(Model model) throws HibernateException, PropertyVetoException {
 			
 		System.out.println("/aday/basvurular");
