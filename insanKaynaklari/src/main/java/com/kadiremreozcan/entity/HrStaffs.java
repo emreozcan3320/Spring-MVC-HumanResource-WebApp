@@ -81,6 +81,12 @@ public class HrStaffs {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	@Override
+	public String toString() {
+		return "HrStaffs [id=" + id + ", username=" + username + ", name=" + name + ", surname=" + surname
+				+ ", password=" + password + ", create_date=" + create_date + ", email=" + email + "]";
+	}
 	
 	
 
