@@ -108,7 +108,7 @@ function ilanUpdate(){
 			//console.log(data);
 			getOneJob();
 		}
-	});
+	}).then(window.history.back());
 	//TODO: ajax postundan sonra ilan sayfasına yönlendirme
 	//window.location = "/ilan";
 }

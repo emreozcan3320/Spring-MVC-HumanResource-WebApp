@@ -9,6 +9,46 @@ function Edit(){
 	//window.location = "/ilanEdit/"+ilan_id;
 }
 
+function deleteJob (string){
+	if (confirm(string+ ' Id li ilanı silmek istediğinizden eminmisiniz ?')) {
+		var param = {
+				id:string
+		}
+		
+		//console.log(param);
+		var ser_data =JSON.stringify(param);
+		
+		$.ajax({
+			type : "POST",
+	        contentType : 'application/json; charset=utf-8',
+	        dataType : 'json',
+	        data : ser_data,
+			url:"../ilanDelete",
+			success:function(data){
+				console.log("success -->");
+				//console.log(data);
+			},error:function(data){
+				
+				console.log("fonksiyon sonu");
+				console.log(data);
+			}
+		}).then(window.history.back());
+		
+		
+		//TODO: ajax postundan sonra ilan sayfasına yönlendirme
+		//window.location = "/ilan";
+		
+		//window.location.reload(true);
+		//history.go(0);
+		//window.location.href = window.location.href;
+		//bject.reload(forcedReload);
+	} else {
+	    // Do nothing!
+	}
+	
+	
+}
+
 function tarih (Linuxtarih){
 	
 	var normalTarih = new Date(Linuxtarih) ;

@@ -59,7 +59,7 @@ function ilanEkle(){
 		},error:function(data){
 			console.log(data);
 		}
-	});
+	}).then(window.history.back());
 	//TODO: ajax postundan sonra ilan sayfasına yönlendirme
 	//window.location = "/ilan";
 }

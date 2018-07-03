@@ -82,8 +82,12 @@
             <h5 class="card-header">İşlemler</h5>
             <div class="card-body">
             <button type="button" class="btn btn-warning">Bavuran Bilgisi</button>
-            <button type="button" class="btn btn-danger">Delete</button>
-            <button type="button" class="btn btn-success" onclick="Edit()">Edit</button>
+            <br>
+            <br>
+            <button type="button" class="btn btn-danger" onclick = "deleteJob(${ilan_id})">Delete</button>
+            <br>
+            <br>
+            <button type="button" class="btn btn-success" onclick="Edit()">Düzenle</button>
             </div>
           </div>
 
