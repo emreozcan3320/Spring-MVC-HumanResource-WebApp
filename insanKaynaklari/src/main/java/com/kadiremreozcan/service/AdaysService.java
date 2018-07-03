@@ -17,7 +17,7 @@ public class AdaysService {
 	private AdaysDAO adayDAO;
 	
 	// CREATE
-	public Long createIlan(Adays aday, HttpServletRequest req) {
+	public Long createAday(Adays aday, HttpServletRequest req) {
 		// TODO:uzman id deðiþecek
 		return adayDAO.insert(aday);
 	}
