@@ -1,12 +1,15 @@
 package com.kadiremreozcan.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -34,6 +37,8 @@ public class Adays {
 	private String volunteer;
 	private String dateOfBirth;
 	
+	@ManyToMany(mappedBy="adays")
+	private List<Jobs> jobs = new ArrayList<Jobs>();
 
 	private Date create_date = new Date();
 
@@ -195,6 +200,15 @@ public class Adays {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public List<Jobs> getJobs() {
+		return jobs;
+	}
+
+
+	public void setJobs(List<Jobs> jobs) {
+		this.jobs = jobs;
 	}
 
 

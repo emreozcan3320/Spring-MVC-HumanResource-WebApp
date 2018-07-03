@@ -1,4 +1,4 @@
-package com.kadiremreozcan.entity;
+/*package com.kadiremreozcan.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -8,10 +8,11 @@ import javax.persistence.Table;
 public class job_aday {
 	
 	
-	private Long ilan_id;
-	private Long aday_id;
+	private Long fk_job;
+	private Long fk_aday;
 	
 	private String hr_status;
 	private String aday_status;
 
 }
+*/

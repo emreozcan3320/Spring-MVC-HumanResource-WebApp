@@ -1,5 +1,6 @@
 package com.kadiremreozcan.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -7,8 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import java.util.List;
 
 @Entity
 @Table(name="jobs")
@@ -39,6 +45,12 @@ public class Jobs {
 	 @Lob
 	 @Column(name = "expertise")
 	 private String expertise;
+	 
+	 @ManyToMany
+	 @JoinTable(name="job_aday",
+			 joinColumns = {@JoinColumn(name="fk_job")},
+			 	inverseJoinColumns = { @JoinColumn(name = "fk_aday") })
+	 private List<Adays> adays = new ArrayList<Adays>();
 
 	public Long getId() {
 		return id;
@@ -118,6 +130,16 @@ public class Jobs {
 
 	public void setExpertise(String expertise) {
 		this.expertise = expertise;
+	}
+	
+	
+
+	public List<Adays> getAdays() {
+		return adays;
+	}
+
+	public void setAdays(List<Adays> adays) {
+		this.adays = adays;
 	}
 
 	@Override
