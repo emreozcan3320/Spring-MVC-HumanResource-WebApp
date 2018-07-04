@@ -2,19 +2,17 @@ package com.kadiremreozcan.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import java.util.List;
 
 @Entity
 @Table(name="jobs")
@@ -46,12 +44,11 @@ public class Jobs {
 	 @Column(name = "expertise")
 	 private String expertise;
 	 
-	 @ManyToMany
-	 @JoinTable(name="job_aday",
-			 joinColumns = {@JoinColumn(name="fk_job")},
-			 	inverseJoinColumns = { @JoinColumn(name = "fk_aday") })
-	 private List<Adays> adays = new ArrayList<Adays>();
-
+	 
+	 @OneToMany(mappedBy = "jobs", fetch=FetchType.EAGER)
+	 private List<JobAday> jobAday = new ArrayList<JobAday>();
+	  
+	 
 	public Long getId() {
 		return id;
 	}
@@ -131,15 +128,13 @@ public class Jobs {
 	public void setExpertise(String expertise) {
 		this.expertise = expertise;
 	}
-	
-	
 
-	public List<Adays> getAdays() {
-		return adays;
+	public List<JobAday> getJobAday() {
+		return jobAday;
 	}
 
-	public void setAdays(List<Adays> adays) {
-		this.adays = adays;
+	public void setJobAday(List<JobAday> jobAday) {
+		this.jobAday = jobAday;
 	}
 
 	@Override

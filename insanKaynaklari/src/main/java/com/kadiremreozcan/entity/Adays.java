@@ -6,10 +6,11 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -37,9 +38,9 @@ public class Adays {
 	private String volunteer;
 	private String dateOfBirth;
 	
-	@ManyToMany(mappedBy="adays")
-	private List<Jobs> jobs = new ArrayList<Jobs>();
-
+	@OneToMany(mappedBy = "adays", fetch=FetchType.EAGER)
+	private List<JobAday> jobAday = new ArrayList<JobAday>();
+	
 	private Date create_date = new Date();
 
 
@@ -201,14 +202,15 @@ public class Adays {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
-	public List<Jobs> getJobs() {
-		return jobs;
+
+
+	public List<JobAday> getJobAday() {
+		return jobAday;
 	}
 
 
-	public void setJobs(List<Jobs> jobs) {
-		this.jobs = jobs;
+	public void setJobAday(List<JobAday> jobAday) {
+		this.jobAday = jobAday;
 	}
 
 

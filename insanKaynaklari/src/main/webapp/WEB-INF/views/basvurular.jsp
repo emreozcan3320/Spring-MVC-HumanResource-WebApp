@@ -30,7 +30,7 @@
 </style>
 
   <!-- Navigation-->
-  <jsp:include page="../includes/adminPanelNav.jsp"></jsp:include>
+  <jsp:include page="../includes/adminPanelNavAday.jsp"></jsp:include>
   
   
   <div class="content-wrapper">
@@ -38,7 +38,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">İsveren</a>
+          <a href="#">aday</a>
         </li>
         <li class="breadcrumb-item active">İlan</li>
       </ol>
