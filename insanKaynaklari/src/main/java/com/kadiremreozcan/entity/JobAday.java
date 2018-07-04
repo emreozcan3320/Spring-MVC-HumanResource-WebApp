@@ -59,19 +59,12 @@ public class JobAday {
 		this.hr_status = hr_status;
 	}
 
-	public String getAday_status() {
-		return aday_status;
-	}
-
-	public void setAday_status(String aday_status) {
-		this.aday_status = aday_status;
-	}
-
 	@Override
 	public String toString() {
-		return "JobAday [id=" + id + ", adays=" + adays + ", jobs=" + jobs + ", hr_status=" + hr_status
-				+ ", aday_status=" + aday_status + "]";
+		return "JobAday [id=" + id + ", adays=" + adays + ", jobs=" + jobs + ", hr_status=" + hr_status + "]";
 	}
+
+	
 	
 	
 	
