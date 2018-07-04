@@ -8,9 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.kadiremreozcan.entity.Adays;
 import com.kadiremreozcan.entity.HrStaffs;
-import com.kadiremreozcan.entity.Jobs;
 
 @Repository
 public class HrStaffsDAO {
@@ -18,6 +16,7 @@ public class HrStaffsDAO {
 	private SessionFactory sessionFactory; 
 		
 	// READ bir HrStaff dönüyor
+		@SuppressWarnings("deprecation")
 		public HrStaffs getFindById(Long uzman_id) {
 			Query query = sessionFactory.getCurrentSession().createQuery("FROM HrStaffs  WHERE id=:uzman_id")
 					.setLong("uzman_id",uzman_id);
@@ -26,6 +25,7 @@ public class HrStaffsDAO {
 		}
 
 		// READ bütün HrStaffs dönüyor
+		@SuppressWarnings("unchecked")
 		public ArrayList<HrStaffs> getAll() {
 			Query query = sessionFactory.getCurrentSession().createQuery("FROM HrStaffs");
 

@@ -40,6 +40,7 @@ public class AdaysDAO {
 	}
 
 	// READ bir aday dönüyor
+	@SuppressWarnings("deprecation")
 	public Adays getFindById(Long aday_id) {
 		Query query = sessionFactory.getCurrentSession().createQuery("FROM Adays  WHERE id=:aday_id").setLong("aday_id",
 				aday_id);
@@ -48,7 +49,9 @@ public class AdaysDAO {
 	}
 
 	// READ bütün adaylarý dönüyor
+	@SuppressWarnings("unchecked")
 	public ArrayList<Adays> getAll() {
+		
 		Query query = sessionFactory.getCurrentSession().createQuery("FROM Adays");
 
 		return (ArrayList<Adays>) query.getResultList();

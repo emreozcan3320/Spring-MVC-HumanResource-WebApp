@@ -43,6 +43,7 @@ public class JobsDAO {
 	
 	
 	//READ ALL JOBS
+	@SuppressWarnings("deprecation")
 	public Jobs getFindById(Long job_id){
 		Query query = sessionFactory.getCurrentSession().createQuery("FROM Jobs  WHERE id=:job_id")
 				.setLong("job_id", job_id);
@@ -51,6 +52,7 @@ public class JobsDAO {
 	}	
 	
 	//READ ALL JOBS
+	@SuppressWarnings("unchecked")
 	public ArrayList<Jobs> getAll(){
 		Query query = sessionFactory.getCurrentSession().createQuery("FROM Jobs");
 		
@@ -58,6 +60,7 @@ public class JobsDAO {
 	}
 	
 	//READ ALL JOBS OF ONE ISVEREN
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	public ArrayList<Jobs> getAll(Long uzman_id){
 		//"FROM Jobs WHERE user_id="+user_id kullanýmýda olur ama güvenlik açýðýna sebebiyet verebilir 
 		//bundan dolayý hibernate in önerdiði yolu kullanýyoruz.
