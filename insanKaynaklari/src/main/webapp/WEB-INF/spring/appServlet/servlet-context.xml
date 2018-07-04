@@ -20,6 +20,7 @@
 	<resources location="/resources/" mapping="/isveren/ilan/resources/**" />
 	<resources location="/resources/" mapping="/isveren/ilanEdit/resources/**" />
 	<resources location="/resources/" mapping="/aday/resources/**" />
+	<resources location="/resources/" mapping="/ilanlar/resources/**" />
 	
 	<!-- <resources mapping="/resources/**" location="/resources/" />  -->
 	<context:property-placeholder location="classpath:application.properties"/>

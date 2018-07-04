@@ -25,8 +25,6 @@ public class JobAday {
     private Jobs jobs;
 	
 	private String hr_status;
-    
-	private String aday_status;
 
 
 	public Long getId() {
