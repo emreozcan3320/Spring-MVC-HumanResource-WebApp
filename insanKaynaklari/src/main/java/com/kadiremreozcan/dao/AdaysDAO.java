@@ -2,6 +2,7 @@ package com.kadiremreozcan.dao;
 
 import java.util.ArrayList;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.hibernate.SessionFactory;
@@ -48,6 +49,20 @@ public class AdaysDAO {
 		return (Adays) query.getSingleResult();
 	}
 
+	// READ bir adayý linkedin_id ne göre dönüyor
+		public Adays getFindByLinkedInId(String linkedin_id) {
+			System.out.println("hibernate query öncesi ::" + linkedin_id);
+			
+			Query query = sessionFactory.getCurrentSession().createQuery("FROM Adays  WHERE linkedin_id=:linkedin_id").setParameter("linkedin_id",
+					linkedin_id);
+			try {
+				return (Adays) query.getSingleResult();
+			} catch (NoResultException  e) {
+				Adays db_aday = new Adays();
+				return db_aday;
+			}
+		}
+		
 	// READ bütün adaylarý dönüyor
 	@SuppressWarnings("unchecked")
 	public ArrayList<Adays> getAll() {

@@ -12,20 +12,26 @@ import com.kadiremreozcan.entity.Adays;
 @Service
 @Transactional
 public class AdaysService {
-	
+
 	@Autowired
 	private AdaysDAO adayDAO;
-	
+
 	// CREATE
 	public Long createAday(Adays aday, HttpServletRequest req) {
 		// TODO:uzman id deðiþecek
 		return adayDAO.insert(aday);
 	}
-	
+
 	// READ bir adayýn bilgilerini dönüyor
 	public Adays getAdayById(Long aday_id) {
 
-			return adayDAO.getFindById(aday_id);
-		}
+		return adayDAO.getFindById(aday_id);
+	}
+
+	// READ bir adayýn linkedin id ne göre dönüyor bilgilerini dönüyor
+	public Adays getAdayByLinkedInId(String linkedin_id) {
+
+		return adayDAO.getFindByLinkedInId(linkedin_id);
+	}
 
 }

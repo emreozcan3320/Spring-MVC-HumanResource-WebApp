@@ -13,6 +13,7 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 import org.json.JSONObject;
+import com.kadiremreozcan.entity.Adays;
 
 
 public class Post_Test {
@@ -20,7 +21,7 @@ public class Post_Test {
 	
 	
 	// HTTP POST request
-	public String sendPost(String code, String redirect_url, String client_id, String client_secret ) throws Exception {
+	public Adays sendPost(String code, String redirect_url, String client_id, String client_secret ) throws Exception {
 
 		String url = "https://www.linkedin.com/oauth/v2/accessToken";
 		URL obj = new URL(url);
@@ -62,15 +63,19 @@ public class Post_Test {
 		String access_token = jsonObj.getString("access_token");
 		System.out.println(access_token);
 		
-		return access_token;
+		Adays obj_aday = new Adays();
+		obj_aday = sendGet(access_token);
+		
+		return obj_aday;
 
 	}
 	
 	
 	
-	public String sendGet(String access_token) throws Exception {
+	public Adays sendGet(String access_token) throws Exception {
 		
-		//LinkedInProfile obj_LinkedInProfile=new LinkedInProfile();
+
+		Adays obj_aday = new Adays();
 		
 
 		String url = "https://api.linkedin.com/v1/people/~?format=json";
@@ -93,7 +98,7 @@ public class Post_Test {
 		System.out.println("Response Code : " + responseCode);
 
 		BufferedReader in = new BufferedReader(
-		        new InputStreamReader(con.getInputStream()));
+		        new InputStreamReader(con.getInputStream(), "UTF-8"));
 		String inputLine;
 		StringBuffer response = new StringBuffer();
 
@@ -107,10 +112,14 @@ public class Post_Test {
 		
 		JSONObject jsonObj = new JSONObject(response.toString());
 		
-		System.out.println(jsonObj);
+		obj_aday.setName(jsonObj.getString("firstName"));
+		obj_aday.setSurname(jsonObj.getString("lastName"));
+		obj_aday.setHeadline(jsonObj.getString("headline"));
+		obj_aday.setLinkedin_id(jsonObj.getString("id"));
 		
+		System.out.println(access_token);
 
-		return jsonObj.toString();
+		return obj_aday;
 	}
 	
 
