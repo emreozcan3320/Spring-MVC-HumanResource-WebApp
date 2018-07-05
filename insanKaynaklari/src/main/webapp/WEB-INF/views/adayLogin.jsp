@@ -29,9 +29,10 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>
       <div class="card-body">
-        <a href="${contextPath}/aday/index"  class="btn btn-block btn-social btn-linkedin">
+        <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${client_id }
+		&redirect_uri=${redirect_url }&state=fdfdfdfd&scope=r_basicprofile%20r_emailaddress"  class="btn btn-block btn-social btn-linkedin">
   			<span class="fab fa-linkedin fa-2x"></span>
-  				Sign in with Twitter
+  				LinkedIn İle Giriş Yap
 			</a>
       </div>
     </div>

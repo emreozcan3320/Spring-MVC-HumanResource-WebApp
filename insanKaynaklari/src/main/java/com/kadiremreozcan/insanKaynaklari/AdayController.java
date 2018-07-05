@@ -16,13 +16,7 @@ public class AdayController {
 	 * 
 	 */
 
-	@RequestMapping(value = "/aday/login", method = RequestMethod.GET)
-	public String adayLogin(Model model) throws HibernateException, PropertyVetoException {
-
-		System.out.println("/aday/login");
-
-		return "adayLogin";
-	}
+	
 
 	@RequestMapping(value = "/aday/index", method = RequestMethod.GET)
 	public String aday(Model model) throws HibernateException, PropertyVetoException {
