@@ -5,7 +5,6 @@ import java.beans.PropertyVetoException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.HibernateException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +17,7 @@ import com.kadiremreozcan.service.AdaysService;
 
 @Controller
 public class LinkedInConnectController {
-	
+
 	@Autowired
 	private AdaysService adaysService;
 
@@ -39,40 +38,39 @@ public class LinkedInConnectController {
 	}
 
 	@RequestMapping(value = "/linkedInSuccess", method = RequestMethod.GET)
-	public String getAttr(@RequestParam String code, @RequestParam String state, HttpServletRequest request) throws Exception {
-
+	public String getAttr(@RequestParam String code, @RequestParam String state, HttpServletRequest request)
+			throws Exception {
 
 		Post_Test obj_Post = new Post_Test();
 		Adays linkedinAday = obj_Post.sendPost(code, redirect_url, client_id, client_secret);
-		
-		
+
 		System.out.println("================================================");
-		
+
 		System.out.println((String) ("LinkedInControllerprofile line 49 :: " + linkedinAday));
-		
+
 		System.out.println("================================================");
-		
-		System.out.println("linkedin_id :: "+linkedinAday.getLinkedin_id());
-		
+
+		System.out.println("linkedin_id :: " + linkedinAday.getLinkedin_id());
+
 		String LinkedinAday_id = linkedinAday.getLinkedin_id();
-		
+
 		Adays Db_aday = adaysService.getAdayByLinkedInId(LinkedinAday_id);
-		System.out.println((String)("Db den gelen :::" + Db_aday));
-		
-		if(Db_aday.getLinkedin_id() == null) {
-			
+		System.out.println((String) ("Db den gelen :::" + Db_aday));
+
+		if (Db_aday.getLinkedin_id() == null) {
+
 			Adays profile = new Adays();
 			profile.setName(linkedinAday.getName());
 			profile.setSurname(linkedinAday.getSurname());
 			profile.setLinkedin_id(linkedinAday.getLinkedin_id());
 			profile.setHeadline(linkedinAday.getHeadline());
-			
-			//System.out.println("Db den gelen :::" + Db_aday);
-			//System.out.println("LinkedIn :::" + linkedinAday);
-			//System.out.println("profile :::"+ profile);
-			
+
+			// System.out.println("Db den gelen :::" + Db_aday);
+			// System.out.println("LinkedIn :::" + linkedinAday);
+			// System.out.println("profile :::"+ profile);
+
 			adaysService.createAday(profile, request);
-			
+
 		}
 
 		return "linkedInSuccess";

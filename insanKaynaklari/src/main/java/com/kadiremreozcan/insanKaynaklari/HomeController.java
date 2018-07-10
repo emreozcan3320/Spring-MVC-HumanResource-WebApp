@@ -24,7 +24,8 @@ import com.kadiremreozcan.service.JobsService;
  */
 @Controller
 public class HomeController {
-
+	
+	
 	@Autowired
 	private JobsService jobsService;
 
@@ -47,6 +48,14 @@ public class HomeController {
 
 		return "redirect:anasayfa";
 	}
+	
+	/*@RequestMapping(value = "isveren/j_spring_security_check", method = RequestMethod.POST)
+	public String adminForm(Model model, HttpServletRequest req) {
+
+		System.out.println("isveren/j_spring_security_check");
+
+		return "redirect:isveren/index";
+	}*/
 
 	// Bütün ilanlarý dönüyor
 	@RequestMapping(value = "/ilanlar", method = RequestMethod.POST)

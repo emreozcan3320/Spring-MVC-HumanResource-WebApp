@@ -1,31 +1,64 @@
-dn: ou=groups,dc=baeldung,dc=com
+
+#ORGANIZATINAL UNITS
+
+dn: ou=groups,dc=example,dc=com
 objectclass: top
 objectclass: organizationalUnit
 ou: groups
- 
-dn: ou=people,dc=baeldung,dc=com
+
+dn: ou=people,dc=example,dc=com
 objectclass: top
 objectclass: organizationalUnit
 ou: people
  
-dn: uid=baeldung,ou=people,dc=baeldung,dc=com
+
+
+
+#USERS
+
+ 
+dn: uid=admin1,ou=people,dc=example,dc=com
 objectclass: top
 objectclass: person
 objectclass: organizationalPerson
 objectclass: inetOrgPerson
-cn: Jim Beam
-sn: Beam
-uid: baeldung
-userPassword: password
+cn: Admin1
+uid: admin1
+userPassword:123
+
+dn: uid=admin2,ou=people,dc=example,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Admin2
+uid: admin2
+userPassword: 123
+
+dn: uid=user1,ou=people,dc=example,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: User1
+uid: user1
+userPassword: 123
+
+
+#ROLES
+
  
-dn: cn=admin,ou=groups,dc=baeldung,dc=com
+dn: cn=USER,ou=groups,dc=example,dc=com
 objectclass: top
 objectclass: groupOfNames
-cn: admin
-member: uid=baeldung,ou=people,dc=baeldung,dc=com
+cn: USER
+member: uid=admin1,ou=people,dc=example,dc=com
+member: uid=admin2,ou=people,dc=example,dc=com
+member: uid=user1,ou=people,dc=example,dc=com
  
-dn: cn=user,ou=groups,dc=baeldung,dc=com
+dn: cn=ADMIN,ou=groups,dc=example,dc=com
 objectclass: top
 objectclass: groupOfNames
-cn: user
-member: uid=baeldung,ou=people,dc=baeldung,dc=com
+cn: ADMIN
+member: uid=admin1,ou=people,dc=example,dc=com
+member: uid=admin2,ou=people,dc=example,dc=com
