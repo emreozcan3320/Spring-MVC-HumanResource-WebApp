@@ -25,16 +25,16 @@
 	<beans:bean id="springSecurityFilterChain"
 		class="org.springframework.web.filter.DelegatingFilterProxy" />
 
-	<http>
-		<intercept-url pattern="/*"
-			access='hasAnyRole("ROLE_ADMIN","ROLE_USER")' />
-		<form-login />
-		<logout />
-
-		<!-- <form-login login-processing-url="/isveren/j_spring_security_check" 
-			login-page="/isveren/login" default-target-url="/isveren/index" authentication-failure-url="/loginfailure" 
-			username-parameter="username" password-parameter="password" /> <logout logout-success-url="/" 
-			/> -->
+	<http >
+		<intercept-url pattern="/isveren/resources/**" access="permitAll" />
+		<intercept-url pattern="/isveren/login" access="permitAll"/>
+		<intercept-url pattern="/isveren/**" access="hasRole('ROLE_ADMIN')" />
+		<form-login
+			login-processing-url="/isveren/j_spring_security_check"
+			login-page="/isveren/login" default-target-url="/isveren/index"
+			authentication-failure-url="/loginfailure"
+			username-parameter="username" password-parameter="password" />
+		<logout logout-success-url="/" />
 		<!-- <csrf/> -->
 		<csrf disabled="true" />
 		<http-basic />
@@ -43,11 +43,9 @@
 	<authentication-manager>
 		<ldap-authentication-provider
 			user-search-base="ou=people,dc=maxcrc,dc=com"
-			user-search-filter="(uid={0})" 
-			group-role-attribute="cn"
+			user-search-filter="(uid={0})" group-role-attribute="cn"
 			group-search-base="ou=groups,dc=maxcrc,dc=com"
-			group-search-filter="(memberUid={1})" 
-			role-prefix="ROLE_" />
+			group-search-filter="(memberUid={1})" role-prefix="ROLE_" />
 	</authentication-manager>
 
 	<!-- <ldap-server root="dc=example,dc=com" /> -->
