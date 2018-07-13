@@ -23,7 +23,7 @@
 			<version>20180130</version>
 		</dependency>
 
-		<!-- LDAP -->
+		<!-- Spring Security -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -52,12 +52,17 @@
 			<version>4.2.3.RELEASE</version>
 		</dependency>
 
-
-
 		<dependency>
 			<groupId>org.apache.directory.server</groupId>
 			<artifactId>apacheds-server-jndi</artifactId>
 			<version>1.5.5</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>5.0.6.RELEASE</version>
 		</dependency>
 
 

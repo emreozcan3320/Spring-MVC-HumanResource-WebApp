@@ -25,6 +25,7 @@ public class HrStaffs {
 	private Date create_date = new Date();
 	
 	private String email;
+	
 
 	public Long getId() {
 		return id;
@@ -87,6 +88,10 @@ public class HrStaffs {
 		return "HrStaffs [id=" + id + ", username=" + username + ", name=" + name + ", surname=" + surname
 				+ ", password=" + password + ", create_date=" + create_date + ", email=" + email + "]";
 	}
+	
+	
+
+	
 	
 	
 

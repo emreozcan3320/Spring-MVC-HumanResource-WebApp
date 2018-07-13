@@ -44,6 +44,7 @@ public class Adays {
 
 	@OneToMany(mappedBy = "adays", fetch = FetchType.EAGER)
 	private List<JobAday> jobAday = new ArrayList<JobAday>();
+	
 
 	private Date create_date = new Date();
 
@@ -208,6 +209,10 @@ public class Adays {
 				+ ", volunteer=" + volunteer + ", dateOfBirth=" + dateOfBirth + ", jobAday=" + jobAday
 				+ ", create_date=" + create_date + "]";
 	}
+	
+	
+
+	
 
 	
 
