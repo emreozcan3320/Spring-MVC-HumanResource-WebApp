@@ -1,16 +1,12 @@
 package com.kadiremreozcan.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +22,9 @@ public class Adays {
 	private String surname;
 	private String username;
 	private String email;
+	
+	private String ProfilPicUrl;
+	private boolean karaListe;
 
 	private String linkedin_id;
 	@Column(length=9999)
@@ -42,9 +41,10 @@ public class Adays {
 	private String volunteer;
 	private String dateOfBirth;
 
+	/*
 	@OneToMany(mappedBy = "adays", fetch = FetchType.EAGER)
 	private List<JobAday> jobAday = new ArrayList<JobAday>();
-	
+	*/
 
 	private Date create_date = new Date();
 
@@ -175,7 +175,7 @@ public class Adays {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
+/*
 	public List<JobAday> getJobAday() {
 		return jobAday;
 	}
@@ -183,7 +183,7 @@ public class Adays {
 	public void setJobAday(List<JobAday> jobAday) {
 		this.jobAday = jobAday;
 	}
-
+*/
 	public String getLinkedin_id() {
 		return linkedin_id;
 	}
@@ -199,20 +199,38 @@ public class Adays {
 	public void setHeadline(String headline) {
 		this.headline = headline;
 	}
+	
+	
+	
+	public String getProfilPicUrl() {
+		return ProfilPicUrl;
+	}
+
+	public void setProfilPicUrl(String profilPicUrl) {
+		ProfilPicUrl = profilPicUrl;
+	}
+
+	public boolean isKaraListe() {
+		return karaListe;
+	}
+
+	public void setKaraListe(boolean karaListe) {
+		this.karaListe = karaListe;
+	}
 
 	@Override
 	public String toString() {
 		return "Adays [id=" + id + ", name=" + name + ", surname=" + surname + ", username=" + username + ", email="
-				+ email + ", linkedin_id=" + linkedin_id + ", headline=" + headline + ", interests=" + interests
-				+ ", publications=" + publications + ", patents=" + patents + ", languages=" + languages + ", skills="
-				+ skills + ", certifications=" + certifications + ", educations=" + educations + ", courses=" + courses
-				+ ", volunteer=" + volunteer + ", dateOfBirth=" + dateOfBirth + ", jobAday=" + jobAday
-				+ ", create_date=" + create_date + "]";
+				+ email + ", ProfilPicUrl=" + ProfilPicUrl + ", karaListe=" + karaListe + ", linkedin_id=" + linkedin_id
+				+ ", headline=" + headline + ", interests=" + interests + ", publications=" + publications
+				+ ", patents=" + patents + ", languages=" + languages + ", skills=" + skills + ", certifications="
+				+ certifications + ", educations=" + educations + ", courses=" + courses + ", volunteer=" + volunteer
+				+ ", dateOfBirth=" + dateOfBirth + ", create_date=" + create_date + "]";
 	}
-	
-	
 
-	
+
+
+
 
 	
 

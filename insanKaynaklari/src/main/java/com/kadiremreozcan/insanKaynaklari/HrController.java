@@ -17,7 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kadiremreozcan.entity.Adays;
+import com.kadiremreozcan.entity.JobAday;
 import com.kadiremreozcan.entity.Jobs;
+import com.kadiremreozcan.service.AdaysService;
+import com.kadiremreozcan.service.JobAdayService;
 import com.kadiremreozcan.service.JobsService;
 
 @Controller
@@ -25,6 +29,12 @@ public class HrController {
 	
 	@Autowired
 	private JobsService jobsService;
+	
+	@Autowired
+	private AdaysService adaysService;
+	
+	@Autowired
+	private JobAdayService jobAdayService;
 	
 	/*
 	 * ÝÞVEREN ENDPOINTLERÝ BAÞLANGICI
@@ -176,14 +186,48 @@ public class HrController {
 		return "adaySearch";
 	}
 	
+	///////////////
+	
 	@RequestMapping(value = "/isveren/adayInfo/{id}", method = RequestMethod.GET)
 	public String adayInfo(@PathVariable("id") Long id, Model model) throws HibernateException, PropertyVetoException {
 		
-		model.addAttribute("aday_id", id);
+		System.out.println("/isveren/adayInfo/{id} :: get");
 		
-		return "adaySearch";
+		/* Adays TABLOSU */
+		Adays aday = new Adays();
+		aday = adaysService.getAdayById(id);
+		
+		String arr1=aday.getSkills();
+		String[] skillArray= arr1.split(",");
+		
+		String arr2=aday.getCourses();
+		String[] coursesArray= arr2.split(",");
+		
+		System.out.println(aday.toString());
+		
+		model.addAttribute("aday", aday);
+		model.addAttribute("adaySkills", skillArray);
+		model.addAttribute("adayCourses", coursesArray);
+		
+		/*JobAday TABLOSU */
+		model.addAttribute("basvurular", jobAdayService.getAllApplicationOfOneAday(id));
+		
+		
+		
+		return "adayInfo";
 	}
-	
+
+	// id si verilen bir adayýn bilgilerini dönen endpoint
+		/*@RequestMapping(value = "/isveren/adayInfo", method = RequestMethod.POST)
+		@ResponseBody
+		public ResponseEntity<Adays> birAdayBilgisi(@RequestBody String aday_id, HttpServletRequest request) {
+
+			System.out.println("/isveren/adayInfo :: post");
+			
+			
+
+			return new ResponseEntity<>(adaysService.getAdayById(Long.parseLong(aday_id)), HttpStatus.CREATED);
+		}*/
 
 	/*
 	 * ÝÞVEREN ENDPOINTLERÝ BÝTÝÞÝ

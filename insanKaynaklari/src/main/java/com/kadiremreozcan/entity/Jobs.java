@@ -1,17 +1,13 @@
 package com.kadiremreozcan.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -44,10 +40,10 @@ public class Jobs {
 	 @Column(name = "expertise")
 	 private String expertise;
 	 
-	 
+	 /*
 	 @OneToMany(mappedBy = "jobs", fetch=FetchType.EAGER)
 	 private List<JobAday> jobAday = new ArrayList<JobAday>();
-	  
+	  */
 	 
 	public Long getId() {
 		return id;
@@ -128,7 +124,7 @@ public class Jobs {
 	public void setExpertise(String expertise) {
 		this.expertise = expertise;
 	}
-
+/*
 	public List<JobAday> getJobAday() {
 		return jobAday;
 	}
@@ -136,6 +132,7 @@ public class Jobs {
 	public void setJobAday(List<JobAday> jobAday) {
 		this.jobAday = jobAday;
 	}
+*/
 
 	@Override
 	public String toString() {
@@ -144,6 +141,7 @@ public class Jobs {
 				+ ", title=" + title + ", job_definition=" + job_definition + ", personal_qualities="
 				+ personal_qualities + ", expertise=" + expertise + "]";
 	}
+	
 	
 	
 	 

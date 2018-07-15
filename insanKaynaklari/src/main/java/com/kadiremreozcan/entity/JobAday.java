@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class JobAday {
@@ -16,16 +14,11 @@ public class JobAday {
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 
-	@ManyToOne
-    @JoinColumn(name = "aday_id")
-    private Adays adays;
+    private Long aday_id;
 
-	@ManyToOne
-    @JoinColumn(name = "job_id")
-    private Jobs jobs;
+    private Long job_id;
 	
-	private String hr_status;
-
+	private String status;
 
 	public Long getId() {
 		return id;
@@ -35,38 +28,35 @@ public class JobAday {
 		this.id = id;
 	}
 
-	public Adays getAdays() {
-		return adays;
+	public Long getAday_id() {
+		return aday_id;
 	}
 
-	public void setAdays(Adays adays) {
-		this.adays = adays;
+	public void setAday_id(Long aday_id) {
+		this.aday_id = aday_id;
 	}
 
-	public Jobs getJobs() {
-		return jobs;
+	public Long getJob_id() {
+		return job_id;
 	}
 
-	public void setJobs(Jobs jobs) {
-		this.jobs = jobs;
+	public void setJob_id(Long job_id) {
+		this.job_id = job_id;
 	}
 
-	public String getHr_status() {
-		return hr_status;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setHr_status(String hr_status) {
-		this.hr_status = hr_status;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	@Override
 	public String toString() {
-		return "JobAday [id=" + id + ", adays=" + adays + ", jobs=" + jobs + ", hr_status=" + hr_status + "]";
+		return "JobAday [id=" + id + ", aday_id=" + aday_id + ", job_id=" + job_id + ", status=" + status + "]";
 	}
 
-	
-	
-	
-	
+		
 	
 }

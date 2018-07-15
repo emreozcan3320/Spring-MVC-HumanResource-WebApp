@@ -42,7 +42,7 @@ public class JobsDAO {
 	//READS
 	
 	
-	//READ ALL JOBS
+	//READ bir isin datasýný döndürüyo
 	@SuppressWarnings("deprecation")
 	public Jobs getFindById(Long job_id){
 		Query query = sessionFactory.getCurrentSession().createQuery("FROM Jobs  WHERE id=:job_id")

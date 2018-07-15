@@ -28,7 +28,7 @@
 	<http >
 		<intercept-url pattern="/isveren/resources/**" access="permitAll" />
 		<intercept-url pattern="/isveren/login" access="permitAll"/>
-		<intercept-url pattern="/isveren/**" access="hasRole('ROLE_ADMIN')" />
+		<!--  <intercept-url pattern="/isveren/**" access="hasRole('ROLE_ADMIN')" /> -->
 		<form-login
 			login-processing-url="/isveren/j_spring_security_check"
 			login-page="/isveren/login" default-target-url="/isveren/index"

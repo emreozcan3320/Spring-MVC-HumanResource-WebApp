@@ -25,17 +25,13 @@
 	<annotation-driven />
 
 
-	<resources location="/resources/" mapping="resources/**" />
-	<resources location="/resources/"
-		mapping="/isveren/resources/**" />
-	<resources location="/resources/"
-		mapping="/isveren/ilan/resources/**" />
-	<resources location="/resources/"
-		mapping="/isveren/ilanEdit/resources/**" />
-	<resources location="/resources/"
-		mapping="/aday/resources/**" />
-	<resources location="/resources/"
-		mapping="/ilanlar/resources/**" />
+	<resources location="/resources/" 		mapping="resources/**" />
+	<resources location="/resources/"	 	mapping="/isveren/resources/**" />
+	<resources location="/resources/"		mapping="/isveren/ilan/resources/**" />
+	<resources location="/resources/"		mapping="/isveren/ilanEdit/resources/**" />
+	<resources location="/resources/"		mapping="/aday/resources/**" />
+	<resources location="/resources/"		mapping="/isveren/adayInfo/resources/**"/>
+	<resources location="/resources/"		mapping="/ilanlar/resources/**" />
 
 	<context:property-placeholder
 		location="classpath:application.properties" />
