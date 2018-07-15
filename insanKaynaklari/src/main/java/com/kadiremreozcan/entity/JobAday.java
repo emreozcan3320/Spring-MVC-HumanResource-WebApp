@@ -11,21 +11,23 @@ public class JobAday {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id", updatable = false, nullable = false)
-	private Long id;
+	@Column(name = "jobaday_id", updatable = false, nullable = false)
+	private Long jobaday_id;
 
     private Long aday_id;
 
     private Long job_id;
 	
-	private String status;
+	private String basvuru_statusu;
 
-	public Long getId() {
-		return id;
+	
+
+	public Long getJobaday_id() {
+		return jobaday_id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setJobaday_id(Long jobaday_id) {
+		this.jobaday_id = jobaday_id;
 	}
 
 	public Long getAday_id() {
@@ -44,18 +46,23 @@ public class JobAday {
 		this.job_id = job_id;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getBasvuru_statusu() {
+		return basvuru_statusu;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setBasvuru_statusu(String basvuru_statusu) {
+		this.basvuru_statusu = basvuru_statusu;
 	}
 
 	@Override
 	public String toString() {
-		return "JobAday [id=" + id + ", aday_id=" + aday_id + ", job_id=" + job_id + ", status=" + status + "]";
+		return "JobAday [jobaday_id=" + jobaday_id + ", aday_id=" + aday_id + ", job_id=" + job_id
+				+ ", basvuru_statusu=" + basvuru_statusu + "]";
 	}
+
+	
+
+	
 
 		
 	

@@ -18,7 +18,7 @@
 			</ul>
 			<div class="tab-content py-4">
 				<div class="tab-pane active" id="profile">
-					<h5 class="mb-3">${aday.name} ${aday.surname}</h5>
+					<h5 class="mb-3">${aday.name}${aday.surname}</h5>
 					<hr>
 					<div class="row">
 						<div class="col-md-6">
@@ -28,7 +28,7 @@
 							<p>${aday.headline}</p>
 							<h6>Hobileri</h6>
 							<p>${aday.interests}</p>
-							
+
 						</div>
 						<div class="col-md-6">
 							<h6>Okulu</h6>
@@ -39,7 +39,8 @@
 							<hr>
 							<h6>Yetenekler</h6>
 							<c:forEach var="skill" items="${adaySkills}">
-								<a href="#" class="badge badge-dark badge-pill"><c:out value="${skill}" /></a>
+								<a href="#" class="badge badge-dark badge-pill"><c:out
+										value="${skill}" /></a>
 							</c:forEach>
 							<hr>
 							<span class="badge badge-primary"><i class="fa fa-user"></i>
@@ -49,16 +50,17 @@
 						</div>
 						<div class="col-md-12">
 							<h5 class="mt-2">
-								<span class="fa fa-clock-o ion-clock float-right"></span> Alınan Kurslar
+								<span class="fa fa-clock-o ion-clock float-right"></span> Alınan
+								Kurslar
 							</h5>
 							<table class="table table-sm table-hover table-striped">
 								<tbody>
-								<c:forEach var="course" items="${adayCourses}">
-								<tr>
-										<td><c:out value="${course}" /></td>
-									</tr>
-							</c:forEach>
-									
+									<c:forEach var="course" items="${adayCourses}">
+										<tr>
+											<td><c:out value="${course}" /></td>
+										</tr>
+									</c:forEach>
+
 								</tbody>
 							</table>
 						</div>
@@ -66,36 +68,19 @@
 					<!--/row-->
 				</div>
 				<div class="tab-pane" id="messages">
-					<div class="alert alert-info alert-dismissable">
+					<!--  <div class="alert alert-info alert-dismissable">
 						<a class="panel-close close" data-dismiss="alert">×</a> This is an
 						<strong>.alert</strong>. Use this to show important messages to
 						the user.
-					</div>
+					</div> -->
 					<table class="table table-hover table-striped">
 						<tbody>
-							<tr>
-								<td><span class="float-right font-weight-bold">3 hrs
-										ago</span> Here is your a link to the latest summary report from
-									the..</td>
-							</tr>
-							<tr>
-								<td><span class="float-right font-weight-bold">Yesterday</span>
-									There has been a request on your account since that was..</td>
-							</tr>
-							<tr>
-								<td><span class="float-right font-weight-bold">9/10</span>
-									Porttitor vitae ultrices quis, dapibus id dolor. Morbi
-									venenatis lacinia rhoncus.</td>
-							</tr>
-							<tr>
-								<td><span class="float-right font-weight-bold">9/4</span>
-									Vestibulum tincidunt ullamcorper eros eget luctus.</td>
-							</tr>
-							<tr>
-								<td><span class="float-right font-weight-bold">9/4</span>
-									Maxamillion ais the fix for tibulum tincidunt ullamcorper eros.
-								</td>
-							</tr>
+							<c:forEach items="${basvuru_basligi}" var="basvuru">
+								<tr>
+									<td>${basvuru}</td>
+								</tr>
+							</c:forEach>
+
 						</tbody>
 					</table>
 				</div>
@@ -206,14 +191,15 @@
 		</div>
 		<div class="col-lg-4 order-lg-1 text-center">
 			<img src="${aday.profilPicUrl}" height="300" width="300"
-				class="mx-auto img-fluid img-circle d-block" alt="avatar">
-				<br>
-				<c:if test="${aday.karaListe == true}">	
-					<button type="button" class="btn btn-success">Kara Listeden Çıkar</button>
-				</c:if>
-				<c:if test="${aday.karaListe == false}">	
-					<button type="button" class="btn btn-danger">Kara Listeye Ekle</button>
-				</c:if>
+				class="mx-auto img-fluid img-circle d-block" alt="avatar"> <br>
+			<c:if test="${aday.karaListe == true}">
+				<button type="button" class="btn btn-success">Kara Listeden
+					Çıkar</button>
+			</c:if>
+			<c:if test="${aday.karaListe == false}">
+				<button type="button" class="btn btn-danger">Kara Listeye
+					Ekle</button>
+			</c:if>
 		</div>
 	</div>
 	<!-- /.row -->

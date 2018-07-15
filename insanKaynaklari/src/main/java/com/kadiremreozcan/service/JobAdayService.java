@@ -27,7 +27,7 @@ public class JobAdayService {
 	//READ bir adayýn basvurularýný döndürüyor
 	public ArrayList<JobAday> getAllApplicationOfOneAday(Long aday_id){
 		
-		return jobAdayDAO.getOneAdayApplications(aday_id);
+		return (ArrayList<JobAday>) jobAdayDAO.getOneAdayApplications(aday_id);
 	}
 	
 	

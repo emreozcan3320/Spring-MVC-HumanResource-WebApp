@@ -36,8 +36,10 @@ public class JobAdayDAO {
 	@SuppressWarnings({ "deprecation", "unchecked" })
 	public ArrayList<JobAday> getOneAdayApplications(Long aday_id){
 	
-	Query query = sessionFactory.getCurrentSession().createQuery("FROM Jobs WHERE aday_id=:aday_id ")
+	Query query = sessionFactory.getCurrentSession().createQuery("FROM JobAday WHERE aday_id=:aday_id ")
 			.setLong("aday_id", aday_id);
+	/*Query query = sessionFactory.getCurrentSession().createSQLQuery("SELECT FROM jobaday,jobs WHERE aday_id=:aday_id AND jobaday.job_id = jobs.id ")
+			.setLong("aday_id", aday_id);*/
 	
 	return (ArrayList<JobAday>) query.getResultList();
 	

@@ -210,9 +210,19 @@ public class HrController {
 		model.addAttribute("adayCourses", coursesArray);
 		
 		/*JobAday TABLOSU */
-		model.addAttribute("basvurular", jobAdayService.getAllApplicationOfOneAday(id));
+		//model.addAttribute("basvurular", jobAdayService.getAllApplicationOfOneAday(id));
+		ArrayList<JobAday> basvurular = jobAdayService.getAllApplicationOfOneAday(id);
 		
+		Jobs job = new Jobs();
+		ArrayList<String> titles = new ArrayList<>();
 		
+		for (int i = 0; i < basvurular.size(); i++) {
+			job = jobsService.getJobById(basvurular.get(i).getJob_id());
+			titles.add(job.getTitle());
+		    //System.out.println(basvurular.get(i).getJob_id());
+		}
+		
+		model.addAttribute("basvuru_basligi", titles);
 		
 		return "adayInfo";
 	}
