@@ -170,11 +170,20 @@ public class HrController {
 	}
 
 	// iþverene aday bilgilerini dönen sayfa
-	@RequestMapping(value = "/isveren/adayInfo", method = RequestMethod.GET)
-	public String adayInfo(Model model) throws HibernateException, PropertyVetoException {
+	@RequestMapping(value = "/isveren/adayAra", method = RequestMethod.GET)
+	public String adaySearch(Model model) throws HibernateException, PropertyVetoException {
 
-		return "adayInfo";
+		return "adaySearch";
 	}
+	
+	@RequestMapping(value = "/isveren/adayInfo/{id}", method = RequestMethod.GET)
+	public String adayInfo(@PathVariable("id") Long id, Model model) throws HibernateException, PropertyVetoException {
+		
+		model.addAttribute("aday_id", id);
+		
+		return "adaySearch";
+	}
+	
 
 	/*
 	 * ÝÞVEREN ENDPOINTLERÝ BÝTÝÞÝ
