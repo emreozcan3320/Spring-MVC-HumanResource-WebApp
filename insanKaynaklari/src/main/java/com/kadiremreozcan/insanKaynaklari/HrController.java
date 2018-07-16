@@ -18,24 +18,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kadiremreozcan.entity.Adays;
+import com.kadiremreozcan.entity.HrStaffs;
 import com.kadiremreozcan.entity.JobAday;
 import com.kadiremreozcan.entity.Jobs;
 import com.kadiremreozcan.service.AdaysService;
+import com.kadiremreozcan.service.HrStaffsService;
 import com.kadiremreozcan.service.JobAdayService;
 import com.kadiremreozcan.service.JobsService;
 
 @Controller
 public class HrController {
-	
+
 	@Autowired
 	private JobsService jobsService;
-	
+
 	@Autowired
 	private AdaysService adaysService;
-	
+
 	@Autowired
 	private JobAdayService jobAdayService;
 	
+	@Autowired
+	private HrStaffsService hrStaffService;
+
 	/*
 	 * ÝÞVEREN ENDPOINTLERÝ BAÞLANGICI
 	 * 
@@ -49,33 +54,62 @@ public class HrController {
 
 		return "isverenLogin";
 	}
-	
-	/*//isveren logout
-	@RequestMapping(value = "/isveren/logout", method = RequestMethod.GET)
-	public String isverenLogout(Model model) throws HibernateException, PropertyVetoException {
 
-		System.out.println("/isveren/logout");
+	/*
+	 * //isveren logout
+	 * 
+	 * @RequestMapping(value = "/isveren/logout", method = RequestMethod.GET) public
+	 * String isverenLogout(Model model) throws HibernateException,
+	 * PropertyVetoException {
+	 * 
+	 * System.out.println("/isveren/logout");
+	 * 
+	 * return "redirect:../anasayfa"; }
+	 */
 
-		return "redirect:../anasayfa";
-	}*/
-	
 	// Ýsverenin ilk ulaþtýðý admin paneli
 	@RequestMapping(value = "/isveren/index", method = RequestMethod.GET)
-	public String isveren(Model model) throws HibernateException, PropertyVetoException {
-
+	public String isveren(Model model, HttpServletRequest request) throws HibernateException, PropertyVetoException {
+		
+		//System.out.println("Bu hr session nudur --> "+request.getSession().getAttribute("hrSession"));
+		
 		System.out.println("/isveren/index");
 
 		return "isveren";
 	}
 
+	// Ýsverenin ilk ulaþtýðý admin paneli
+	@RequestMapping(value = "/isveren/success", method = RequestMethod.GET)
+	public String isverenSucess(Model model, HttpServletRequest request)
+			throws HibernateException, PropertyVetoException {
+
+		System.out.println("/isveren/success");
+
+		return "isverenSuccess";
+	}
+
+	// id si verilen bir ilanýn bilgilerini dönen endpoint
+	@RequestMapping(value = "/isveren/adayValidate", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<HrStaffs> isverenValidate(@RequestBody String ldapUserName, HttpServletRequest request) {
+
+		System.out.println("/isveren/adayValidate :: post");
+		
+		HrStaffs hrForSession = hrStaffService.getHrStaffByUserName(ldapUserName);
+		request.getSession().setAttribute("hrSession", hrForSession);
+
+		return new ResponseEntity<>(hrStaffService.getHrStaffByUserName(ldapUserName), HttpStatus.CREATED);
+	}
+
 	// Ýþ verenin kendi verdiði ilanlarý görebildiði ve yönetebildiði sayfa
 	@RequestMapping(value = "/isveren/ilan", method = RequestMethod.GET)
-	public String isverenIlan(Model model) throws HibernateException, PropertyVetoException {
+	public String isverenIlan(Model model, HttpServletRequest request) throws HibernateException, PropertyVetoException {
 
 		System.out.println("/isveren/ilan");
-
-		// TODO:Burayý daha sonra login olan kiþiden alýcam
-		model.addAttribute("ik_uzman_id", "1");
+		HrStaffs hrCurrent =  (HrStaffs) request.getSession().getAttribute("hrSession");
+		
+		
+		model.addAttribute("ik_uzman_id", hrCurrent.getId());
 
 		return "isverenIlanYonetimi";
 	}
@@ -99,26 +133,26 @@ public class HrController {
 
 		return new ResponseEntity<>(jobsService.getJobById(Long.parseLong(ilan_id)), HttpStatus.CREATED);
 	}
-	
-	// id si verilen bir ilana basvuranlarýn bilgilerini dönen endpoint
-		@RequestMapping(value = "/isveren/ilanBavuran", method = RequestMethod.POST)
-		@ResponseBody
-		public ResponseEntity<ArrayList<Adays>> isverenBirIlanBasvuran(@RequestBody String job_id, HttpServletRequest request) {
 
-			System.out.println("/isveren/ilanBavuran :: post");
-			
-			System.out.println(job_id);
-			
-/*			ArrayList<Adays> list = adaysService.getAdaysInfoForOneJob(Long.parseLong(job_id));
-			System.out.println("Arraylist geçildi");
-			for (int i = 0; i < list.size(); i++) {
-				System.out.println(i);
-				System.out.println(list.get(i).getName());
-			}
-			System.out.println("Arraylist for döngüsü geçildi");
-*/
-			return new ResponseEntity<>(adaysService.getAdaysInfoForOneJob(Long.parseLong(job_id)), HttpStatus.CREATED);
-		}
+	// id si verilen bir ilana basvuranlarýn bilgilerini dönen endpoint
+	@RequestMapping(value = "/isveren/ilanBavuran", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<ArrayList<Adays>> isverenBirIlanBasvuran(@RequestBody String job_id,
+			HttpServletRequest request) {
+
+		System.out.println("/isveren/ilanBavuran :: post");
+
+		System.out.println(job_id);
+
+		/*
+		 * ArrayList<Adays> list =
+		 * adaysService.getAdaysInfoForOneJob(Long.parseLong(job_id));
+		 * System.out.println("Arraylist geçildi"); for (int i = 0; i < list.size();
+		 * i++) { System.out.println(i); System.out.println(list.get(i).getName()); }
+		 * System.out.println("Arraylist for döngüsü geçildi");
+		 */
+		return new ResponseEntity<>(adaysService.getAdaysInfoForOneJob(Long.parseLong(job_id)), HttpStatus.CREATED);
+	}
 
 	// Bir iþverenin id si verildiðinde yayýnladýðý tüm ilanlarý dönen endpoint
 	@RequestMapping(value = "/isveren/ilan", method = RequestMethod.POST)
@@ -126,8 +160,9 @@ public class HrController {
 	public ResponseEntity<ArrayList<Jobs>> isverenIlanlari(HttpServletRequest request) {
 
 		System.out.println("/isveren/ilan :: post");
-
-		return new ResponseEntity<>(jobsService.getAll(1l), HttpStatus.CREATED);
+		
+		HrStaffs hrCurrent =  (HrStaffs) request.getSession().getAttribute("hrSession");
+		return new ResponseEntity<>(jobsService.getAll(hrCurrent.getId()), HttpStatus.CREATED);
 	}
 
 	// Bir ilanýn editlemek için açýlan sayfa
@@ -214,65 +249,72 @@ public class HrController {
 
 		return "adaySearch";
 	}
-	
+
 	///////////////
-	
+
 	@RequestMapping(value = "/isveren/adayInfo/{id}", method = RequestMethod.GET)
 	public String adayInfo(@PathVariable("id") Long id, Model model) throws HibernateException, PropertyVetoException {
-		
+
 		System.out.println("/isveren/adayInfo/{id} :: get");
-		
+
 		/* Adays TABLOSU */
 		Adays aday = new Adays();
 		aday = adaysService.getAdayById(id);
-		
-		String arr1=aday.getSkills();
-		String[] skillArray= arr1.split(",");
-		
-		String arr2=aday.getCourses();
-		String[] coursesArray= arr2.split(",");
-		
+
+		String arr1 = aday.getSkills();
+		String[] skillArray = arr1.split(",");
+
+		String arr2 = aday.getCourses();
+		String[] coursesArray = arr2.split(",");
+
 		System.out.println(aday.toString());
-		
+
 		model.addAttribute("aday", aday);
 		model.addAttribute("adaySkills", skillArray);
 		model.addAttribute("adayCourses", coursesArray);
-		
-		/*JobAday TABLOSU */
-		/*ArrayList<Jobs> basvurular = jobAdayService.getAllApplicationOfOneAday(id);
-		for (int i = 0; i < basvurular.size(); i++) {
-		    System.out.println(basvurular.get(i).getTitle());
-		}
-		model.addAttribute("basvurular", basvurular);*/
-		//model.addAttribute("basvurular", jobAdayService.getAllApplicationOfOneAday(id));
+
+		/* JobAday TABLOSU */
+		/*
+		 * ArrayList<Jobs> basvurular = jobAdayService.getAllApplicationOfOneAday(id);
+		 * for (int i = 0; i < basvurular.size(); i++) {
+		 * System.out.println(basvurular.get(i).getTitle()); }
+		 * model.addAttribute("basvurular", basvurular);
+		 */
+		// model.addAttribute("basvurular",
+		// jobAdayService.getAllApplicationOfOneAday(id));
 		ArrayList<JobAday> basvurular = jobAdayService.getAllApplicationOfOneAday(id);
-		
+
 		Jobs job = new Jobs();
 		ArrayList<String> titles = new ArrayList<>();
-		
+
 		for (int i = 0; i < basvurular.size(); i++) {
 			job = jobsService.getJobById(basvurular.get(i).getJob_id());
-			titles.add("<tr><td><a href='/insanKaynaklari/isveren/ilan/"+job.getId()+"'>"+job.getTitle()+"</a></td></tr>");
-			//titles.add(job.getTitle());
-		    //System.out.println(basvurular.get(i).getJob_id());
+			titles.add("<tr><td><a href='/insanKaynaklari/isveren/ilan/" + job.getId() + "'>" + job.getTitle()
+					+ "</a></td></tr>");
+			// titles.add(job.getTitle());
+			// System.out.println(basvurular.get(i).getJob_id());
 		}
-		
+
 		model.addAttribute("basvuru_tag", titles);
-		
+
 		return "adayInfo";
 	}
 
 	// id si verilen bir adayýn bilgilerini dönen endpoint
-		/*@RequestMapping(value = "/isveren/adayInfo", method = RequestMethod.POST)
-		@ResponseBody
-		public ResponseEntity<Adays> birAdayBilgisi(@RequestBody String aday_id, HttpServletRequest request) {
-
-			System.out.println("/isveren/adayInfo :: post");
-			
-			
-
-			return new ResponseEntity<>(adaysService.getAdayById(Long.parseLong(aday_id)), HttpStatus.CREATED);
-		}*/
+	/*
+	 * @RequestMapping(value = "/isveren/adayInfo", method = RequestMethod.POST)
+	 * 
+	 * @ResponseBody public ResponseEntity<Adays> birAdayBilgisi(@RequestBody String
+	 * aday_id, HttpServletRequest request) {
+	 * 
+	 * System.out.println("/isveren/adayInfo :: post");
+	 * 
+	 * 
+	 * 
+	 * return new
+	 * ResponseEntity<>(adaysService.getAdayById(Long.parseLong(aday_id)),
+	 * HttpStatus.CREATED); }
+	 */
 
 	/*
 	 * ÝÞVEREN ENDPOINTLERÝ BÝTÝÞÝ

@@ -13,23 +13,32 @@ import com.kadiremreozcan.entity.HrStaffs;
 @Repository
 public class HrStaffsDAO {
 	@Autowired
-	private SessionFactory sessionFactory; 
-		
-	// READ bir HrStaff dönüyor
-		@SuppressWarnings("deprecation")
-		public HrStaffs getFindById(Long uzman_id) {
-			Query query = sessionFactory.getCurrentSession().createQuery("FROM HrStaffs  WHERE id=:uzman_id")
-					.setLong("uzman_id",uzman_id);
+	private SessionFactory sessionFactory;
 
-			return (HrStaffs) query.getSingleResult();
-		}
+	// READ id ye göre bir HrStaff dönüyor
+	@SuppressWarnings("deprecation")
+	public HrStaffs getFindById(Long uzman_id) {
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM HrStaffs  WHERE id=:uzman_id")
+				.setLong("uzman_id", uzman_id);
 
-		// READ bütün HrStaffs dönüyor
-		@SuppressWarnings("unchecked")
-		public ArrayList<HrStaffs> getAll() {
-			Query query = sessionFactory.getCurrentSession().createQuery("FROM HrStaffs");
+		return (HrStaffs) query.getSingleResult();
+	}
 
-			return (ArrayList<HrStaffs>) query.getResultList();
-		}
+	// READ isme göre bir HrStaff dönüyor
+	@SuppressWarnings("deprecation")
+	public HrStaffs getFindByUserName(String uzman_name) {
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM HrStaffs  WHERE username=:uzman_name")
+				.setString("uzman_name", uzman_name);
+
+		return (HrStaffs) query.getSingleResult();
+	}
+
+	// READ bütün HrStaffs dönüyor
+	@SuppressWarnings("unchecked")
+	public ArrayList<HrStaffs> getAll() {
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM HrStaffs");
+
+		return (ArrayList<HrStaffs>) query.getResultList();
+	}
 
 }

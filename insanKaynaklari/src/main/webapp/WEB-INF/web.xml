@@ -46,4 +46,13 @@
   	<url-pattern>/aday/*</url-pattern>
   </filter-mapping>
   
+  <filter>
+  	<filter-name>HrLoginFilter</filter-name>
+  	<filter-class>com.kadiremreozcan.security.HrLoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>HrLoginFilter</filter-name>
+  	<url-pattern>/isveren/*</url-pattern>
+  </filter-mapping>
+  
 </web-app>

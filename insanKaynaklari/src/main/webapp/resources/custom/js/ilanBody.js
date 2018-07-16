@@ -35,7 +35,7 @@ function getBasvuranBilgisi(){
 			var list = "";
 			for (var i = 0; i < data.length; i++) {
 			    //console.log(data[i][9]+" "+data[i][13]);
-				list = list + "<tr><td><a href='/insanKaynaklari/isveren/ilan/"+data[i][0]+"'>"+data[i][9]+" "+data[i][13] +"</a></td></tr>"
+				list = list + "<tr><td><a href='/insanKaynaklari/isveren/adayInfo/"+data[i][0]+"'>"+data[i][9]+" "+data[i][13] +"</a></td></tr>"
 			    //list = list + "<li><a href=/insanKaynaklari/isveren/adayInfo/"+data[i][0]+">"+data[i][9]+" "+data[i][13] +"</a></li>";
 			}
 			

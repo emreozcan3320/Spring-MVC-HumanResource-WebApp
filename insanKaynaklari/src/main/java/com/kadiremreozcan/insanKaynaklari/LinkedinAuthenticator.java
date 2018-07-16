@@ -16,7 +16,7 @@ import org.json.JSONObject;
 import com.kadiremreozcan.entity.Adays;
 
 
-public class Post_Test {
+public class LinkedinAuthenticator {
 	
 	
 	
@@ -41,7 +41,7 @@ public class Post_Test {
 		wr.flush();
 		wr.close();
 
-		int responseCode = con.getResponseCode();
+		//int responseCode = con.getResponseCode();
 		//System.out.println("\nSending 'POST' request to URL : " + url);
 		//System.out.println("Post parameters : " + urlParameters);
 		//System.out.println("Response Code : " + responseCode);
@@ -93,7 +93,7 @@ public class Post_Test {
 		
 		
 
-		int responseCode = con.getResponseCode();
+		//int responseCode = con.getResponseCode();
 		//System.out.println("\nSending 'GET' request to URL : " + url);
 		//System.out.println("Response Code : " + responseCode);
 

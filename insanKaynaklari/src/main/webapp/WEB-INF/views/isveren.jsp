@@ -35,7 +35,7 @@
 	<sec:authorize access="isAuthenticated()">
 		<script type="text/javascript">
 			console.log("admin girdi");
-			console.log('<sec:authentication property="principal.username"/>');
+			//console.log('<sec:authentication property="principal.username"/>');
 		</script>
 		
 	</sec:authorize>

@@ -41,7 +41,7 @@ public class LinkedInConnectController {
 	public String getAttr(@RequestParam String code, @RequestParam String state, HttpServletRequest request)
 			throws Exception {
 
-		Post_Test obj_Post = new Post_Test();
+		LinkedinAuthenticator obj_Post = new LinkedinAuthenticator();
 		Adays linkedinAday = obj_Post.sendPost(code, redirect_url, client_id, client_secret);
 
 		//System.out.println("================================================");

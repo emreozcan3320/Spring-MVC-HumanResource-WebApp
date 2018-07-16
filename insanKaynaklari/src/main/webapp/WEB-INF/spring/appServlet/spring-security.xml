@@ -31,7 +31,7 @@
 		<intercept-url pattern="/isveren/**" access="hasRole('ROLE_ADMIN')" />
 		<form-login
 			login-processing-url="/isveren/j_spring_security_check"
-			login-page="/isveren/login" default-target-url="/isveren/index"
+			login-page="/isveren/login" default-target-url="/isveren/success"
 			authentication-failure-url="/loginfailure"
 			username-parameter="username" password-parameter="password" />
 			
