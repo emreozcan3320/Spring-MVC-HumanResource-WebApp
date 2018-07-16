@@ -49,7 +49,16 @@ public class HrController {
 
 		return "isverenLogin";
 	}
+	
+	/*//isveren logout
+	@RequestMapping(value = "/isveren/logout", method = RequestMethod.GET)
+	public String isverenLogout(Model model) throws HibernateException, PropertyVetoException {
 
+		System.out.println("/isveren/logout");
+
+		return "redirect:../anasayfa";
+	}*/
+	
 	// Ýsverenin ilk ulaþtýðý admin paneli
 	@RequestMapping(value = "/isveren/index", method = RequestMethod.GET)
 	public String isveren(Model model) throws HibernateException, PropertyVetoException {
@@ -90,6 +99,26 @@ public class HrController {
 
 		return new ResponseEntity<>(jobsService.getJobById(Long.parseLong(ilan_id)), HttpStatus.CREATED);
 	}
+	
+	// id si verilen bir ilana basvuranlarýn bilgilerini dönen endpoint
+		@RequestMapping(value = "/isveren/ilanBavuran", method = RequestMethod.POST)
+		@ResponseBody
+		public ResponseEntity<ArrayList<Adays>> isverenBirIlanBasvuran(@RequestBody String job_id, HttpServletRequest request) {
+
+			System.out.println("/isveren/ilanBavuran :: post");
+			
+			System.out.println(job_id);
+			
+/*			ArrayList<Adays> list = adaysService.getAdaysInfoForOneJob(Long.parseLong(job_id));
+			System.out.println("Arraylist geçildi");
+			for (int i = 0; i < list.size(); i++) {
+				System.out.println(i);
+				System.out.println(list.get(i).getName());
+			}
+			System.out.println("Arraylist for döngüsü geçildi");
+*/
+			return new ResponseEntity<>(adaysService.getAdaysInfoForOneJob(Long.parseLong(job_id)), HttpStatus.CREATED);
+		}
 
 	// Bir iþverenin id si verildiðinde yayýnladýðý tüm ilanlarý dönen endpoint
 	@RequestMapping(value = "/isveren/ilan", method = RequestMethod.POST)
@@ -210,6 +239,11 @@ public class HrController {
 		model.addAttribute("adayCourses", coursesArray);
 		
 		/*JobAday TABLOSU */
+		/*ArrayList<Jobs> basvurular = jobAdayService.getAllApplicationOfOneAday(id);
+		for (int i = 0; i < basvurular.size(); i++) {
+		    System.out.println(basvurular.get(i).getTitle());
+		}
+		model.addAttribute("basvurular", basvurular);*/
 		//model.addAttribute("basvurular", jobAdayService.getAllApplicationOfOneAday(id));
 		ArrayList<JobAday> basvurular = jobAdayService.getAllApplicationOfOneAday(id);
 		
@@ -218,11 +252,12 @@ public class HrController {
 		
 		for (int i = 0; i < basvurular.size(); i++) {
 			job = jobsService.getJobById(basvurular.get(i).getJob_id());
-			titles.add(job.getTitle());
+			titles.add("<tr><td><a href='/insanKaynaklari/isveren/ilan/"+job.getId()+"'>"+job.getTitle()+"</a></td></tr>");
+			//titles.add(job.getTitle());
 		    //System.out.println(basvurular.get(i).getJob_id());
 		}
 		
-		model.addAttribute("basvuru_basligi", titles);
+		model.addAttribute("basvuru_tag", titles);
 		
 		return "adayInfo";
 	}

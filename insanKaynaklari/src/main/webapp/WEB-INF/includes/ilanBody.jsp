@@ -71,7 +71,7 @@
             <h5 class="card-header">İlan Bilgisi</h5>
             <div class="card-body">
             <h6>Status : <span class="badge badge-secondary" id="status"></span></h6>
-            <h6>Başvuru Sayısı : <span class="badge badge-secondary">1.326</span></h6>
+            <h6>Başvuru Sayısı : <span class="badge badge-secondary" id="basvuranSayisiBadge"></span></h6>
             <h6>Aktivasyon Tarihi <span class="badge badge-secondary" id="activation_date"></span></h6>
             <h6>Expiration Tarihi <span class="badge badge-secondary" id="expiration_date"></span></h6>
             </div>
@@ -81,7 +81,7 @@
           <div class="card my-4">
             <h5 class="card-header">İşlemler</h5>
             <div class="card-body">
-            <button type="button" class="btn btn-warning">Bavuran Bilgisi</button>
+            <button type="button" class="btn btn-warning" onclick="basvuranBilgisiDialogBox()">Bavuran Adaylar  &nbsp <span class="badge badge-warning" id="basvuranSayisi"></span></button>
             <br>
             <br>
             <button type="button" class="btn btn-danger" onclick = "deleteJob(${ilan_id})">Delete</button>

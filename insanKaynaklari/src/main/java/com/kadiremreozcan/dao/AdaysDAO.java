@@ -72,4 +72,17 @@ public class AdaysDAO {
 		return (ArrayList<Adays>) query.getResultList();
 	}
 
+	//READ Bir ilana baþvuran adaylarýn datasýný dönüyor
+			@SuppressWarnings({ "deprecation", "unchecked" })
+			public ArrayList<Adays> getOneApplicationAdayInfo(Long ilan_id){
+			
+			/*Query query = sessionFactory.getCurrentSession().createQuery("FROM JobAday WHERE aday_id=:aday_id ")
+					.setLong("aday_id", aday_id);*/
+				
+			Query query = sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM adays,jobaday WHERE job_id=:ilan_id AND jobaday.aday_id = adays.id ")
+					.setLong("ilan_id", ilan_id);
+			
+			return (ArrayList<Adays>) query.getResultList();
+			
+			}
 }

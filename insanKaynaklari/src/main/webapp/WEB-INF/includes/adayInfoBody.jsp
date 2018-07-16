@@ -75,10 +75,8 @@
 					</div> -->
 					<table class="table table-hover table-striped">
 						<tbody>
-							<c:forEach items="${basvuru_basligi}" var="basvuru">
-								<tr>
-									<td>${basvuru}</td>
-								</tr>
+							<c:forEach items="${basvuru_tag}" var="tag">
+								${tag}
 							</c:forEach>
 
 						</tbody>

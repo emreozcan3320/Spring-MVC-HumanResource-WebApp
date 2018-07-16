@@ -198,7 +198,7 @@
           </form>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="${contextPath}/aday/login">
+          <a class="nav-link" href="${contextPath}/aday/logout">
             <i class="fa fa-fw fa-sign-out"></i>Çıkış</a>
         </li>
       </ul>

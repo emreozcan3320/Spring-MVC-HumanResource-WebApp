@@ -42,9 +42,9 @@ public class Post_Test {
 		wr.close();
 
 		int responseCode = con.getResponseCode();
-		System.out.println("\nSending 'POST' request to URL : " + url);
-		System.out.println("Post parameters : " + urlParameters);
-		System.out.println("Response Code : " + responseCode);
+		//System.out.println("\nSending 'POST' request to URL : " + url);
+		//System.out.println("Post parameters : " + urlParameters);
+		//System.out.println("Response Code : " + responseCode);
 
 		BufferedReader in = new BufferedReader(
 		        new InputStreamReader(con.getInputStream()));
@@ -57,11 +57,11 @@ public class Post_Test {
 		in.close();
 
 		//print result
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
 		
 		JSONObject jsonObj = new JSONObject(response.toString());
 		String access_token = jsonObj.getString("access_token");
-		System.out.println(access_token);
+		//System.out.println(access_token);
 		
 		Adays obj_aday = new Adays();
 		obj_aday = sendGet(access_token);
@@ -94,8 +94,8 @@ public class Post_Test {
 		
 
 		int responseCode = con.getResponseCode();
-		System.out.println("\nSending 'GET' request to URL : " + url);
-		System.out.println("Response Code : " + responseCode);
+		//System.out.println("\nSending 'GET' request to URL : " + url);
+		//System.out.println("Response Code : " + responseCode);
 
 		BufferedReader in = new BufferedReader(
 		        new InputStreamReader(con.getInputStream(), "UTF-8"));
@@ -108,7 +108,7 @@ public class Post_Test {
 		in.close();
 
 		//print result
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
 		
 		JSONObject jsonObj = new JSONObject(response.toString());
 		
@@ -117,7 +117,7 @@ public class Post_Test {
 		obj_aday.setHeadline(jsonObj.getString("headline"));
 		obj_aday.setLinkedin_id(jsonObj.getString("id"));
 		
-		System.out.println(access_token);
+		//System.out.println(access_token);
 
 		return obj_aday;
 	}

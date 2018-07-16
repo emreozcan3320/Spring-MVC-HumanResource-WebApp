@@ -2,6 +2,8 @@ package com.kadiremreozcan.insanKaynaklari;
 
 import java.beans.PropertyVetoException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.hibernate.HibernateException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +21,27 @@ public class AdayController {
 	
 
 	@RequestMapping(value = "/aday/index", method = RequestMethod.GET)
-	public String aday(Model model) throws HibernateException, PropertyVetoException {
+	public String aday(Model model, HttpServletRequest request) throws HibernateException, PropertyVetoException {
+		
+		//model.addAttribute("session_aday_linkedInId", request.getAttribute("adaySession"));
+		
+		System.out.println("Bu aday session nudur --> "+request.getSession().getAttribute("adaySession"));
 
 		System.out.println("/aday/index");
 
 		return "aday";
+	}
+	
+	@RequestMapping(value = "/aday/logout", method = RequestMethod.GET)
+	public String adaylogout(Model model, HttpServletRequest request) throws HibernateException, PropertyVetoException {
+		
+		//model.addAttribute("session_aday_linkedInId", request.getAttribute("adaySession"));
+		
+		request.getSession().setAttribute("adaySession", null);
+
+		System.out.println("/aday/logout");
+
+		return "redirect:aday/login";
 	}
 
 	@RequestMapping(value = "/aday/basvurularim", method = RequestMethod.GET)

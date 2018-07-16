@@ -44,18 +44,18 @@ public class LinkedInConnectController {
 		Post_Test obj_Post = new Post_Test();
 		Adays linkedinAday = obj_Post.sendPost(code, redirect_url, client_id, client_secret);
 
-		System.out.println("================================================");
+		//System.out.println("================================================");
 
-		System.out.println((String) ("LinkedInControllerprofile line 49 :: " + linkedinAday));
+		//System.out.println((String) ("LinkedInControllerprofile line 49 :: " + linkedinAday));
 
-		System.out.println("================================================");
+		//System.out.println("================================================");
 
-		System.out.println("linkedin_id :: " + linkedinAday.getLinkedin_id());
+		//System.out.println("linkedin_id :: " + linkedinAday.getLinkedin_id());
 
 		String LinkedinAday_id = linkedinAday.getLinkedin_id();
 
 		Adays Db_aday = adaysService.getAdayByLinkedInId(LinkedinAday_id);
-		System.out.println((String) ("Db den gelen :::" + Db_aday));
+		System.out.println((String) ("Db_aday:::" + Db_aday));
 
 		if (Db_aday.getLinkedin_id() == null) {
 
@@ -70,9 +70,18 @@ public class LinkedInConnectController {
 			// System.out.println("profile :::"+ profile);
 
 			adaysService.createAday(profile, request);
+			
+			Adays New_aday = adaysService.getAdayByLinkedInId(linkedinAday.getName());
+			System.out.println((String) ("New_aday :::" + New_aday));
+			
+			request.getSession().setAttribute("adaySession", New_aday);
 
+		}else {
+			request.getSession().setAttribute("adaySession", Db_aday);
 		}
-
+		
+		
+		
 		return "linkedInSuccess";
 	}
 

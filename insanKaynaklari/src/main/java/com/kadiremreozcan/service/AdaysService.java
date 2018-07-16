@@ -1,5 +1,7 @@
 package com.kadiremreozcan.service;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +35,10 @@ public class AdaysService {
 
 		return adayDAO.getFindByLinkedInId(linkedin_id);
 	}
+	
+	//READ Bir ilana baþvuran adaylarýn datasýný dönüyor
+	public ArrayList<Adays> getAdaysInfoForOneJob(Long job_id) {
 
+		return adayDAO.getOneApplicationAdayInfo(job_id);
+	}
 }

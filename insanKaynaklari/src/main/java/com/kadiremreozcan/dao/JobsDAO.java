@@ -70,5 +70,8 @@ public class JobsDAO {
 		return (ArrayList<Jobs>) query.getResultList();
 	}
 	
+	
+	
+	
 
 }

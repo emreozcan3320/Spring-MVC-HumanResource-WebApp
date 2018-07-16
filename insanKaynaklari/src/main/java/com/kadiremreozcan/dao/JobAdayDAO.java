@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kadiremreozcan.entity.JobAday;
-import com.kadiremreozcan.entity.Jobs;
 
 
 @Repository
@@ -38,7 +37,7 @@ public class JobAdayDAO {
 	
 	Query query = sessionFactory.getCurrentSession().createQuery("FROM JobAday WHERE aday_id=:aday_id ")
 			.setLong("aday_id", aday_id);
-	/*Query query = sessionFactory.getCurrentSession().createSQLQuery("SELECT FROM jobaday,jobs WHERE aday_id=:aday_id AND jobaday.job_id = jobs.id ")
+	/*Query query = sessionFactory.getCurrentSession().createSQLQuery("SELECT id,activation_date,create_date,expertise,expiration_date,ik_uzmani_id,job_definition,personal_qualities,status,title FROM jobaday,jobs WHERE aday_id=:aday_id AND jobaday.job_id = jobs.id ")
 			.setLong("aday_id", aday_id);*/
 	
 	return (ArrayList<JobAday>) query.getResultList();

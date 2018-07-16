@@ -36,8 +36,6 @@
 		<script type="text/javascript">
 			console.log("admin girdi");
 			console.log('<sec:authentication property="principal.username"/>');
-			console.log('<sec:authentication property="principal.Password"/>');
-			console.log('<sec:authentication property="principal"/>');
 		</script>
 		
 	</sec:authorize>
