@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kadiremreozcan.entity.Jobs;
 import com.kadiremreozcan.service.JobsService;
+import com.kadiremreozcan.service.MailService;
 
 /**
  * Handles requests for the application home page.
@@ -28,6 +29,9 @@ public class HomeController {
 	
 	@Autowired
 	private JobsService jobsService;
+	
+	@Autowired
+	private MailService mailService;
 
 	@RequestMapping(value = "/anasayfa", method = RequestMethod.GET)
 	public String anasayfa(Model model, HttpServletRequest req) {
