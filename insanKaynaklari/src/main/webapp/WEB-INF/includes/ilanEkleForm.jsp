@@ -3,11 +3,12 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+
 	<div class="bootstrap-iso">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-6 col-sm-6 col-xs-12">
-					
+						
 						<div class="form-group ">
 							<label class="control-label " for="text1"> İlan Başlığı </label>
 							<input class="form-control" id="title" name="title" type="text" />
@@ -32,11 +33,25 @@
 						</div>
 						<div class="form-group ">
 								<label for="datepicker">Activation Date</label>
-                			<input class ="activation_date" type="text" name="selDate" id="datepicker">
+                			<!-- <input class ="activation_date" type="text" name="selDate" id="datepicker"> -->
+                			<p>Activation Yılı</p>
+                			<input type="text" id="activation_yıl">
+                			<p>Activation Ay</p>
+                			<input type="text" id="activation_ay">
+                			<p>Activation Gun</p>
+                			<input type="text" id="activation_gun">
+                			
 						</div>
 						<div class="form-group ">
 							<label for="datepicker">Expiration Date</label>
-                			<input class ="expiration_date" type="text" name="selDate" id="datepickerTwo">
+                			<!--  <input class ="expiration_date" type="text" name="selDate" id="datepickerTwo">-->
+                			
+                			<p>Expiration Yılı</p>
+                			<input type="text" id="expiration_yıl">
+                			<p>Expiration Ay</p>
+                			<input type="text" id="expiration_ay">
+                			<p>Expiration Gun</p>
+                			<input type="text" id="expiration_gun">
 						</div>
 						<div class="form-group" id="div_status">
 							<label class="control-label " for="status"> İlan Durumu </label>

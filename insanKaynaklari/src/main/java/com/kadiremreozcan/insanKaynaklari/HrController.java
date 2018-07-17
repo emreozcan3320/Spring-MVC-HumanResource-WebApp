@@ -2,6 +2,7 @@ package com.kadiremreozcan.insanKaynaklari;
 
 import java.beans.PropertyVetoException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -248,6 +249,15 @@ public class HrController {
 	public ResponseEntity<String> isverenIlanEkle(@RequestBody Jobs job, HttpServletRequest request) {
 
 		// System.out.println(job.toString());
+		System.out.println(job);
+		Date create = job.getCreate_date();
+		Date activate = job.getActivation_date();
+		Date expiration = job.getExpiration_date();
+		
+		System.out.println("create ::: "+ create);
+		System.out.println("activate ::: "+ activate);
+		System.out.println("expiration ::: "+ expiration);
+		
 		jobsService.createIlan(job, request);
 
 		return new ResponseEntity<>("OK", HttpStatus.CREATED);

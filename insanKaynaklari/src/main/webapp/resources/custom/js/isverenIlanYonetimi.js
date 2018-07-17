@@ -52,6 +52,7 @@ function deleteJob (string){
 	
 }
 
+/**
 function tarih (Linuxtarih){
 	
 	var normalTarih = new Date(Linuxtarih) ;
@@ -63,7 +64,7 @@ function tarih (Linuxtarih){
 	
 	return yeniTarih;
 	
-}
+}*/
 
 function getJobs (){
 	$.ajax({
@@ -89,9 +90,9 @@ function getJobs (){
                 +'<td>'+val.job_definition+'</td>'
                 +'<td>'+val.personal_qualities+'</td>'
                 +'<td>'+val.expertise+'</td>'
-                +'<td>'+tarih(val.create_date) +'</td>'
-                +'<td>'+tarih(val.activation_date) +'</td>'
-                +'<td>'+tarih(val.expiration_date) +'</td>'
+                +'<td>'+new Date(val.create_date).toLocaleDateString() +'</td>'
+                +'<td>'+new Date(val.activation_date).toLocaleDateString() +'</td>'
+                +'<td>'+new Date(val.expiration_date).toLocaleDateString() +'</td>'
                 +'<td>'+valStatus+'</td>'
                 +'<td><button class="btn btn-danger" value="'+val.id+'" onclick="deleteJob(\'' + val.id + '\')">Sil</button></td>'
                 +'<td><button class="btn btn-info" onClick="gotoNode(\'' + val.id + '\')" >Ayrıntı</button></td></tr>';

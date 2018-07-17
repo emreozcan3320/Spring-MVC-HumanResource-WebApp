@@ -44,7 +44,9 @@
 	</style>
 	
 	<jsp:include page="../includes/adminPanelNav.jsp"></jsp:include>
-	
+	<br>
+	<br>
+	<br>
 	<div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->

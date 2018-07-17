@@ -9,7 +9,7 @@ function myFunctionTwo(){
 	document.getElementById('myCheckOne').checked = false;
 }
 
-function tarihDatepicker (stringDate){
+/*function tarihDatepicker (stringDate){
 	
 	var array = stringDate.split('/');
 	
@@ -21,6 +21,19 @@ function tarihDatepicker (stringDate){
 	
 	return new Date(yeniTarih);
 	
+}*/
+
+function date(yil,ay,gun){
+	
+	var yil= parseInt(yil);
+	var ay= parseInt(ay);
+	var gun= parseInt(gun);
+	
+	var yeniTarih = ay+"/"+gun+"/"+yil;
+	var jsDate = new Date(yeniTarih);
+	var result = jsDate.getTime();
+	
+	return result;
 }
 
 function ilanEkle(){
@@ -31,19 +44,32 @@ function ilanEkle(){
 		statuss = false;
 	}
 	
+	var activation_yil = $("#activation_yıl").val();
+	var activation_ay = $("#activation_ay").val();
+	var activation_gun = $("#activation_gun").val();
+	
+	var activation_date = date(activation_yil,activation_ay,activation_gun);
+	
+	var expiration_yıl = $("#expiration_yıl").val();
+	var expiration_ay = $("#expiration_ay").val();
+	var expiration_gun = $("#expiration_gun").val();
+	
+	var expiration_date = date(expiration_yıl,expiration_ay,expiration_gun);
+	
+	
 	var param = {
 			title : $("#title").val(),
 			job_definition : $("#job_definition").val(),
 			expertise : $("#expertise").val(),
 			personal_qualities : $("#personal_qualities").val(),
-			activation_date : tarihDatepicker($(".activation_date").val()),
-			expiration_date : tarihDatepicker($(".expiration_date").val()),
+			activation_date : activation_date,
+			expiration_date : expiration_date ,
 			status : statuss
 	}
 	
 	//console.log(param);
-	console.log("expiration date -> "+tarihDatepicker($(".activation_date").val()));
-	console.log("activation date -> "+tarihDatepicker($(".expiration_date").val()));
+	console.log("expiration date -> "+activation_date);
+	console.log("activation date -> "+expiration_date);
 	//console.log(param.activation_date);
 	
 	var ser_data =JSON.stringify(param);
@@ -59,7 +85,8 @@ function ilanEkle(){
 		},error:function(data){
 			console.log(data);
 		}
-	}).then(window.history.back());
+	});
+	//.then(window.history.back())
 	//TODO: ajax postundan sonra ilan sayfasına yönlendirme
 	//window.location = "/ilan";
 }
