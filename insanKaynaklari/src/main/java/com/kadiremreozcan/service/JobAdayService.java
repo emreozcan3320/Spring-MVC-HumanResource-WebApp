@@ -2,8 +2,6 @@ package com.kadiremreozcan.service;
 
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +17,7 @@ public class JobAdayService {
 	private JobAdayDAO jobAdayDAO;
 
 	// CREATE
-	public long createBasvuru(JobAday basvuru, HttpServletRequest req) {
+	public long createBasvuru(JobAday basvuru) {
 
 		return jobAdayDAO.insert(basvuru);
 	}

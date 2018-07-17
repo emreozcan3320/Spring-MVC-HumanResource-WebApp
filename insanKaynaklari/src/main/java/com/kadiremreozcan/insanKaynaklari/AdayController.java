@@ -7,12 +7,17 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kadiremreozcan.entity.Adays;
+import com.kadiremreozcan.entity.BlackList;
 import com.kadiremreozcan.entity.JobAday;
 import com.kadiremreozcan.entity.Jobs;
 import com.kadiremreozcan.service.JobAdayService;
@@ -30,6 +35,8 @@ public class AdayController {
 	
 	@Autowired
 	private JobsService jobsService;
+	
+	
 	
 
 	@RequestMapping(value = "/aday/index", method = RequestMethod.GET)
@@ -97,6 +104,20 @@ public class AdayController {
 		
 		return "basvurular";
 	}
+	
+	@RequestMapping(value = "/aday/basvur", method = RequestMethod.POST) 
+	 @ResponseBody public ResponseEntity<String> adaybasvuru(@RequestBody JobAday basvuru, HttpServletRequest request) {
+	  
+	 System.out.println("/isveren/adayInfo :: post");
+	 
+	 //jobsService.createIlan(job, request);
+	 jobAdayService.createBasvuru(basvuru);
+	  
+	  
+	 return new ResponseEntity<>("OK", HttpStatus.CREATED);
+	 }
+	
+	
 
 	/*
 	 * ADAY ENDPOINTLERÝ BÝTÝÞÝ
