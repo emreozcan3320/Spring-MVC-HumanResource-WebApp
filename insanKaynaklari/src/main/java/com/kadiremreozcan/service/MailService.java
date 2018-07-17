@@ -11,11 +11,11 @@ public class MailService {
 	@Autowired
 	private JavaMailSender mailSender;
 	
-	public void redMail(String mail,String ilan_name) {
+	public void redMail(String mailAdress,String ilan_name) {
 	
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setFrom("appcoly@gmail.com");
-		email.setTo(mail);
+		email.setTo(mailAdress);
 		email.setSubject("Ýþ Baþvurusu Hakkýnda");
 		email.setText("Bizimle ilgilendiðiniz için teþekkür ederiz.\n"+ilan_name+" isimli ilan baþvurunuz REDDEDÝLMÝÞTÝR");
 		
@@ -23,11 +23,11 @@ public class MailService {
 	}
 	
 	
-	public void onayMail(String mail, String ilan_name) {
+	public void onayMail(String mailAdress, String ilan_name) {
 		
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setFrom("appcoly@gmail.com");
-		email.setTo(mail);
+		email.setTo(mailAdress);
 		email.setSubject("Ýþ Baþvurusu Hakkýnda ( OLUMLU )");
 		email.setText("Bizimle ilgilendiðiniz için teþekkür ederiz.\n"+ilan_name+" isimli ilan baþvurunuz KABUL EDÝLMÝÞTÝR");
 		

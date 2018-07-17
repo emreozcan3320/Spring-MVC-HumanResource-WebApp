@@ -94,6 +94,71 @@ function removeFromBlackList(){
 	
 }
 
+function basvuruKabul(){
+	var adayId = $("#adayId").val();
+	var jobId= $("#jobId").val();
+	var basvuruId= $("#basvuruId").val();
+	
+	var param={
+			jobaday_id : basvuruId,
+			aday_id : adayId,
+			basvuru_statusu : "red",
+			job_id : jobId
+	}
+	
+	var ser_data =JSON.stringify(param);
+	
+	$.ajax({
+		type : "POST",
+		headers: { 'islem': 'kabul' },
+		url : "../../adayBasvuruIslem",
+		contentType:"application/json",
+		data:ser_data,
+		success : function(data) {
+			window.location.reload();
+			console.log(data);
+		},
+		error : function(data) {
+			window.location.reload();
+			console.log(data);
+		}
+
+	});
+	
+}
+
+function basvuruRed(){
+	var adayId = $("#adayId").val();
+	var jobId= $("#jobId").val();
+	var basvuruId= $("#basvuruId").val();
+	
+	var param={
+			jobaday_id : basvuruId,
+			aday_id : adayId,
+			basvuru_statusu : "red",
+			job_id : jobId
+	}
+	
+	var ser_data =JSON.stringify(param);
+	
+	$.ajax({
+		type : "POST",
+		headers: { 'islem': 'red' },
+		url : "../../adayBasvuruIslem",
+		contentType:"application/json",
+		data:ser_data,
+		success : function(data) {
+			window.location.reload();
+			console.log(data);
+		},
+		error : function(data) {
+			window.location.reload();
+			console.log(data);
+		}
+
+	});
+}
+
 function getOneAday(){
 	$.ajax({
 		type : "POST",

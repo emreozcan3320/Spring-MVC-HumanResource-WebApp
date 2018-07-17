@@ -27,6 +27,7 @@ import com.kadiremreozcan.service.BlackListService;
 import com.kadiremreozcan.service.HrStaffsService;
 import com.kadiremreozcan.service.JobAdayService;
 import com.kadiremreozcan.service.JobsService;
+import com.kadiremreozcan.service.MailService;
 
 @Controller
 public class HrController {
@@ -39,12 +40,15 @@ public class HrController {
 
 	@Autowired
 	private JobAdayService jobAdayService;
-	
+
 	@Autowired
 	private HrStaffsService hrStaffService;
-	
+
 	@Autowired
 	private BlackListService blackListService;
+	
+	@Autowired
+	private MailService mailService;
 
 	/*
 	 * ÝÞVEREN ENDPOINTLERÝ BAÞLANGICI
@@ -75,9 +79,10 @@ public class HrController {
 	// Ýsverenin ilk ulaþtýðý admin paneli
 	@RequestMapping(value = "/isveren/index", method = RequestMethod.GET)
 	public String isveren(Model model, HttpServletRequest request) throws HibernateException, PropertyVetoException {
-		
-		//System.out.println("Bu hr session nudur --> "+request.getSession().getAttribute("hrSession"));
-		
+
+		// System.out.println("Bu hr session nudur -->
+		// "+request.getSession().getAttribute("hrSession"));
+
 		System.out.println("/isveren/index");
 
 		return "isveren";
@@ -99,7 +104,7 @@ public class HrController {
 	public ResponseEntity<HrStaffs> isverenValidate(@RequestBody String ldapUserName, HttpServletRequest request) {
 
 		System.out.println("/isveren/adayValidate :: post");
-		
+
 		HrStaffs hrForSession = hrStaffService.getHrStaffByUserName(ldapUserName);
 		request.getSession().setAttribute("hrSession", hrForSession);
 
@@ -108,12 +113,12 @@ public class HrController {
 
 	// Ýþ verenin kendi verdiði ilanlarý görebildiði ve yönetebildiði sayfa
 	@RequestMapping(value = "/isveren/ilan", method = RequestMethod.GET)
-	public String isverenIlan(Model model, HttpServletRequest request) throws HibernateException, PropertyVetoException {
+	public String isverenIlan(Model model, HttpServletRequest request)
+			throws HibernateException, PropertyVetoException {
 
 		System.out.println("/isveren/ilan");
-		HrStaffs hrCurrent =  (HrStaffs) request.getSession().getAttribute("hrSession");
-		
-		
+		HrStaffs hrCurrent = (HrStaffs) request.getSession().getAttribute("hrSession");
+
 		model.addAttribute("ik_uzman_id", hrCurrent.getId());
 
 		return "isverenIlanYonetimi";
@@ -165,8 +170,8 @@ public class HrController {
 	public ResponseEntity<ArrayList<Jobs>> isverenIlanlari(HttpServletRequest request) {
 
 		System.out.println("/isveren/ilan :: post");
-		
-		HrStaffs hrCurrent =  (HrStaffs) request.getSession().getAttribute("hrSession");
+
+		HrStaffs hrCurrent = (HrStaffs) request.getSession().getAttribute("hrSession");
 		return new ResponseEntity<>(jobsService.getAll(hrCurrent.getId()), HttpStatus.CREATED);
 	}
 
@@ -258,7 +263,8 @@ public class HrController {
 	///////////////
 
 	@RequestMapping(value = "/isveren/adayInfo/{user_id}/{job_id}", method = RequestMethod.GET)
-	public String adayInfo(@PathVariable("user_id") Long user_id,@PathVariable("job_id") Long job_id, Model model) throws HibernateException, PropertyVetoException {
+	public String adayInfo(@PathVariable("user_id") Long user_id, @PathVariable("job_id") Long job_id, Model model)
+			throws HibernateException, PropertyVetoException {
 
 		System.out.println("/isveren/adayInfo/{id} :: get");
 
@@ -292,76 +298,114 @@ public class HrController {
 		}
 
 		model.addAttribute("basvuru_tag", titles);
-		
-		/*Basvuru Durumu */
+
+		/* Basvuru Durumu */
 		JobAday basvuruDurumAday = jobAdayService.getApplicationStatus(user_id, job_id);
 		String ilanStatus = basvuruDurumAday.getBasvuru_statusu();
+		Long ilanId = basvuruDurumAday.getJobaday_id();
+		model.addAttribute("basvuru_id",ilanId);
+		model.addAttribute("jobId", job_id);
 		model.addAttribute("basvuru_durumu", ilanStatus);
-		
+
 		return "adayInfo";
 	}
 
 	// id si verilen bir adayý karalisteye ekliyen endpoint
-	
-	 @RequestMapping(value = "/isveren/adayKaraListe", method = RequestMethod.POST) 
-	 @ResponseBody public ResponseEntity<String> adayKaraListeEkle(@RequestBody BlackList list, HttpServletRequest request) {
-	  
-	 System.out.println("/isveren/adayInfo :: post");
-	 String islem = request.getHeader("islem");
-	 System.out.println("gelen iþlem headerý ::: "+islem);
-	 
-	 if(islem.equals("add")) {
-		 
-		 
-		 //blaclist tablosuna ekliyor
-		 blackListService.createBlackListed(list);
-		 
-		 /* adayýn bütün iþlerini alýyor*/
-		 Long karaListeliId = list.getAday_id();
-		 ArrayList<JobAday> basvurular = jobAdayService.getAllApplicationOfOneAday(karaListeliId);
-		 
-		 /* aday tablosundaki deðeri true yapýyor böylece karalistede olduðunu anlýyoruz*/
-		 Adays aday = adaysService.getAdayById(karaListeliId);
-		 aday.setKaraListe(true);
-		 adaysService.updateAday(aday);
-		 
-		 /* Bütün iþ baþvurularý red oluyor*/
-		 for (int i = 0; i < basvurular.size(); i++) {
-				//job = jobsService.getJobById(basvurular.get(i).getJob_id());
-			 	JobAday basvuru = basvurular.get(i);
-			 	basvuru.setBasvuru_statusu("red");
-			 	jobAdayService.updateBasvuru(basvuru);
+
+	@RequestMapping(value = "/isveren/adayKaraListe", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<String> adayKaraListeEkle(@RequestBody BlackList list, HttpServletRequest request) {
+
+		System.out.println("/isveren/adayInfo :: post");
+		String islem = request.getHeader("islem");
+		System.out.println("gelen iþlem headerý ::: " + islem);
+
+		if (islem.equals("add")) {
+
+			// blaclist tablosuna ekliyor
+			blackListService.createBlackListed(list);
+
+			/* adayýn bütün iþlerini alýyor */
+			Long karaListeliId = list.getAday_id();
+			ArrayList<JobAday> basvurular = jobAdayService.getAllApplicationOfOneAday(karaListeliId);
+
+			/*
+			 * aday tablosundaki deðeri true yapýyor böylece karalistede olduðunu anlýyoruz
+			 */
+			Adays aday = adaysService.getAdayById(karaListeliId);
+			aday.setKaraListe(true);
+			adaysService.updateAday(aday);
+
+			/* Bütün iþ baþvurularý red oluyor */
+			for (int i = 0; i < basvurular.size(); i++) {
+				// job = jobsService.getJobById(basvurular.get(i).getJob_id());
+				JobAday basvuru = basvurular.get(i);
+				basvuru.setBasvuru_statusu("red");
+				jobAdayService.updateBasvuru(basvuru);
 			}
-	 }
-	 
-	 if(islem.equals("remove")) {
-		 System.out.println("remove a girildi ");
-		 System.out.println("Controller ::: aday id si ->"+list.getAday_id());
-		 //blacklist tablosundan çýkarýyor
-		 
-		 blackListService.deleteBlackListed(list.getAday_id());
-		 
-		 /* aday tablosundaki deðeri FALSE yapýyor böylece karalisteden çýktýðýný anlýyoruz*/
-		 Long karaListeliId = list.getAday_id();
-		 Adays aday = adaysService.getAdayById(karaListeliId);
-		 aday.setKaraListe(false);
-		 adaysService.updateAday(aday);
-		 
-		 System.out.println("remove dan çýkýldý ");
-	 }
-	 
-	  
-	 return new ResponseEntity<>("OK", HttpStatus.CREATED);
-	 }
-	 
-	 @RequestMapping(value = "/isveren/adayKBasvuruIslem", method = RequestMethod.POST) 
-	 @ResponseBody public ResponseEntity<String> adayBasvuruIslem(@RequestBody JobAday basvuru, HttpServletRequest request) {
-		 
-		 
-		 return new ResponseEntity<>("OK", HttpStatus.CREATED);
-	 }
-	 
-	 
+		}
+
+		if (islem.equals("remove")) {
+			System.out.println("remove a girildi ");
+			System.out.println("Controller ::: aday id si ->" + list.getAday_id());
+			// blacklist tablosundan çýkarýyor
+
+			blackListService.deleteBlackListed(list.getAday_id());
+
+			/*
+			 * aday tablosundaki deðeri FALSE yapýyor böylece karalisteden çýktýðýný
+			 * anlýyoruz
+			 */
+			Long karaListeliId = list.getAday_id();
+			Adays aday = adaysService.getAdayById(karaListeliId);
+			aday.setKaraListe(false);
+			adaysService.updateAday(aday);
+
+			System.out.println("remove dan çýkýldý ");
+		}
+
+		return new ResponseEntity<>("OK", HttpStatus.CREATED);
+	}
+
+	@RequestMapping(value = "/isveren/adayBasvuruIslem", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<String> adayBasvuruIslem(@RequestBody JobAday basvuru, HttpServletRequest request) {
+		
+		System.out.println(basvuru);
+		
+		String islem = request.getHeader("islem");
+		
+		Long adayId = basvuru.getAday_id();
+		Adays aday = adaysService.getAdayById(adayId);
+		String eMail = aday.getEmail();
+		
+		Long ilanId = basvuru.getJob_id();
+		Jobs job = jobsService.getJobById(ilanId);
+		String jobName = job.getTitle();
+		
+		
+		
+		if (islem.equals("kabul")) {
+			//System.out.println("islem kabul");
+			basvuru.setBasvuru_statusu("kabul");
+			jobAdayService.updateBasvuru(basvuru);
+			
+			mailService.onayMail(eMail, jobName);
+		}
+
+		if (islem.equals("red")) {
+			//System.out.println("islem red");
+			basvuru.setBasvuru_statusu("red");
+			jobAdayService.updateBasvuru(basvuru);
+			
+			mailService.redMail(eMail, jobName);
+		}
+
+		
+		// jobAdayService.createBasvuru(basvuru);
+
+		return new ResponseEntity<>("OK", HttpStatus.CREATED);
+	}
 
 	/*
 	 * ÝÞVEREN ENDPOINTLERÝ BÝTÝÞÝ

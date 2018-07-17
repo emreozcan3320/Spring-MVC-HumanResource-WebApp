@@ -30,8 +30,7 @@ public class HomeController {
 	@Autowired
 	private JobsService jobsService;
 	
-	@Autowired
-	private MailService mailService;
+	
 
 	@RequestMapping(value = "/anasayfa", method = RequestMethod.GET)
 	public String anasayfa(Model model, HttpServletRequest req) {

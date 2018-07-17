@@ -20,7 +20,7 @@
 						</div>
 						<div class="form-group ">
 							<label class="control-label " for="textarea"> Uzmanlık
-								Alanlarınız ( L&uuml;tfen "," ayırarak yazınız ) </label>
+								Alanları ( L&uuml;tfen "," ayırarak yazınız ) </label>
 							<textarea class="form-control" cols="40" id="expertise"
 								name="expertise" rows="10"></textarea>
 						</div>

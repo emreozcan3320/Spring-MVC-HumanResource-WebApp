@@ -22,6 +22,8 @@
 						Long hrId = hrCurrent.getId();
 					%>
 					<input type="hidden" id="hrId" value="<%=hrId %>"/>
+					<input type="hidden" id="jobId" value="${jobId}"/>
+					<input type="hidden" id="basvuruId" value="${basvuru_id}"/>
 					<h5 class="mb-3">${aday.name}${aday.surname}</h5>
 					<hr>
 					<div class="row">

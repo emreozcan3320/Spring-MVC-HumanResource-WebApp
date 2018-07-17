@@ -31,7 +31,7 @@ public class JobAdayDAO {
 		sessionFactory.getCurrentSession().delete(basvuru);
 	}
 	
-	//READ bir ilanýn durumunu dönüyor
+	
 	//READ bir adayýn ilanlarýný döndürüyor
 		public JobAday getOneAdayApplicationStatus(Long aday_id, Long job_id){
 		
