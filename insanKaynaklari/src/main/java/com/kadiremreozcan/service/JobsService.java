@@ -45,7 +45,7 @@ public class JobsService {
 	}
 
 	// UPDATE
-	public Long updateIlan(Jobs ilan, HttpServletRequest req) {
+	public Long updateIlan(Jobs ilan) {
 
 		ilanDAO.update(ilan);
 

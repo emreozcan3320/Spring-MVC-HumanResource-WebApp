@@ -174,9 +174,31 @@ public class HrController {
 
 		HrStaffs hrCurrent = (HrStaffs) request.getSession().getAttribute("hrSession");
 		
+		ArrayList<Jobs> jobs = jobsService.getAll(hrCurrent.getId());
+		for (int i = 0; i < jobs.size(); i++) { 	
+			  //System.out.println("Activation Date ::: " + jobs.get(i).getTitle());
+			  
+			  Date activationDate = jobs.get(i).getActivation_date();
+			  Date expirationDate = jobs.get(i).getExpiration_date();
+			  Date todayDate = new Date();
+			  
+			  if(todayDate.after(activationDate) && todayDate.before(expirationDate)){
+				     //System.out.println("Ýlan Aktif");
+				     Jobs job = jobs.get(i);
+					 job.setStatus(true);
+					 jobsService.updateIlan(job);
+				}else{
+					 //System.out.println("Ýlan pasif");
+					 Jobs job = jobs.get(i);
+					 job.setStatus(false);
+					 jobsService.updateIlan(job);
+				}
+	          //System.out.println("Activation Date ::: " + jobs.get(i).getActivation_date());
+	          //System.out.println("Expiration Date ::: " + jobs.get(i).getExpiration_date()); 
+	      } 
 		
 		
-		return new ResponseEntity<>(jobsService.getAll(hrCurrent.getId()), HttpStatus.CREATED);
+		return new ResponseEntity<>(jobs, HttpStatus.CREATED);
 	}
 
 	// Bir ilanýn editlemek için açýlan sayfa
@@ -213,7 +235,7 @@ public class HrController {
 		// System.out.println("job expiration date ->"+ job.getExpiration_date());
 		// System.out.println("*******************");
 
-		jobsService.updateIlan(oldJob, request);
+		jobsService.updateIlan(oldJob);
 
 		return new ResponseEntity<>("OK", HttpStatus.CREATED);
 	}
