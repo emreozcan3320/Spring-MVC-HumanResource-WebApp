@@ -32,6 +32,16 @@ public class JobAdayDAO {
 	}
 	
 	//READ bir ilanýn durumunu dönüyor
+	//READ bir adayýn ilanlarýný döndürüyor
+		public JobAday getOneAdayApplicationStatus(Long aday_id, Long job_id){
+		
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM JobAday WHERE aday_id="+aday_id+" AND job_id="+job_id+"");
+		/*Query query = sessionFactory.getCurrentSession().createSQLQuery("SELECT id,activation_date,create_date,expertise,expiration_date,ik_uzmani_id,job_definition,personal_qualities,status,title FROM jobaday,jobs WHERE aday_id=:aday_id AND jobaday.job_id = jobs.id ")
+				.setLong("aday_id", aday_id);*/
+		
+		return (JobAday) query.getSingleResult();
+		
+		}
 	
 	
 	//READ bir adayýn ilanlarýný döndürüyor

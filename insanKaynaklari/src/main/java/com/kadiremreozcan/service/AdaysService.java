@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kadiremreozcan.dao.AdaysDAO;
 import com.kadiremreozcan.entity.Adays;
+import com.kadiremreozcan.entity.Jobs;
 
 @Service
 @Transactional
@@ -24,6 +25,15 @@ public class AdaysService {
 		return adayDAO.insert(aday);
 	}
 
+	// UPDATE
+	public Long updateAday(Adays aday) {
+
+		adayDAO.update(aday);
+
+		// TODO:Neden 1l yollandý
+		return 1l;
+	}
+
 	// READ bir adayýn bilgilerini dönüyor
 	public Adays getAdayById(Long aday_id) {
 
@@ -35,8 +45,8 @@ public class AdaysService {
 
 		return adayDAO.getFindByLinkedInId(linkedin_id);
 	}
-	
-	//READ Bir ilana baþvuran adaylarýn datasýný dönüyor
+
+	// READ Bir ilana baþvuran adaylarýn datasýný dönüyor
 	public ArrayList<Adays> getAdaysInfoForOneJob(Long job_id) {
 
 		return adayDAO.getOneApplicationAdayInfo(job_id);

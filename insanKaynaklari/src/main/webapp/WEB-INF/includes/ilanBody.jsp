@@ -80,6 +80,7 @@
           <div class="card my-4">
             <h5 class="card-header">İşlemler</h5>
             <div class="card-body">
+			<input type="hidden" id="hrId" value="${ilan_id}">
             <button type="button" class="btn btn-warning" onclick="basvuranBilgisiDialogBox()">Bavuran Adaylar  &nbsp <span class="badge badge-warning" id="basvuranSayisi"></span></button>
             <br>
             <br>

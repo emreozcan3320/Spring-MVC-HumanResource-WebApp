@@ -36,5 +36,11 @@ public class JobAdayService {
 
 		return (ArrayList<JobAday>) jobAdayDAO.getOneAdayApplications(aday_id);
 	}
+	
+	// READ bir adayýn bir basvurusunun durumunu dönüyor
+		public JobAday getApplicationStatus(Long aday_id, Long job_id) {
+
+			return (JobAday) jobAdayDAO.getOneAdayApplicationStatus(aday_id, job_id);
+		}
 
 }

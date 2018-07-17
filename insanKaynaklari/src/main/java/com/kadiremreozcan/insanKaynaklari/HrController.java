@@ -257,14 +257,14 @@ public class HrController {
 
 	///////////////
 
-	@RequestMapping(value = "/isveren/adayInfo/{id}", method = RequestMethod.GET)
-	public String adayInfo(@PathVariable("id") Long id, Model model) throws HibernateException, PropertyVetoException {
+	@RequestMapping(value = "/isveren/adayInfo/{user_id}/{job_id}", method = RequestMethod.GET)
+	public String adayInfo(@PathVariable("user_id") Long user_id,@PathVariable("job_id") Long job_id, Model model) throws HibernateException, PropertyVetoException {
 
 		System.out.println("/isveren/adayInfo/{id} :: get");
 
 		/* Adays TABLOSU */
 		Adays aday = new Adays();
-		aday = adaysService.getAdayById(id);
+		aday = adaysService.getAdayById(user_id);
 
 		String arr1 = aday.getSkills();
 		String[] skillArray = arr1.split(",");
@@ -278,16 +278,7 @@ public class HrController {
 		model.addAttribute("adaySkills", skillArray);
 		model.addAttribute("adayCourses", coursesArray);
 
-		/* JobAday TABLOSU */
-		/*
-		 * ArrayList<Jobs> basvurular = jobAdayService.getAllApplicationOfOneAday(id);
-		 * for (int i = 0; i < basvurular.size(); i++) {
-		 * System.out.println(basvurular.get(i).getTitle()); }
-		 * model.addAttribute("basvurular", basvurular);
-		 */
-		// model.addAttribute("basvurular",
-		// jobAdayService.getAllApplicationOfOneAday(id));
-		ArrayList<JobAday> basvurular = jobAdayService.getAllApplicationOfOneAday(id);
+		ArrayList<JobAday> basvurular = jobAdayService.getAllApplicationOfOneAday(user_id);
 
 		Jobs job = new Jobs();
 		ArrayList<String> titles = new ArrayList<>();
@@ -301,7 +292,12 @@ public class HrController {
 		}
 
 		model.addAttribute("basvuru_tag", titles);
-
+		
+		/*Basvuru Durumu */
+		JobAday basvuruDurumAday = jobAdayService.getApplicationStatus(user_id, job_id);
+		String ilanStatus = basvuruDurumAday.getBasvuru_statusu();
+		model.addAttribute("basvuru_durumu", ilanStatus);
+		
 		return "adayInfo";
 	}
 
@@ -315,9 +311,16 @@ public class HrController {
 	 //jobsService.createIlan(job, request);
 	 blackListService.createBlackListed(list);
 	 
+	 /* adayýn bütün iþlerini alýyor*/
 	 Long karaListeliId = list.getAday_id();
 	 ArrayList<JobAday> basvurular = jobAdayService.getAllApplicationOfOneAday(karaListeliId);
 	 
+	 /* aday tablosundaki deðeri true yapýyor böylece karalistede olduðunu anlýyoruz*/
+	 Adays aday = adaysService.getAdayById(karaListeliId);
+	 aday.setKaraListe(true);
+	 adaysService.updateAday(aday);
+	 
+	 /* Bütün iþ baþvurularý red oluyor*/
 	 for (int i = 0; i < basvurular.size(); i++) {
 			//job = jobsService.getJobById(basvurular.get(i).getJob_id());
 		 	JobAday basvuru = basvurular.get(i);

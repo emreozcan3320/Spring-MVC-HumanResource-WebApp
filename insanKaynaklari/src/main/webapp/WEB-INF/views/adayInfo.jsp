@@ -13,16 +13,16 @@
   <meta name="author" content="">
   <title>SB Admin - Start Bootstrap Template</title>
   <!-- Bootstrap core CSS-->
-  <link href="resources/adminPanel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../resources/adminPanel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <link href="resources/adminPanel/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../resources/adminPanel/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Page level plugin CSS-->
-  <link href="resources/adminPanel/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <link href="../resources/adminPanel/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
-  <link href="resources/adminPanel/css/sb-admin.css" rel="stylesheet">
-  <link href="resources/custom/css/jquery-ui.css" rel="stylesheet">
-  <link href="resources/custom/css/jquery-ui.structure.css" rel="stylesheet">
-  <link href="resources/custom/css/jquery-ui.theme.css" rel="stylesheet">
+  <link href="../resources/adminPanel/css/sb-admin.css" rel="stylesheet">
+  <link href="../resources/custom/css/jquery-ui.css" rel="stylesheet">
+  <link href="../resources/custom/css/jquery-ui.structure.css" rel="stylesheet">
+  <link href="../resources/custom/css/jquery-ui.theme.css" rel="stylesheet">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark sidenav-toggled" id="page-top">
@@ -87,19 +87,19 @@
   </div>
   
   <!-- Bootstrap core JavaScript-->
-    <script src="resources/adminPanel/vendor/jquery/jquery.min.js"></script>
-    <script src="resources/adminPanel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../resources/adminPanel/vendor/jquery/jquery.min.js"></script>
+    <script src="../resources/adminPanel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
-    <script src="resources/adminPanel/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../resources/adminPanel/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="resources/adminPanel/vendor/datatables/jquery.dataTables.js"></script>
-    <script src="resources/adminPanel/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="../resources/adminPanel/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="../resources/adminPanel/vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
-    <script src="resources/adminPanel/js/sb-admin.min.js"></script>
+    <script src="../resources/adminPanel/js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
-    <script src="resources/adminPanel/js/sb-admin-datatables.min.js"></script>
-    <script type="text/javascript" src="resources/custom/vendor/jquery-ui.js"></script>
-    <script type="text/javascript" src="resources/custom/js/adayInfo.js"></script>
+    <script src="../resources/adminPanel/js/sb-admin-datatables.min.js"></script>
+    <script type="text/javascript" src="../resources/custom/vendor/jquery-ui.js"></script>
+    <script type="text/javascript" src="../resources/custom/js/adayInfo.js"></script>
     
 </body>
 
