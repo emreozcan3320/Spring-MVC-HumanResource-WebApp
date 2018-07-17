@@ -119,8 +119,8 @@
 				</div>
 			</c:if>
 			<c:if test="${basvuru_durumu == 'beklemede'}">
-				<button type="button" class="btn btn-success">Kabul Et</button>
-				<button type="button" class="btn btn-danger">Reddet</button>
+				<button type="button" class="btn btn-success" onclick="basvuruKabul()">Kabul Et</button>
+				<button type="button" class="btn btn-danger" onclick="basvuruRed()">Reddet</button>
 			</c:if>
 			
 			

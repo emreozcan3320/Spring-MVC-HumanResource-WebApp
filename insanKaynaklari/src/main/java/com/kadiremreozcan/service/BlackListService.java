@@ -16,8 +16,14 @@ public class BlackListService {
 
 	// CREATE
 	public long createBlackListed(BlackList list) {
-
+		System.out.println("Service ::: aday id si ->"+list.getAday_id());
 		return blackListDAO.insert(list);
+	}
+
+	// DELETE
+	public void deleteBlackListed(Long aday_id) {
+
+		blackListDAO.deleteByAdayId(aday_id);
 	}
 
 	// READ bir adayýn karaliste bilgisini dönüyor

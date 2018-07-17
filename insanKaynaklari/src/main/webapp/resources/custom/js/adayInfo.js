@@ -34,14 +34,16 @@ function addBlackList(){
 		
 		$.ajax({
 			type : "POST",
-			url : "../adayKaraListe",
+			headers: { 'islem': 'add' },
+			url : "../../adayKaraListe",
 			contentType:"application/json",
 			data:ser_data,
 			success : function(data) {
-
+				window.location.reload();
 				console.log(data);
 			},
 			error : function(data) {
+				window.location.reload();
 				console.log(data);
 			}
 
@@ -56,10 +58,40 @@ function addBlackList(){
 		$( "#dialog" ).dialog( "close" );
 	}
 	
+	
 }
 
 function removeFromBlackList(){
 	console.log("kara listeden çıkartıldı");
+	var adayId = $("#adayId").val();
+	var hrId = $("#hrId").val();
+	
+	var param={
+			aday_id : adayId,
+			hr_id : hrId,
+			reason : null
+	}
+	
+	var ser_data =JSON.stringify(param);
+	
+	$.ajax({
+		type : "POST",
+		headers: { 'islem': 'remove' },
+		url : "../../adayKaraListe",
+		contentType:"application/json",
+		data:ser_data,
+		success : function(data) {
+			window.location.reload();
+			console.log(data);
+		},
+		error : function(data) {
+			window.location.reload();
+			console.log(data);
+		}
+
+	});
+	
+	
 }
 
 function getOneAday(){

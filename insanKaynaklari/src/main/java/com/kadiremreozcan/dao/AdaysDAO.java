@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kadiremreozcan.entity.Adays;
-import com.kadiremreozcan.entity.Jobs;
 
 @Repository
 public class AdaysDAO {

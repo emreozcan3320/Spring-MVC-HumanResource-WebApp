@@ -307,30 +307,60 @@ public class HrController {
 	 @ResponseBody public ResponseEntity<String> adayKaraListeEkle(@RequestBody BlackList list, HttpServletRequest request) {
 	  
 	 System.out.println("/isveren/adayInfo :: post");
+	 String islem = request.getHeader("islem");
+	 System.out.println("gelen iþlem headerý ::: "+islem);
 	 
-	 //jobsService.createIlan(job, request);
-	 blackListService.createBlackListed(list);
+	 if(islem.equals("add")) {
+		 
+		 
+		 //blaclist tablosuna ekliyor
+		 blackListService.createBlackListed(list);
+		 
+		 /* adayýn bütün iþlerini alýyor*/
+		 Long karaListeliId = list.getAday_id();
+		 ArrayList<JobAday> basvurular = jobAdayService.getAllApplicationOfOneAday(karaListeliId);
+		 
+		 /* aday tablosundaki deðeri true yapýyor böylece karalistede olduðunu anlýyoruz*/
+		 Adays aday = adaysService.getAdayById(karaListeliId);
+		 aday.setKaraListe(true);
+		 adaysService.updateAday(aday);
+		 
+		 /* Bütün iþ baþvurularý red oluyor*/
+		 for (int i = 0; i < basvurular.size(); i++) {
+				//job = jobsService.getJobById(basvurular.get(i).getJob_id());
+			 	JobAday basvuru = basvurular.get(i);
+			 	basvuru.setBasvuru_statusu("red");
+			 	jobAdayService.updateBasvuru(basvuru);
+			}
+	 }
 	 
-	 /* adayýn bütün iþlerini alýyor*/
-	 Long karaListeliId = list.getAday_id();
-	 ArrayList<JobAday> basvurular = jobAdayService.getAllApplicationOfOneAday(karaListeliId);
+	 if(islem.equals("remove")) {
+		 System.out.println("remove a girildi ");
+		 System.out.println("Controller ::: aday id si ->"+list.getAday_id());
+		 //blacklist tablosundan çýkarýyor
+		 
+		 blackListService.deleteBlackListed(list.getAday_id());
+		 
+		 /* aday tablosundaki deðeri FALSE yapýyor böylece karalisteden çýktýðýný anlýyoruz*/
+		 Long karaListeliId = list.getAday_id();
+		 Adays aday = adaysService.getAdayById(karaListeliId);
+		 aday.setKaraListe(false);
+		 adaysService.updateAday(aday);
+		 
+		 System.out.println("remove dan çýkýldý ");
+	 }
 	 
-	 /* aday tablosundaki deðeri true yapýyor böylece karalistede olduðunu anlýyoruz*/
-	 Adays aday = adaysService.getAdayById(karaListeliId);
-	 aday.setKaraListe(true);
-	 adaysService.updateAday(aday);
-	 
-	 /* Bütün iþ baþvurularý red oluyor*/
-	 for (int i = 0; i < basvurular.size(); i++) {
-			//job = jobsService.getJobById(basvurular.get(i).getJob_id());
-		 	JobAday basvuru = basvurular.get(i);
-		 	basvuru.setBasvuru_statusu("red");
-		 	jobAdayService.updateBasvuru(basvuru);
-		}
-	  
 	  
 	 return new ResponseEntity<>("OK", HttpStatus.CREATED);
 	 }
+	 
+	 @RequestMapping(value = "/isveren/adayKBasvuruIslem", method = RequestMethod.POST) 
+	 @ResponseBody public ResponseEntity<String> adayBasvuruIslem(@RequestBody JobAday basvuru, HttpServletRequest request) {
+		 
+		 
+		 return new ResponseEntity<>("OK", HttpStatus.CREATED);
+	 }
+	 
 	 
 
 	/*
