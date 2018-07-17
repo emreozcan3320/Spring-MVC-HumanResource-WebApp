@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kadiremreozcan.entity.Adays;
+import com.kadiremreozcan.entity.BlackList;
 import com.kadiremreozcan.entity.HrStaffs;
 import com.kadiremreozcan.entity.JobAday;
 import com.kadiremreozcan.entity.Jobs;
@@ -300,21 +301,18 @@ public class HrController {
 		return "adayInfo";
 	}
 
-	// id si verilen bir adayýn bilgilerini dönen endpoint
-	/*
-	 * @RequestMapping(value = "/isveren/adayInfo", method = RequestMethod.POST)
-	 * 
-	 * @ResponseBody public ResponseEntity<Adays> birAdayBilgisi(@RequestBody String
-	 * aday_id, HttpServletRequest request) {
-	 * 
-	 * System.out.println("/isveren/adayInfo :: post");
-	 * 
-	 * 
-	 * 
-	 * return new
-	 * ResponseEntity<>(adaysService.getAdayById(Long.parseLong(aday_id)),
-	 * HttpStatus.CREATED); }
-	 */
+	// id si verilen bir adayý karalisteye ekliyen endpoint
+	
+	 @RequestMapping(value = "/isveren/adayKaraListe", method = RequestMethod.POST) 
+	 @ResponseBody public ResponseEntity<String> adayKaraListeEkle(@RequestBody BlackList list, HttpServletRequest request) {
+	  
+	 System.out.println("/isveren/adayInfo :: post");
+	  
+	  
+	  
+	 return new ResponseEntity<>("OK", HttpStatus.CREATED);
+	 }
+	 
 
 	/*
 	 * ÝÞVEREN ENDPOINTLERÝ BÝTÝÞÝ

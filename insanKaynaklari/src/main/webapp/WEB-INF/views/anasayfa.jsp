@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -20,9 +19,13 @@
 </head>
 
 <body>
-	<!-- Header Section Start -->
-	<jsp:include page="../includes/headerGenel.jsp"></jsp:include>
-	<!-- Header Section End   -->
+<% if (session.getAttribute("hrSession") == null && session.getAttribute("adaySession") == null) { %>
+    <jsp:include page="../includes/headerGenel.jsp"></jsp:include>
+<% } if (session.getAttribute("adaySession") != null) {%>
+    <jsp:include page="../includes/headerAday.jsp"></jsp:include>
+<% }if (session.getAttribute("hrSession") != null) { %>
+	<jsp:include page="../includes/headerIsveren.jsp"></jsp:include>
+<%} %>
 
 	<!-- Find Job Section Start -->
 	<section class="find-job section">

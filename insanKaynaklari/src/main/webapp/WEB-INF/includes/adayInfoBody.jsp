@@ -1,6 +1,7 @@
+<%@ page import="com.kadiremreozcan.entity.HrStaffs" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <!-- Page Content -->
@@ -18,6 +19,11 @@
 			</ul>
 			<div class="tab-content py-4">
 				<div class="tab-pane active" id="profile">
+					<input type="hidden" id="adayId" value="${aday.id}">
+					<% HrStaffs hrCurrent = (HrStaffs) session.getAttribute("hrSession");
+						Long hrId = hrCurrent.getId();
+					%>
+					<input type="hidden" id="hrId" value="<%=hrId %>"/>
 					<h5 class="mb-3">${aday.name}${aday.surname}</h5>
 					<hr>
 					<div class="row">
@@ -191,13 +197,18 @@
 			<img src="${aday.profilPicUrl}" height="300" width="300"
 				class="mx-auto img-fluid img-circle d-block" alt="avatar"> <br>
 			<c:if test="${aday.karaListe == true}">
-				<button type="button" class="btn btn-success">Kara Listeden
-					Çıkar</button>
+				<button id = "opener" type="button" class="btn btn-success"
+					onclick="removeFromBlackList()")>Kara Listeden Çıkar</button>
 			</c:if>
 			<c:if test="${aday.karaListe == false}">
-				<button type="button" class="btn btn-danger">Kara Listeye
-					Ekle</button>
+				<button id = "opener" type="button" class="btn btn-danger"
+					onclick="addBlackListButton()">Kara Listeye Ekle</button>
 			</c:if>
+		<div id="dialog" title="Ekleme Sebebinizi Giriniz">
+			<input type="text" name="sebep" id="sebep">
+			<button type="button" class="btn btn-secondary dialog-btn" onclick="addBlackList()">Kaydet</button>
+		</div>
+
 		</div>
 	</div>
 	<!-- /.row -->

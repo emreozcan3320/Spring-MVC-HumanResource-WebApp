@@ -1,4 +1,4 @@
- 	package com.kadiremreozcan.dao;
+package com.kadiremreozcan.dao;
 
 import java.util.ArrayList;
 
@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kadiremreozcan.entity.Adays;
+import com.kadiremreozcan.entity.Jobs;
 
 @Repository
 public class AdaysDAO {
@@ -50,39 +51,56 @@ public class AdaysDAO {
 	}
 
 	// READ bir adayý linkedin_id ne göre dönüyor
-		public Adays getFindByLinkedInId(String linkedin_id) {
-			System.out.println("hibernate query öncesi ::" + linkedin_id);
-			
-			Query query = sessionFactory.getCurrentSession().createQuery("FROM Adays  WHERE linkedin_id=:linkedin_id").setParameter("linkedin_id",
-					linkedin_id);
-			try {
-				return (Adays) query.getSingleResult();
-			} catch (NoResultException  e) {
-				Adays db_aday = new Adays();
-				return db_aday;
-			}
+	public Adays getFindByLinkedInId(String linkedin_id) {
+		System.out.println("hibernate query öncesi ::" + linkedin_id);
+
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Adays  WHERE linkedin_id=:linkedin_id")
+				.setParameter("linkedin_id", linkedin_id);
+		try {
+			return (Adays) query.getSingleResult();
+		} catch (NoResultException e) {
+			Adays db_aday = new Adays();
+			return db_aday;
 		}
-		
+	}
+
 	// READ bütün adaylarý dönüyor
 	@SuppressWarnings("unchecked")
 	public ArrayList<Adays> getAll() {
-		
+
 		Query query = sessionFactory.getCurrentSession().createQuery("FROM Adays");
 
 		return (ArrayList<Adays>) query.getResultList();
 	}
+	
+	/*//READ Bir adayýn baþvurduðu ilanlarý dönüyor
+	@SuppressWarnings({ "deprecation", "unchecked" })
+	public ArrayList<Jobs> getOneAdayApplications(Long aday_id) {
 
-	//READ Bir ilana baþvuran adaylarýn datasýný dönüyor
-			@SuppressWarnings({ "deprecation", "unchecked" })
-			public ArrayList<Adays> getOneApplicationAdayInfo(Long ilan_id){
-			
-			/*Query query = sessionFactory.getCurrentSession().createQuery("FROM JobAday WHERE aday_id=:aday_id ")
-					.setLong("aday_id", aday_id);*/
-				
-			Query query = sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM adays,jobaday WHERE job_id=:ilan_id AND jobaday.aday_id = adays.id ")
-					.setLong("ilan_id", ilan_id);
-			
-			return (ArrayList<Adays>) query.getResultList();
-			
-			}
+
+		Query query = sessionFactory.getCurrentSession()
+				.createSQLQuery("SELECT * FROM jobs,jobaday WHERE ada_id=:aday_id AND jobaday.job_id = jobs.id ")
+				.setLong("aday_id", aday_id);
+
+		return (ArrayList<Jobs>) query.getResultList();
+
+	}*/
+
+	// READ Bir ilana baþvuran adaylarýn datasýný dönüyor
+	@SuppressWarnings({ "deprecation", "unchecked" })
+	public ArrayList<Adays> getOneApplicationAdayInfo(Long ilan_id) {
+
+		/*
+		 * Query query = sessionFactory.getCurrentSession().
+		 * createQuery("FROM JobAday WHERE aday_id=:aday_id ") .setLong("aday_id",
+		 * aday_id);
+		 */
+
+		Query query = sessionFactory.getCurrentSession()
+				.createSQLQuery("SELECT * FROM adays,jobaday WHERE job_id=:ilan_id AND jobaday.aday_id = adays.id ")
+				.setLong("ilan_id", ilan_id);
+
+		return (ArrayList<Adays>) query.getResultList();
+
+	}
 }

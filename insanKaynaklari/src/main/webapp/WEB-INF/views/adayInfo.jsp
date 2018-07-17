@@ -20,12 +20,22 @@
   <link href="resources/adminPanel/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="resources/adminPanel/css/sb-admin.css" rel="stylesheet">
+  <link href="resources/custom/css/jquery-ui.css" rel="stylesheet">
+  <link href="resources/custom/css/jquery-ui.structure.css" rel="stylesheet">
+  <link href="resources/custom/css/jquery-ui.theme.css" rel="stylesheet">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark sidenav-toggled" id="page-top">
 
 <style>
 .hrefTable { cursor: pointer; }
+#dialog {
+    display:none;
+}
+
+.dialog-btn{
+	margin-top:15px;
+}
 
 </style>
 
@@ -88,6 +98,8 @@
     <script src="resources/adminPanel/js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="resources/adminPanel/js/sb-admin-datatables.min.js"></script>
+    <script type="text/javascript" src="resources/custom/vendor/jquery-ui.js"></script>
+    <script type="text/javascript" src="resources/custom/js/adayInfo.js"></script>
     
 </body>
 

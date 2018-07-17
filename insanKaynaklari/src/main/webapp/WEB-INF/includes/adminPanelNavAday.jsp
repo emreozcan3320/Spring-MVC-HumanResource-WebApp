@@ -17,7 +17,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="${contextPath}/aday/ilanlar">
+          <a class="nav-link" href="${contextPath}">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">İlanlar</span>
           </a>

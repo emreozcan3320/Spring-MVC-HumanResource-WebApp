@@ -1,7 +1,66 @@
 $(document).ready(function() {
 	
 	console.log("hello world");
+	
+	$("#dialog").dialog({
+	    autoOpen: false
+	});
+        
+	//getOneAday();
 });
+
+function addBlackListButton(){
+	console.log("kara listeye eklendi");
+	 $( "#dialog" ).dialog( "open" );
+}
+
+function addBlackList(){
+
+	var sebep = $("#sebep").val();
+	
+	if(sebep == "")	{
+		alert("Lütfen Bir Sebep Giriniz")
+	}else{
+		var adayId = $("#adayId").val();
+		var hrId = $("#hrId").val();
+		
+		var param={
+				aday_id = adayId,
+				hr_id = hrId,
+				reason = sebep
+		}
+		
+		var ser_data =JSON.stringify(param);
+		
+		$.ajax({
+			type : "POST",
+			url : "./adayKaraListe",
+			contentType:"html/text; charset-UTF8",
+			data:ser_data,
+			success : function(data) {
+
+				console.log(data);
+			},
+			error : function(data) {
+				console.log(data);
+			}
+
+		});
+		
+		//////////////////
+		console.log(sebep);
+		console.log("adayId :: "+adayId);
+		console.log("hrId :: "+hrId);
+		//////////////////
+		
+		$( "#dialog" ).dialog( "close" );
+	}
+	
+}
+
+function removeFromBlackList(){
+	console.log("kara listeden çıkartıldı");
+}
 
 function getOneAday(){
 	$.ajax({

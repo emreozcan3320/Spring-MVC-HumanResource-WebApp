@@ -31,6 +31,9 @@ public class JobAdayDAO {
 		sessionFactory.getCurrentSession().delete(basvuru);
 	}
 	
+	//READ bir ilanýn durumunu dönüyor
+	
+	
 	//READ bir adayýn ilanlarýný döndürüyor
 	@SuppressWarnings({ "deprecation", "unchecked" })
 	public ArrayList<JobAday> getOneAdayApplications(Long aday_id){

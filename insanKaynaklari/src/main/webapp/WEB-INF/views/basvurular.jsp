@@ -60,7 +60,6 @@
                   <th>Deactivasyon Zamanı</th>
                   <th>İlan Durumu</th>
                   <th>Başvuru Durumu</th>
-                  <th>Delte</th>
                 </tr>
               </thead>
               <tfoot>
@@ -74,12 +73,12 @@
                   <th>Deactivasyon Zamanı</th>
                   <th>İlan Durumu</th>
                   <th>Başvuru Durumu</th>
-                  <th>Delete</th>
                 </tr>
               </tfoot>
               <tbody id="list">
-                
-                
+                <c:forEach items="${basvuru_tag}" var="tag">
+								${tag}
+				</c:forEach>
               </tbody>
             </table>
           </div>

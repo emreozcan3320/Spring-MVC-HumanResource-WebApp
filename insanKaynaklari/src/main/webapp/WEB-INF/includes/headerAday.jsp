@@ -5,11 +5,11 @@
 				<nav class="navbar navbar-default" role="navigation"
 					data-spy="affix" data-offset-top="50">
 					<!-- Menu Begining -->
-					<jsp:include page="menuler/menuIsveren.jsp"></jsp:include>
+					<jsp:include page="menuler/menuAday.jsp"></jsp:include>
 					<!-- Menu End -->
 
 					<!-- Mobile Menu Start -->
-					<jsp:include page="menuler/mobilMenuIsveren.jsp"></jsp:include>
+					<jsp:include page="menuler/mobilMenuAday.jsp"></jsp:include>
 					<!-- Mobile Menu End -->
 				</nav>
 
