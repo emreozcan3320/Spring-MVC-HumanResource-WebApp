@@ -173,6 +173,9 @@ public class HrController {
 		System.out.println("/isveren/ilan :: post");
 
 		HrStaffs hrCurrent = (HrStaffs) request.getSession().getAttribute("hrSession");
+		
+		
+		
 		return new ResponseEntity<>(jobsService.getAll(hrCurrent.getId()), HttpStatus.CREATED);
 	}
 
