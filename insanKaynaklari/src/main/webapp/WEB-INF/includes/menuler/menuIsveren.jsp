@@ -22,6 +22,8 @@
 			<li><a href="${contextPath}/isveren/ilan">ilan Yönetimi</a></li>
 
 			<li><a href="${contextPath}/isveren/ilanEkle">İlan Ekle</a></li>
+			
+			<li><a href="${contextPath}/isveren/ilanlar">İlanlar</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right float-right">
 			<li class="left"><a href="${contextPath}/isveren/logout"><i

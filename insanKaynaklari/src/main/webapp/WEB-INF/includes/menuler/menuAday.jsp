@@ -25,8 +25,8 @@
 
 		</ul>
 		<ul class="nav navbar-nav navbar-right float-right">
-			<li class="right"><a href="${contextPath}/logout"><i
-					class="ti-lock"></i>Çıkış</a></li>
+			<li class="right">
+			<a href="${contextPath}/aday/logout"><i class="ti-lock"></i>Çıkış</a></li>
 		</ul>
 	</div>
 </div>

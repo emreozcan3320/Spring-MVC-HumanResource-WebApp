@@ -59,7 +59,7 @@ public class AdayController {
 
 		System.out.println("/aday/logout");
 
-		return "redirect:aday/login";
+		return "redirect:login";
 	}
 
 	@RequestMapping(value = "/aday/basvurularim", method = RequestMethod.GET)
@@ -107,9 +107,11 @@ public class AdayController {
 	@RequestMapping(value = "/aday/basvur", method = RequestMethod.POST) 
 	 @ResponseBody public ResponseEntity<String> adaybasvuru(@RequestBody JobAday basvuru, HttpServletRequest request) {
 	  
-	 System.out.println("/isveren/adayInfo :: post");
+	 System.out.println("/aday/basvur :: post");
 	 
 	 //jobsService.createIlan(job, request);
+	 
+	 basvuru.setBasvuru_statusu("beklemede");
 	 jobAdayService.createBasvuru(basvuru);
 	  
 	  

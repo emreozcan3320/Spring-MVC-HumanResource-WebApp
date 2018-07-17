@@ -73,6 +73,7 @@ public class HomeController {
 
 		System.out.println("ilanlar/" + id);
 		model.addAttribute("ilan", jobsService.getJobById(id));
+		//TODO: Ýlana baþvurduysa baþvurmamasý için model oluþturulacak
 
 		return "ilanDetaylari";
 	}

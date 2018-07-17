@@ -1,5 +1,5 @@
+<%@ page import="com.kadiremreozcan.entity.Adays" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <html>
@@ -35,12 +35,16 @@ width : 90%;
 			<div class="logo-menu">
 				<nav class="navbar navbar-default" role="navigation"
 					data-spy="affix" data-offset-top="50">
-					<!-- Menu Begining -->
-					<jsp:include page="../includes/menuler/menuGeneral.jsp"></jsp:include>
-					<!-- Menu End -->
-					<!-- Mobile Menu Start -->
+				<% if (session.getAttribute("hrSession") == null && session.getAttribute("adaySession") == null) { %>
+    				<jsp:include page="../includes/menuler/menuGeneral.jsp"></jsp:include>
 					<jsp:include page="../includes/menuler/mobilMenuGeneral.jsp"></jsp:include>
-					<!-- Mobile Menu End -->
+				<% } if (session.getAttribute("adaySession") != null) {%>
+    				<jsp:include page="../includes/menuler/menuAday.jsp"></jsp:include>
+					<jsp:include page="../includes/menuler/mobilMenuAday.jsp"></jsp:include>
+				<% }if (session.getAttribute("hrSession") != null) { %>
+					<jsp:include page="../includes/menuler/menuIsveren.jsp"></jsp:include>
+					<jsp:include page="../includes/menuler/mobilMenuIsveren.jsp"></jsp:include>
+				<%} %>
 				</nav>
 
 				<!-- Off Canvas Navigation -->
@@ -144,7 +148,18 @@ width : 90%;
             	
             	<h5 class="info">Expiration Tarihi <span class="badge badge-secondary" id="expiration_date">${ilan.expiration_date}</span></h5>
             	
-            	<a href="ilanlarBasvur/${ilan.id}" class="btn btn-common btn-rm info_button" style="text-align:center">Başvur</a>
+            	
+            	<% if (session.getAttribute("hrSession") == null && session.getAttribute("adaySession") == null) { %>
+    				<a href="${contextPath}/aday/login" class="btn btn-common btn-rm info_button" style="text-align:center">Başvuru İçin Giriş Yapın</a>
+				<% } if (session.getAttribute("adaySession") != null) {
+            			Adays adayCurrent = (Adays) session.getAttribute("adaySession");
+						Long adayId = adayCurrent.getId();%>
+    				<button onclick="basvur(${ilan.id},<%=adayId %>)" class="btn btn-common btn-rm info_button" style="text-align:center">Başvur</button>
+				<% }if (session.getAttribute("hrSession") != null) { %>
+					
+				<%} %>
+            	
+            	
             </div>
           </div>
 
@@ -187,6 +202,7 @@ width : 90%;
 	<!-- Theme1 Scripts Starts -->
 	<jsp:include page="../includes/theme1Scripts.jsp"></jsp:include>
 	<!-- Theme1 Scripts Ends -->
+	<script type="text/javascript" src="resources/custom/js/ilanDetaylari.js"></script>
 
 </body>
 </html>
