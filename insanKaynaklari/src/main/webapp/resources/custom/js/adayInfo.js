@@ -25,17 +25,17 @@ function addBlackList(){
 		var hrId = $("#hrId").val();
 		
 		var param={
-				aday_id = adayId,
-				hr_id = hrId,
-				reason = sebep
+				aday_id : adayId,
+				hr_id : hrId,
+				reason : sebep
 		}
 		
 		var ser_data =JSON.stringify(param);
 		
 		$.ajax({
 			type : "POST",
-			url : "./adayKaraListe",
-			contentType:"html/text; charset-UTF8",
+			url : "../adayKaraListe",
+			contentType:"application/json",
 			data:ser_data,
 			success : function(data) {
 

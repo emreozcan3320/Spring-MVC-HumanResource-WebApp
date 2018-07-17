@@ -23,6 +23,7 @@ import com.kadiremreozcan.entity.HrStaffs;
 import com.kadiremreozcan.entity.JobAday;
 import com.kadiremreozcan.entity.Jobs;
 import com.kadiremreozcan.service.AdaysService;
+import com.kadiremreozcan.service.BlackListService;
 import com.kadiremreozcan.service.HrStaffsService;
 import com.kadiremreozcan.service.JobAdayService;
 import com.kadiremreozcan.service.JobsService;
@@ -41,6 +42,9 @@ public class HrController {
 	
 	@Autowired
 	private HrStaffsService hrStaffService;
+	
+	@Autowired
+	private BlackListService blackListService;
 
 	/*
 	 * ÝÞVEREN ENDPOINTLERÝ BAÞLANGICI
@@ -307,7 +311,19 @@ public class HrController {
 	 @ResponseBody public ResponseEntity<String> adayKaraListeEkle(@RequestBody BlackList list, HttpServletRequest request) {
 	  
 	 System.out.println("/isveren/adayInfo :: post");
-	  
+	 
+	 //jobsService.createIlan(job, request);
+	 blackListService.createBlackListed(list);
+	 
+	 Long karaListeliId = list.getAday_id();
+	 ArrayList<JobAday> basvurular = jobAdayService.getAllApplicationOfOneAday(karaListeliId);
+	 
+	 for (int i = 0; i < basvurular.size(); i++) {
+			//job = jobsService.getJobById(basvurular.get(i).getJob_id());
+		 	JobAday basvuru = basvurular.get(i);
+		 	basvuru.setBasvuru_statusu("red");
+		 	jobAdayService.updateBasvuru(basvuru);
+		}
 	  
 	  
 	 return new ResponseEntity<>("OK", HttpStatus.CREATED);

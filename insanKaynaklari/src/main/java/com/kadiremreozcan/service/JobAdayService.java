@@ -17,18 +17,26 @@ public class JobAdayService {
 
 	@Autowired
 	private JobAdayDAO jobAdayDAO;
-	
-	//CREATE
+
+	// CREATE
 	public long createBasvuru(JobAday basvuru, HttpServletRequest req) {
-		
+
 		return jobAdayDAO.insert(basvuru);
 	}
-	
-	//READ bir adayýn basvurularýný döndürüyor
-	public ArrayList<JobAday> getAllApplicationOfOneAday(Long aday_id){
-		
+
+	// UPDATE
+	public Long updateBasvuru(JobAday basvuru) {
+
+		jobAdayDAO.update(basvuru);
+
+		// TODO:Neden 1l yollandý
+		return 1l;
+	}
+
+	// READ bir adayýn basvurularýný döndürüyor
+	public ArrayList<JobAday> getAllApplicationOfOneAday(Long aday_id) {
+
 		return (ArrayList<JobAday>) jobAdayDAO.getOneAdayApplications(aday_id);
 	}
-	
-	
+
 }
