@@ -22,11 +22,9 @@
 			<li><a href="${contextPath}/isveren/ilan">ilan Yönetimi</a></li>
 
 			<li><a href="${contextPath}/isveren/ilanEkle">İlan Ekle</a></li>
-
-			<li><a href="#"> BOŞ</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right float-right">
-			<li class="left"><a href="${contextPath}/isveren/login"><i
+			<li class="left"><a href="${contextPath}/isveren/logout"><i
 					class="ti-pencil-alt"></i>Çıkış</a></li>
 		</ul>
 	</div>

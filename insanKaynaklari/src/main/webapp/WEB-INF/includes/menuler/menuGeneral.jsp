@@ -20,10 +20,6 @@
 			<li><a class="active" href="${contextPath}/"> Anasayfa</a></li>
 
 			<li><a href="${contextPath}/ilanlar"> İş İlanları</a></li>
-
-			<li><a href="about.html"> İş Ara</a></li>
-
-			<li><a href="about.html"> İş Kategorileri</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right float-right">
 			<li class="left"><a href="${contextPath}/isveren/login"><i

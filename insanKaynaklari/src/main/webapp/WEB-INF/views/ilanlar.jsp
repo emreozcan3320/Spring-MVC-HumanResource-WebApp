@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <html>
@@ -26,22 +25,25 @@
 		<!-- Start intro section -->
 		<section id="intro" class="section-intro">
 			<div class="logo-menu">
-				<nav class="navbar navbar-default" role="navigation"
-					data-spy="affix" data-offset-top="50">
-					<!-- Menu Begining -->
-					<jsp:include page="../includes/menuler/menuGeneral.jsp"></jsp:include>
-					<!-- Menu End -->
-					<!-- Mobile Menu Start -->
+				<nav class="navbar navbar-default" role="navigation" data-spy="affix" data-offset-top="50">
+				
+				<% if (session.getAttribute("hrSession") == null && session.getAttribute("adaySession") == null) { %>
+    				<jsp:include page="../includes/menuler/menuGeneral.jsp"></jsp:include>
 					<jsp:include page="../includes/menuler/mobilMenuGeneral.jsp"></jsp:include>
-					<!-- Mobile Menu End -->
+				<% } if (session.getAttribute("adaySession") != null) {%>
+    				<jsp:include page="../includes/menuler/menuAday.jsp"></jsp:include>
+					<jsp:include page="../includes/menuler/mobilMenuAday.jsp"></jsp:include>
+				<% }if (session.getAttribute("hrSession") != null) { %>
+					<jsp:include page="../includes/menuler/menuIsveren.jsp"></jsp:include>
+					<jsp:include page="../includes/menuler/mobilMenuIsveren.jsp"></jsp:include>
+				<%} %>
+					
 				</nav>
 
-				<!-- Off Canvas Navigation -->
 				<div class="navmenu navmenu-default navmenu-fixed-left offcanvas">
-					<!--- Off Canvas Side Menu -->
 					<jsp:include page="../includes/offCanvasSideMenu.jsp"></jsp:include>
-					<!--- End Off Canvas Side Menu -->
 				</div>
+				
 				<!--- End Off Canvas Side Menu -->
 				<div class="tbtn wow pulse" id="menu" data-wow-iteration="infinite"
 					data-wow-duration="500ms" data-toggle="offcanvas"

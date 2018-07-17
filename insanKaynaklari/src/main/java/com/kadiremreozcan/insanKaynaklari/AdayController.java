@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kadiremreozcan.entity.Adays;
-import com.kadiremreozcan.entity.BlackList;
 import com.kadiremreozcan.entity.JobAday;
 import com.kadiremreozcan.entity.Jobs;
 import com.kadiremreozcan.service.JobAdayService;
@@ -80,15 +79,15 @@ public class AdayController {
 		for (int i = 0; i < basvurular.size(); i++) {
 			job = jobsService.getJobById(basvurular.get(i).getJob_id());
 			titles.add("<tr>"
-							+job.getTitle()+"</td>"
-							+job.getJob_definition()+"</td>"
-							+job.getPersonal_qualities()+"</td>"
-							+job.getExpertise()+"</td>"
-							+job.getCreate_date()+"</td>"
-							+job.getActivation_date()+"</td>"
-							+job.getExpiration_date()+"</td>"
-							+job.isStatus()+"</td>"
-							+basvurular.get(i).getBasvuru_statusu()+"</td>"
+							+"<td>"+job.getTitle()+"</td>"
+							+"<td>"+job.getJob_definition()+"</td>"
+							+"<td>"+job.getPersonal_qualities()+"</td>"
+							+"<td>"+job.getExpertise()+"</td>"
+							+"<td>"+job.getCreate_date()+"</td>"
+							+"<td>"+job.getActivation_date()+"</td>"
+							+"<td>"+job.getExpiration_date()+"</td>"
+							+"<td>"+job.isStatus()+"</td>"
+							+"<td>"+basvurular.get(i).getBasvuru_statusu()+"</td>"
 					+ "</tr>");
 			
 

@@ -21,11 +21,11 @@
 
 			<li><a href="${contextPath}/ilanlar"> İş İlanları</a></li>
 
-			<li><a href="${contextPath}/basvurular">Başvurularım</a></li>
+			<li><a href="${contextPath}/aday/basvurularim">Başvurularım</a></li>
 
 		</ul>
 		<ul class="nav navbar-nav navbar-right float-right">
-			<li class="right"><a href="${contextPath}/aday/login"><i
+			<li class="right"><a href="${contextPath}/logout"><i
 					class="ti-lock"></i>Çıkış</a></li>
 		</ul>
 	</div>
