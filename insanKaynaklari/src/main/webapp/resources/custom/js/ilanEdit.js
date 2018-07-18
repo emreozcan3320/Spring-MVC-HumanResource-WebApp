@@ -106,14 +106,16 @@ function ilanUpdate(){
 		activation_date = activation_date.getTime();
 	}
 	
-	if(today_date > activation_date ){
-		alert("Ilan Aktif olucaktır");
-	}
-	if(expiration_date < today_date ){
-		alert("Ilan Pasif Olucaktır");
-	}
 	if(activation_date > expiration_date ){
 		alert("Aktivasyon tarihi Expiration Tarihinden büyük olamaz");
+	}else{
+		
+		if(today_date > activation_date ){
+			alert("Ilan Aktif olucaktır");
+		}
+		if(expiration_date < today_date ){
+			alert("Ilan Pasif Olucaktır");
+		}
 	}
 	
 	if( activation_date < expiration_date ){
