@@ -1,5 +1,6 @@
 package com.kadiremreozcan.dao;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.hibernate.SessionFactory;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kadiremreozcan.entity.Adays;
 import com.kadiremreozcan.entity.BlackList;
 
 @Repository
@@ -43,7 +45,12 @@ public class BlackListDAO {
 	public BlackList getFindByAdayId(Long aday_id) {
 		Query query = sessionFactory.getCurrentSession().createQuery("FROM BlackList WHERE aday_id=:aday_id")
 				.setLong("aday_id", aday_id);
-
-		return (BlackList) query.getSingleResult();
+		
+		try {
+			return (BlackList) query.getSingleResult();
+		} catch (NoResultException e) {
+			BlackList list = new BlackList();
+			return list;
+		}
 	}
 }

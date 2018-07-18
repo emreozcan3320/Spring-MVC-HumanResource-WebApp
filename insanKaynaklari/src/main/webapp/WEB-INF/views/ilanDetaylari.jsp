@@ -1,4 +1,6 @@
 <%@ page import="com.kadiremreozcan.entity.Adays" %>
+<%@ page import="com.kadiremreozcan.entity.BlackList" %>
+<%@ page import="com.kadiremreozcan.service.BlackListService" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
@@ -147,14 +149,22 @@ width : 90%;
             	<h5 class="info">Aktivasyon Tarihi <span class="badge badge-secondary" id="create_date">${ilan.create_date}</span></h5>
             	
             	<h5 class="info">Expiration Tarihi <span class="badge badge-secondary" id="expiration_date">${ilan.expiration_date}</span></h5>
+            	<%
+            	if (session.getAttribute("adaySession") != null) {
+        			Adays adayCurrent = (Adays) session.getAttribute("adaySession");
+					Long adayId = adayCurrent.getId();
+					
+					BlackListService blackListService = new BlackListService();
+					
+					try {
+						BlackList listed = blackListService.getOneAdayBlackListInfo(adayId);%>
+					<button type="button" disabled>Kara Listedesiniz</button>
+						
+					<%} catch (NullPointerException e) {%>
+					<button onclick="basvur(${ilan.id},<%=adayId %>)" class="btn btn-common btn-rm info_button" style="text-align:center">Başvur</button>
             	
-            	
-            	<% if (session.getAttribute("hrSession") == null && session.getAttribute("adaySession") == null) { %>
+            	<% }}if (session.getAttribute("hrSession") == null && session.getAttribute("adaySession") == null) { %>
     				<a href="${contextPath}/aday/login" class="btn btn-common btn-rm info_button" style="text-align:center">Başvuru İçin Giriş Yapın</a>
-				<% } if (session.getAttribute("adaySession") != null) {
-            			Adays adayCurrent = (Adays) session.getAttribute("adaySession");
-						Long adayId = adayCurrent.getId();%>
-    				<button onclick="basvur(${ilan.id},<%=adayId %>)" class="btn btn-common btn-rm info_button" style="text-align:center">Başvur</button>
 				<% }if (session.getAttribute("hrSession") != null) { %>
 					
 				<%} %>
