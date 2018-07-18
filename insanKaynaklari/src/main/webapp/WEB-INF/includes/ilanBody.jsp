@@ -18,8 +18,8 @@
           <h1 class="mt-4" id="title"></h1>
 
           <!-- Author -->
-          <input id="kelimeArray" type="text"  />
-          <input id="uyusanAdaArray" type="text"  value="anlamadim"/>
+          <input id="kelimeArray" type="text" hidden style="display:none;" />
+          <input id="uyusanAdaArray" type="text" hidden style="display:none;" value="anlamadim"/>
           <p>
             Oluşturulma Tarihi
             <!--  <a id="create_date" style="color:#e25a67;"></a> -->
