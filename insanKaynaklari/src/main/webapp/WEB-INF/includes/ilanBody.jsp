@@ -8,6 +8,8 @@
 
       <div class="row">
       <input id="ilan_id" type="text" hidden style="display:none;" value="${ilan_id}"/>
+      <input id="uzmanlik" type="text" hidden style="display:none;" value="${uzmanlik}"/>
+      
 
         <!-- Post Content Column -->
         <div class="col-lg-8">
@@ -16,6 +18,8 @@
           <h1 class="mt-4" id="title"></h1>
 
           <!-- Author -->
+          <input id="kelimeArray" type="text"  />
+          <input id="uyusanAdaArray" type="text"  value="anlamadim"/>
           <p>
             Oluşturulma Tarihi
             <!--  <a id="create_date" style="color:#e25a67;"></a> -->

@@ -64,6 +64,8 @@ public class HrController {
 
 		return "isverenLogin";
 	}
+	
+	
 
 	/*
 	 * //isveren logout
@@ -130,6 +132,10 @@ public class HrController {
 	public String ilanBilgi(@PathVariable("id") Long id, Model model) throws HibernateException, PropertyVetoException {
 
 		System.out.println("/isveren/ilan/" + id);
+		
+		Jobs ilan = jobsService.getJobById(id);
+		String uzmanlik = ilan.getExpertise();
+		model.addAttribute("uzmanlik", uzmanlik);
 		model.addAttribute("ilan_id", id);
 
 		return "ilanInfo";
