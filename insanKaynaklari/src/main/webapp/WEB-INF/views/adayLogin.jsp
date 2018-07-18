@@ -34,6 +34,8 @@
   			<span class="fab fa-linkedin fa-2x"></span>
   				LinkedIn İle Giriş Yap
 			</a>
+		<hr>
+		<a href="${contextPath}">Anasayfa</a>
       </div>
     </div>
   </div>
