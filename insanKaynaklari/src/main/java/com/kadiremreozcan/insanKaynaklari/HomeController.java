@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kadiremreozcan.entity.Jobs;
 import com.kadiremreozcan.service.JobsService;
-import com.kadiremreozcan.service.MailService;
 
 /**
  * Handles requests for the application home page.

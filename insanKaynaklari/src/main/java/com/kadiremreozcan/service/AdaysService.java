@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kadiremreozcan.dao.AdaysDAO;
 import com.kadiremreozcan.entity.Adays;
-import com.kadiremreozcan.entity.Jobs;
 
 @Service
 @Transactional
