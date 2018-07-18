@@ -106,17 +106,17 @@ function ilanUpdate(){
 		activation_date = activation_date.getTime();
 	}
 	
-	if(expiration_date < activation_date ){
-		alert("Expiration Tarihi Aktivasyon Tarihinden Küçük Olamaz");
+	if(today_date > activation_date ){
+		alert("Ilan Aktif olucaktır");
 	}
 	if(expiration_date < today_date ){
-		alert("Expiration Tarihi Günün Tarihinden Küçük Olamaz");
+		alert("Ilan Pasif Olucaktır");
 	}
-	if(today_date < activation_date ){
-		alert("Lütfen aktivasyon zamanını güncel tarihten büyük seçin");
+	if(activation_date > expiration_date ){
+		alert("Aktivasyon tarihi Expiration Tarihinden büyük olamaz");
 	}
 	
-	if( activation_date < expiration_date && activation_date <= today_date && today_date <= expiration_date ){
+	if( activation_date < expiration_date ){
 		var param = {
 				id:$("#ilan_id").val()+"",	
 				title : $("#title").val(),

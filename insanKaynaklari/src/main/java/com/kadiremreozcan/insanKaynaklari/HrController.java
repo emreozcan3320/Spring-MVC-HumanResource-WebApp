@@ -182,12 +182,13 @@ public class HrController {
 			  Date expirationDate = jobs.get(i).getExpiration_date();
 			  Date todayDate = new Date();
 			  
-			  if(todayDate.after(activationDate) && todayDate.before(expirationDate)){
+			  if(todayDate.after(activationDate)  ){
 				     //System.out.println("Ýlan Aktif");
 				     Jobs job = jobs.get(i);
 					 job.setStatus(true);
 					 jobsService.updateIlan(job);
-				}else{
+				}
+			  if(todayDate.after(expirationDate)){
 					 //System.out.println("Ýlan pasif");
 					 Jobs job = jobs.get(i);
 					 job.setStatus(false);
