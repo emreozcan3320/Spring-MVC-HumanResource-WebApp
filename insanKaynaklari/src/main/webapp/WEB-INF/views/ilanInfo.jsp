@@ -74,8 +74,16 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
+    <input class="form-control" id="myInput" type="text" placeholder="Ara..">
+    <br>
     <table class="table table-hover table-striped">
-		<tbody id="basvuranlar" >
+    <thead>
+      <tr>
+        <th>Aday İsim</th>
+        <th>Basvuru Durumu</th>
+      </tr>
+    </thead>
+		<tbody class="myTable" id="basvuranlar" >
 		</tbody>
 	</table>
    

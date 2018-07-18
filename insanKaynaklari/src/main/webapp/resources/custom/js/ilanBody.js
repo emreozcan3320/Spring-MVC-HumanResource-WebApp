@@ -3,6 +3,13 @@ $(document).ready(function() {
 	
 	getBasvuranBilgisi();
 	getOneJob();
+	
+	$("#myInput").on("keyup", function() {
+	    var value = $(this).val().toLowerCase();
+	    $(".myTable tr").filter(function() {
+	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	    });
+	  });
 });
 
 //Get the modal
@@ -38,7 +45,7 @@ function getBasvuranBilgisi(){
 			for (var i = 0; i < data.length; i++) {
 			    //console.log(data[i][9]+" "+data[i][13]);
 				
-				list = list + "<tr><td><a href='/insanKaynaklari/isveren/adayInfo/"+data[i][0]+"/"+job_id+"'>"+data[i][9]+" "+data[i][13] +"</a></td></tr>"
+				list = list + "<tr><td><a href='/insanKaynaklari/isveren/adayInfo/"+data[i][0]+"/"+job_id+"'>"+data[i][9]+" "+data[i][13] +"</a></td><td>"+data[i][22]+"</td></tr>"
 			    //list = list + "<li><a href=/insanKaynaklari/isveren/adayInfo/"+data[i][0]+">"+data[i][9]+" "+data[i][13] +"</a></li>";
 			}
 			

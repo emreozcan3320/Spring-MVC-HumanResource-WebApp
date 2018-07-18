@@ -47,6 +47,8 @@
         <div class="card-header">
           <i class="fa fa-table"></i> Data Table Example</div>
         <div class="card-body">
+        <input class="form-control" id="myInput" type="text" placeholder="Ara..">
+   		 <br>
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
@@ -77,7 +79,7 @@
                   <th>Edit</th>
                 </tr>
               </tfoot>
-              <tbody id="list">
+              <tbody class="myTable" id="list">
                 
                 
               </tbody>
@@ -125,9 +127,9 @@
     <script src="resources/adminPanel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="resources/adminPanel/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Page level plugin JavaScript-->
+    <!-- Page level plugin JavaScript
     <script src="resources/adminPanel/vendor/datatables/jquery.dataTables.js"></script>
-    <script src="resources/adminPanel/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="resources/adminPanel/vendor/datatables/dataTables.bootstrap4.js"></script>-->
     <!-- Custom scripts for all pages-->
     <script src="resources/adminPanel/js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->

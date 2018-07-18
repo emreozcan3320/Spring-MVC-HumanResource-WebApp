@@ -1,6 +1,14 @@
 $(document).ready(function() {
 	
 	getJobs();
+	
+	$("#myInput").on("keyup", function() {
+	    var value = $(this).val().toLowerCase();
+	    $(".myTable tr").filter(function() {
+	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	    });
+	  });
+	
 	//setInterval(function(){ getJobs();},5000);
 });
 
