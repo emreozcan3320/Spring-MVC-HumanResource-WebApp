@@ -55,8 +55,9 @@
 			</div>
 			<!-- Header Section End -->
 
-			<!-- Search Container Start -->
-			<jsp:include page="../includes/ilanSearch.jsp"></jsp:include>
+			<!-- Search Container Start 
+			<jsp:include page="../includes/ilanSearch.jsp"></jsp:include>-->
+			
 			<!-- Search Container End  -->
 		</section>
 		<!-- end intro section -->
@@ -68,6 +69,7 @@
 	<!-- Find Job Section Start -->
 	<section class="find-job section">
 		<div class="container">
+		<input class="form-control" id="myInput" type="text" placeholder="Ara..">
 			<h2 class="section-title">ilanlar</h2>
 			<div class="row" id="ilan_list">
 				<div class="col-md-12">

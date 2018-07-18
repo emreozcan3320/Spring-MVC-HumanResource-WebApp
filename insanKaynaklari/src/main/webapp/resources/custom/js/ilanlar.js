@@ -1,6 +1,13 @@
 $(document).ready(function() {
 	getAllJobs();
 	//setInterval(function(){ getJobs();},5000);
+	
+	$("#myInput").on("keyup", function() {
+	    var value = $(this).val().toLowerCase();
+	    $("#myTable div").filter(function() {
+	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	    });
+	  });
 });
 
 function tarih (Linuxtarih){
@@ -34,7 +41,7 @@ function getAllJobs (){
 					
 				}
 				
-				ilan_list = ilan_list+ '<div class="col-md-12" ><div class="job-list" style="width:100%;">'+
+				ilan_list = ilan_list+ '<div id="myTable" class="col-md-12" ><div class="job-list" style="width:100%;">'+
 						'<div class="thumb">'+
 								'<a href="job-details.html"><img src="resources/theme1/img/jobs/img-1.jpg" alt=""></a>'+
 						'</div>'+
