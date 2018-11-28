@@ -1,30 +1,34 @@
 # Spring-MVC-HumanResource-WebApp
 
-1. Giriş,	Amaç	ve	Kapsam
+**Giriş,	Amaç	ve	Kapsam
 Bu	 belge, 2018 yılı	 OBSS	 Java	 yaz	 stajı	 döneminde	 stajyerlerden	 yapılması	 beklenilen	 çalışma,	
 uyulması	gereken	kurallar	ve	çalışma	sonucunu	değerlendirme	ölçütlerini	içermektedir.	
-2. Proje	Çalışması
+
+**Proje	Çalışması
 Yaz	 stajı	 boyunca	 stajyerlerin	 verilen	 sürede	 bu	 belgede	 belirtilen	 kriterlere	 uygun	 ve	 istenilen	
 özellikleri	 sunan	 kapsamı	 sınırlandırılmış	 bir	 “İnsan	 Kaynakları	 İş	 İlanları	 ve	 Başvuruları	 Yönetimi	
 Uygulaması”	geliştirmesi	beklenmektedir.
-2.1. Kullanılacak	Teknolojiler ve	Kısıtlar
+
+**Kullanılacak	Teknolojiler ve	Kısıtlar
 Proje kapsamında	geliştirilecek	uygulamanın	web	tabanlı	olması,	Java	dili ve	web	teknolojileri	(HTML,	
 CSS,	JavaScript)	kullanılarak yazılması	ve	Java	platformu	üzerinde	çalışabilir	olma	şartı	aranmaktadır.	
 Stajyerler,	bu	genel	kısıt	çerçevesinde	istenen	işlevselliği	sağlayabilmek	için	tercih	ettikleri	ön	yüz	ya	
 da	sunucu	tarafı	teknolojileri,	framework’leri	ve	kütüphaneleri	kullanmakta	özgürdür.
-2.2. Çalışma	Yöntemi
+
+**Çalışma	Yöntemi
 Stajyerler,	 çalışmalarını	 kendileri	 için	 ayrılan	 alanda	 bireysel	 olarak	 sürdürecektir.	 Çalışma	 sırasında	
 internet	 kullanımı	 serbesttir. Ancak	 stajyerlerin	 proje	 geliştirme	 konusunda	 birbirleriyle	
 yardımlaşması	ya	da	mesai	saatleri	içinde	veya	dışında	başka kişilerden danışmanlığın	ötesinde	bilfiil	
 uygulama	geliştirme	desteği alması	kural	dışı	olup	 tespit	edilmesi	halinde	ilgili	 stajyerlerin	çalışması	
 yarışma	kapsamı	dışında	tutulacaktır.
-2.3. Uygulama	İşlevleri
+
+**Uygulama	İşlevleri
 Geliştirilecek	uygulamanın	aşağıdaki	işlevselliği	sunması	beklenmektedir:
-2.3.1. Kullanıcı	Profilleri
+*Kullanıcı	Profilleri
 Uygulamayı	2	tip	kullanıcı	kullanabilir:	IK	Uzmanı	ve	Aday(İş	Başvurusu	Yapan	Kişi)	
 Bu	 profillerin	 tanımlanması	 veya	 yönetimi	 için	 ekran	 ve	 fonksiyon	 beklenmemektedir.	 Ancak	
 uygulama	fonksiyonları	bu	profillerle	ilişkilidir.
-2.3.2. Authentication
+*Authentication
 IK	Uzmanları	sisteme	LDAP	Authentication	ile	login	olmalıdır.	Bunun	için	bir	LDAP	server	kurulmalıdır.	
 Kullanıcı	tanımları	doğrudan	LDAP	server	üzerine	yapılabilir.	Uygulamada	yeni	kullanıcı	tanımlama	ve	
 kullanıcı	yönetimi	için	ekranlar	olmasına	gerek	yoktur.
